@@ -11,7 +11,7 @@ App({
     // console.log('App Hide')
   },
   globalData: {
-    hasLogin: false,
+    openid: null,
     tokenId: null
   },
   // lazy loading openid

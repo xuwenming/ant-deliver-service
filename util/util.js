@@ -36,7 +36,7 @@ Util.checkPhone = function (v) {
   return false;
 };
 
-Util.checkEmpty = function (v) {
+Util.isEmpty = function (v) {
   var val = v.trim();
   if (val == "" || val.length == 0) {
     return true;

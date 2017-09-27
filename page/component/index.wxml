@@ -1,17 +1,19 @@
 <view class="main">
-  <form bindsubmit="register">
-    <view class="form">
-      <view class="form-group list-line">
-        <input name="userName" type="number" class='form-control' placeholder='请输入手机号' bindinput="setUserName" focus="{{userName.focus}}"></input>
-        <button size='mini' type="default" plain="true" class="btn-vcode" catchtap="getVCode">{{vcodeMsg}}</button>
-      </view>
+  <block wx:if="{{pageLoad}}">
+    <form bindsubmit="register">
+      <view class="form">
+        <view class="form-group list-line userName">
+          <input name="userName" type="number" maxlength="11" class='form-control' placeholder='请输入手机号' bindinput="setUserName"></input>
+        </view>
+        <button size='mini' type="default" plain="true" class="btn-vcode" catchtap="getVCode" disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
 
-      <view class="form-group list-line">
-        <input name="vcode" type="number" class='form-control' placeholder='请输入验证码'></input>
+        <view class="form-group list-line">
+          <input name="vcode" type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
+        </view>
       </view>
-    </view>
-    <view class="btn-reg">
-      <button formType="submit" type="default" plain="true">确认</button>
-    </view>
-  </form>
+      <view class="btn-reg">
+        <button formType="submit" type="default" plain="true" disabled="{{regBtn.disabled}}" loading="{{regBtn.loading}}">确认</button>
+      </view>
+    </form>
+  </block>
 </view>

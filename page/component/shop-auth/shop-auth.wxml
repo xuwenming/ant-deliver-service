@@ -1,0 +1,13 @@
+<!--page/component/shop-auth/shop-auth.wxml-->
+<view class="main">
+  <view class='shop-list'>
+    <block wx:for="{{shops}}" wx:key="id" wx:for-item="shop">
+      <view class='shop-item' data-shop-id='{{shop.id}}' bindtap='chooseShop'>{{shop.name + ' - ' + shop.address}}</view>
+    </block>
+  </view>
+
+  <view class="ui-footer">
+    <view>请致电400-165-1654</view>
+    <view>《仓蚁管家商家派单协议》</view>
+  </view>
+</view>

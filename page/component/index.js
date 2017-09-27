@@ -1,42 +1,56 @@
 var app = getApp();
-var loginUrl = require('../../config').loginUrl;
+var config = require('../../config');
 var Util = require('../../util/util').Util;
+var request = require('../common/request');
+var time = 59;
 
 Page({
   data: {
-    userName : {
-      value : '',
-      focus : true
+    userName : '',
+    vcode : '',
+    vcodeBtn : {
+      msg: '获取验证码',
+      disabled : true
     },
-    vcodeMsg : '获取验证码'
+    regBtn: {
+      disabled: true,
+      loading : false
+    },
+    pageLoad : false
   },
   onLoad: function (options){
+    var self = this;
+    wx.showNavigationBarLoading();
     wx.login({
       success: function (data) {
-        wx.request({
-          url: loginUrl,
+        request.httpPost({
+          url: config.loginUrl,
           data: {
             code: data.code
           },
-          success: function (res) {
-            console.log('登录成功', res);
-            var data = res.data;
+          success: function (data) {
+            console.log('登录成功', data);
             if (data && data.success) {
               app.globalData.tokenId = data.obj;
-              wx.switchTab({
-                url: '../component/category/category',
+              // wx.switchTab({
+              //   url: '../component/new-order/new-order'
+              // });
+              wx.redirectTo({
+                url: '../component/shop-auth/shop-auth',
               });
             } else {
+              app.globalData.openid = data.obj;
               wx.setNavigationBarTitle({
                 title: '注册'
-              })
+              });
+              self.setData({
+                pageLoad: true
+              });
+              wx.hideNavigationBarLoading();
             }
           },
-          fail: function (res) {
-            console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
-            wx.setNavigationBarTitle({
-              title: '注册'
-            })
+          complete : function(){
+            
           }
         });
       },
@@ -47,55 +61,122 @@ Page({
   },
 
   setUserName : function(e) {
-    this.setData({
-      userName: {
-        value : e.detail.value,
-        focus: true
+    var userName = e.detail.value;
+    if (Util.checkPhone(userName)) {
+      this.setData({
+        'vcodeBtn.disabled': false,
+        userName: userName
+      });
+      if (!Util.isEmpty(this.data.vcode)) {
+        this.setData({
+          'regBtn.disabled': false,
+        });
       }
-    });
+    } else {
+      this.setData({
+        'vcodeBtn.disabled': true,
+        'regBtn.disabled': true,
+        userName: ''
+      });
+    }
+  },
+
+  setVcode: function (e) {
+    var vcode = e.detail.value;
+    if (Util.checkPhone(this.data.userName)) {
+      if (!Util.isEmpty(vcode)) {
+        this.setData({
+          'regBtn.disabled': false,
+          vcode: vcode
+        });
+      } else {
+        this.setData({
+          'regBtn.disabled': true
+        });
+      }
+    } else {
+      this.setData({
+        vcode: vcode
+      });
+    }
   },
 
   getVCode : function(e) {
-    var _this = this;
-    var mobile = this.data.userName;
-    console.log(mobile);
-    if (!Util.checkPhone(mobile)) {
-      wx.showModal({
-        content: '请输入正确的手机号码',
-        showCancel:false,
-        success: function (res) {
-          if (res.confirm) {
-            _this.setData({
-              userName: {
-                focus: true
-              }
-            });
-          }
-        }
-      })
-      
-      return;
-    }
-    wx.request({
-      url: loginUrl,
-      data: {
-        mobile: mobile
-      },
-      success: function (res) {
-        var data = res.data;
-        if (data.success) {
-          
-        } else {
+    var self = this;
+    self.setData({
+      vcodeBtn : {
+        msg: '重发' + time,
+        disabled: true
+      }
+    });
 
-        }
+    time--;
+    var interval = setInterval(function () {
+      self.setData({
+        'vcodeBtn.msg' : '重发' + time
+      });
+      if (time == 0) {
+        clearInterval(interval);
+        self.setData({
+          vcodeBtn: {
+            msg: '获取验证码',
+            disabled: false
+          }
+        });
+        time = 59;
+      } else {
+        time--;
+      }
+    }, 1000);
+
+    request.httpPost({
+      url: config.getVcodeUrl,
+      data: {
+        mobile: self.data.userName
       },
-      fail: function (res) {
-        console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
+      success: function (data) {
+        if (!data.success) {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+          clearInterval(interval);
+          self.setData({
+            vcodeBtn: {
+              msg: '获取验证码',
+              disabled: false
+            }
+          });
+          time = 59;
+        }
       }
     })
   },
   
   register : function(e){
-    console.log('form发生了submit事件，携带数据为：', e);
+    console.log(e);
+    this.setData({
+      'regBtn.loading': true
+    });
+    var params = e.detail.value;
+    params.refId = app.globalData.openid;
+    params.refType = 'wx';
+  
+    request.httpPost({
+      url: config.regUrl,
+      data: params,
+      success: function (data) {
+        if(data.success) {
+          wx.redirectTo({
+            url: '../component/shop-auth/shop-auth',
+          });
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+        }
+      }
+    })
   }
 })

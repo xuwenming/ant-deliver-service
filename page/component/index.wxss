@@ -25,7 +25,7 @@
     position: absolute;
     top: 50%;
     right: 28rpx;
-    margin-top: -32rpx;
+    margin-top: -88rpx;
     border: 1px solid #05C0AB;
     color: #05C0AB;
     border-radius: 3rpx;
@@ -35,4 +35,8 @@
 .btn-reg {
   margin: 60rpx 40rpx 0 40rpx;
   border-radius: 4px;
+}
+
+.userName {
+  width: 60%;
 }

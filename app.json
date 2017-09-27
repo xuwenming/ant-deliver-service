@@ -1,13 +1,10 @@
 {
   "pages": [
-      "page/component/index",
-      "page/component/category/category",
-      "page/component/cart/cart",
-      "page/component/user/user",
-      "page/component/address/address",
-      "page/component/orders/orders",
-      "page/component/details/details",
-      "page/component/list/list"
+    "page/component/index",
+    "page/component/shop-auth/shop-auth",
+    "page/component/new-order/new-order",
+    "page/component/order-list/order-list",
+    "page/component/shop-manage/shop-manage"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",
@@ -21,22 +18,26 @@
     "selectedColor": "#AB956D",
     "borderStyle": "#f5f5f5",
     "backgroundColor": "#f5f5f5",
-    "list": [{
-      "pagePath": "page/component/category/category",
-      "iconPath": "image/12.png",
-      "selectedIconPath": "image/11.png",
-      "text": "新订单"
-    }, {
-      "pagePath": "page/component/category/category",
-      "iconPath": "image/22.png",
-      "selectedIconPath": "image/21.png",
-      "text": "已处理订单"
-    }, {
-      "pagePath": "page/component/cart/cart",
-      "iconPath": "image/32.png",
-      "selectedIconPath": "image/31.png",
-      "text": "门店管理"
-    }]
+    "list": [
+      {
+        "pagePath": "page/component/new-order/new-order",
+        "iconPath": "image/12.png",
+        "selectedIconPath": "image/11.png",
+        "text": "新订单"
+      },
+      {
+        "pagePath": "page/component/new-order/new-order",
+        "iconPath": "image/22.png",
+        "selectedIconPath": "image/21.png",
+        "text": "已处理订单"
+      },
+      {
+        "pagePath": "page/component/new-order/new-order",
+        "iconPath": "image/32.png",
+        "selectedIconPath": "image/31.png",
+        "text": "门店管理"
+      }
+    ]
   },
   "networkTimeout": {
     "request": 10000,

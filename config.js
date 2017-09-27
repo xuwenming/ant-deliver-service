@@ -15,16 +15,13 @@ var config = {
     loginUrl: `${protocol}://${host}/api/deliver/account/login`,
 
     // 获取验证码
-    getVcodeUrl: `${protocol}://${host}/api/deliver/account/getVcode`,
+    getVcodeUrl: `${protocol}://${host}/api/deliver/account/getVCode`,
 
-    // 生成支付订单的接口
-    paymentUrl: `${protocol}://${host}/payment`,
+    // 注册地址
+    regUrl: `${protocol}://${host}/api/deliver/account/register`,
 
-    // 发送模板消息接口
-    templateMessageUrl: `${protocol}://${host}/templateMessage`,
-
-    // 上传文件接口
-    uploadFileUrl: `${protocol}://${host}/upload`,
+    // 获取门店信息列表
+    getShopsUrl: `${protocol}://${host}/testData/shops.txt`,
 };
 
 module.exports = config
