@@ -1,0 +1,17 @@
+<view class="main">
+  <form bindsubmit="register">
+    <view class="form">
+      <view class="form-group list-line">
+        <input name="userName" type="number" class='form-control' placeholder='请输入手机号' bindinput="setUserName" focus="{{userName.focus}}"></input>
+        <button size='mini' type="default" plain="true" class="btn-vcode" catchtap="getVCode">{{vcodeMsg}}</button>
+      </view>
+
+      <view class="form-group list-line">
+        <input name="vcode" type="number" class='form-control' placeholder='请输入验证码'></input>
+      </view>
+    </view>
+    <view class="btn-reg">
+      <button formType="submit" type="default" plain="true">确认</button>
+    </view>
+  </form>
+</view>
