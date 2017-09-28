@@ -1,0 +1,8 @@
+/* page/component/user/user.wxss */
+@import '../../common/common.wxss';
+
+.ui-mine-list {
+  position: relative;
+  background-color: #fff;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,15 @@
+<!--page/component/user/user.wxml-->
+<view class="container">
+  <view class="ui-mine-list">
+    <view style='border-top:2px solid #efefef;'>
+      头像  <image style="width: 55rpx; height: 55rpx;" src="{{avatarUrl}}" />
+    </view>
+    <view style='border-top:2px solid #efefef;'>
+      店铺 {{shopName}} 
+    </view>
+    <view style='border-top:2px solid #efefef;'>
+      手机号 {{userName}} 
+    </view>
+    
+  </view>
+</view>
