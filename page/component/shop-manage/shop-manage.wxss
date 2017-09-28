@@ -1,1 +1,28 @@
 /* page/component/shop-manage/shop-manage.wxss */
+@import '../../common/common.wxss';
+
+.ui-mine-header {
+    padding: 50rpx 0px;
+    background-color: #05C0AB;
+}
+
+.ui-mine-icon {
+    width: 140rpx;
+    height: 140rpx;
+    border: 8rpx solid #82e0d5;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.ui-mine-header .shopName {
+    padding-top: 10rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+}
+
+.ui-mine-list {
+  position: relative;
+  background-color: #fff;
+  margin-top: 20rpx;
+}

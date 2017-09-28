@@ -16,10 +16,12 @@ Page({
       disabled: true,
       loading : false
     },
-    pageLoad : false
+    pageLoad : false,
+    userInfo : null
   },
   onLoad: function (options){
     var self = this;
+
     wx.showNavigationBarLoading();
     wx.login({
       success: function (data) {
@@ -32,12 +34,22 @@ Page({
             console.log('登录成功', data);
             if (data && data.success) {
               app.globalData.tokenId = data.obj;
-              // wx.switchTab({
-              //   url: '../component/new-order/new-order'
-              // });
-              wx.redirectTo({
-                url: '../component/shop-auth/shop-auth',
-              });
+
+              request.httpPost({
+                url: config.getShopApplyUrl,
+                success: function (data) {
+                  if (data.success && data.obj) {
+                    wx.switchTab({
+                      url: '../component/new-order/new-order'
+                    });
+                  } else {
+                    wx.redirectTo({
+                      url: '../component/shop-auth/shop-auth'
+                    });
+                  }
+                }
+              })
+              
             } else {
               app.globalData.openid = data.obj;
               wx.setNavigationBarTitle({
@@ -58,6 +70,32 @@ Page({
         console.log('wx.login 接口调用失败，将无法正常使用开放接口等服务', err);
       }
     });
+  },
+
+  onShow : function(){
+    this.getUserInfo();
+  },
+
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+  },
+
+  getUserInfo : function() {
+    var self = this;
+    app.getAuthorize({
+      scope: 'scope.userInfo',
+      content: '检测到您没打开用户信息权限，是否去设置打开？',
+      required: true, // 必须授权
+      callback: function () {
+        wx.getUserInfo({
+          success: function (res) {
+            self.setData({
+              userInfo: res.userInfo
+            });
+          }
+        })
+      }
+    })
   },
 
   setUserName : function(e) {
@@ -158,9 +196,14 @@ Page({
     this.setData({
       'regBtn.loading': true
     });
-    var params = e.detail.value;
+    var params = e.detail.value, userInfo = this.data.userInfo;
     params.refId = app.globalData.openid;
     params.refType = 'wx';
+    if(userInfo) {
+      params.nickName = userInfo.nickName;
+      params.icon = userInfo.avatarUrl;
+      params.sex = userInfo.gender;
+    }
   
     request.httpPost({
       url: config.regUrl,

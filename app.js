@@ -14,36 +14,47 @@ App({
     openid: null,
     tokenId: null
   },
-  // lazy loading openid
-  getUserOpenId: function (callback) {
-    var self = this;
-
-    if (self.globalData.openid) {
-      callback(null, self.globalData.openid)
-    } else {
-      wx.login({
-        success: function (data) {
-          wx.request({
-            url: openIdUrl,
-            data: {
-              code: data.code
+  
+  /**
+   * scope:权限的scope 
+   * content：拒绝授权的提示信息
+   * required ： 授权是否必须
+   * callback : 授权成功回调函数
+   */
+  getAuthorize : function(opts) {
+    var self = this, scope = opts.scope;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting[scope]) {
+          wx.authorize({
+            scope: scope,
+            success(res) {
+              self.getAuthorize(opts);
             },
-            success: function (res) {
-              console.log('拉取openid成功', res);
-              self.globalData.openid = res.data.obj.openid;
-              callback(null, res.data);
-            },
-            fail: function (res) {
-              console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res);
-              callback(res);
+            fail() {
+              wx.showModal({
+                content: opts.content,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.openSetting({
+                      success(res) {
+                        res.authSetting = {
+                          scope: true
+                        }
+                      }
+                    })
+                  } else if (res.cancel) {
+                    if (opts.required) self.getAuthorize(opts);
+                  }
+                }
+              });
             }
           })
-        },
-        fail: function (err) {
-          console.log('wx.login 接口调用失败，将无法正常使用开放接口等服务', err);
-          callback(err);
+        } else {
+          if(opts.callback)
+            opts.callback();
         }
-      })
-    }
+      }
+    })
   }
 })

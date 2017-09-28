@@ -29,16 +29,36 @@ Page({
     })
   },
 
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+  },
+
   chooseShop : function(e){
-    console.log(e);
     wx.showModal({
       title:'提示',
-      content: '是否绑定该门店账号，绑定之后不可更改！',
+      content: '是否绑定门店【' + e.target.dataset.shopName+'】，绑定之后不可更改！',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定', e.target.dataset.shopId);
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+          request.httpPost({
+            url: config.addShopApplyUrl,
+            data: { shopId: e.target.dataset.shopId},
+            success: function (data) {
+              if (data.success) {
+                wx.showModal({
+                  title: '提示',
+                  content: '门店申请已提交，请耐心等待或致电客服！',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.switchTab({
+                        url: '../new-order/new-order'
+                      });
+                    }
+                  }
+                });
+              }
+            }
+          })
         }
       }
     });

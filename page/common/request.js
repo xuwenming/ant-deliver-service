@@ -28,6 +28,13 @@ function getRequestKey(data) {
   return ajaxKey
 }
 
+function getUrl(url) {
+  var tokenId = app.globalData.tokenId;
+  if (tokenId)
+    url += (url.indexOf("?") == -1 ? "?" : "&") + "tokenId=" + tokenId;
+  return url;
+}
+
 function http(options) {
   if (!options || !options.url) throw Error('请求参数有误！');
 
@@ -57,7 +64,7 @@ function http(options) {
     .replace(/[(]/g, "%28").replace(/[)]/g, "%29").replace(/[~]/g, "%7E");
 
   return wx.request({
-    url: options.url,
+    url: getUrl(options.url),
     data: options.data || {},
     method: options.method,
     header: {

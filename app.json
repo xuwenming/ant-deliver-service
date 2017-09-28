@@ -11,7 +11,7 @@
     "navigationBarTitleText": "仓蚁管家",
     "navigationBarBackgroundColor": "#05C0AB",
     "backgroundColor": "#efefef",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#b7b7b7",
@@ -26,15 +26,15 @@
         "text": "新订单"
       },
       {
-        "pagePath": "page/component/new-order/new-order",
-        "iconPath": "image/22.png",
-        "selectedIconPath": "image/21.png",
+        "pagePath": "page/component/order-list/order-list",
+        "iconPath": "image/32.png",
+        "selectedIconPath": "image/31.png",
         "text": "已处理订单"
       },
       {
-        "pagePath": "page/component/new-order/new-order",
-        "iconPath": "image/32.png",
-        "selectedIconPath": "image/31.png",
+        "pagePath": "page/component/shop-manage/shop-manage",
+        "iconPath": "image/42.png",
+        "selectedIconPath": "image/41.png",
         "text": "门店管理"
       }
     ]

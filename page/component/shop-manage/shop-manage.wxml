@@ -1,2 +1,27 @@
 <!--page/component/shop-manage/shop-manage.wxml-->
-<text>page/component/shop-manage/shop-manage.wxml</text>
+<view class="container">
+  <view class="ui-mine-header">
+    <view class="ui-mine-icon">
+      <image style="width: 140rpx; height: 140rpx;" mode="scaleToFill" src="{{avatarUrl}}"></image>
+    </view>
+    <view class="shopName">李宇的门店</view>
+    <view class="shopName">今日有效订单:16</view>
+    <view class="shopName">今日营业额：￥1650</view>
+  </view>
+
+  <view class="ui-mine-list">
+    <view style='border-top:2px solid #efefef;'>
+      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />商品管理  
+    </view>
+    <view style='border-top:2px solid #efefef;'>
+      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />财务信息 
+    </view>
+    <view style='border-top:2px solid #efefef;'>
+      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />门店管理
+    </view>
+    <view style='border-top:2px solid #efefef;'>
+      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />我要采购
+    </view>
+    
+  </view>
+</view>

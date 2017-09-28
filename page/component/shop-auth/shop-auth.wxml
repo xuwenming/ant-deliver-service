@@ -1,8 +1,8 @@
 <!--page/component/shop-auth/shop-auth.wxml-->
-<view class="main">
+<view class="container">
   <view class='shop-list'>
     <block wx:for="{{shops}}" wx:key="id" wx:for-item="shop">
-      <view class='shop-item' data-shop-id='{{shop.id}}' bindtap='chooseShop'>{{shop.name + ' - ' + shop.address}}</view>
+      <view class='shop-item' data-shop-id='{{shop.id}}' data-shop-name='{{shop.name}}' bindtap='chooseShop'>{{shop.name + ' - ' + shop.address}}</view>
     </block>
   </view>
 
