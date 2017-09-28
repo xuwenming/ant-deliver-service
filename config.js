@@ -2,7 +2,8 @@
  * 小程序配置文件
  */
 
-var server_host = "http://127.0.0.1:8082";
+// var server_host = "http://127.0.0.1:8082";
+var server_host = "http://10.42.0.99:8082";
 //var server_host = "https://www.qrun360.com";
 
 var config = {
@@ -28,8 +29,11 @@ var config = {
     // 获取门店信息
     getShopApplyUrl: `${server_host}/api/deliver/account/getShopApply`,
 
+    // 获取用户信息
+    getAccountInfoUrl: `${server_host}/api/deliver/account/get`,
+
     // 更新用户信息
-    updateAccountUrl: `${server_host}/api/deliver/account/update`,
+    updateAccountUrl: `${server_host}/api/deliver/account/edit`,
 };
 
 module.exports = config

@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shops : []
+    shops : [],
+    status : null,
+    mbShop:{}
   },
 
   /**
@@ -16,17 +18,39 @@ Page({
    */
   onLoad: function (options) {
     var self = this;
+    var status = options.status;
+    self.setData({status:status});
 
-    request.httpGet({
-      url: config.getShopsUrl,
-      success: function (data) {
-        if (data.success) {
-          self.setData({
-            shops: data.obj
-          });
-        } 
-      }
-    })
+    if (!status) {
+      request.httpGet({
+        url: config.getShopsUrl,
+        success: function (data) {
+          if (data.success) {
+            self.setData({
+              shops: data.obj
+            });
+          }
+        }
+      })
+    } else {
+      request.httpPost({
+        url: config.getShopApplyUrl,
+        success: function (data) {
+          if (data.success && data.obj) {
+            self.setData({
+              status: status,
+              mbShop: {
+                name: data.obj.mbShop.name,
+                address: data.obj.mbShop.address,
+                contactPeople: data.obj.mbShop.contactPeople + '（缺少认证中图标）',
+                statusIcon: status == 'DAS01' ? '/image/auth_failed.png' : (status == 'DAS01' ? '/image/auth_success.png' : '/image/auth_failed.png')
+              }
+            });
+          }
+        }
+      })
+    } 
+
   },
 
   onPullDownRefresh: function () {
@@ -34,6 +58,7 @@ Page({
   },
 
   chooseShop : function(e){
+    var self = this;
     wx.showModal({
       title:'提示',
       content: '是否绑定门店【' + e.target.dataset.shopName+'】，绑定之后不可更改！',
@@ -50,8 +75,14 @@ Page({
                   showCancel: false,
                   success: function (res) {
                     if (res.confirm) {
-                      wx.switchTab({
-                        url: '../new-order/new-order'
+                      self.setData({
+                        status:'DAS01',
+                        mbShop:{
+                          name: e.target.dataset.shopName,
+                          address: e.target.dataset.address,
+                          contactPeople: e.target.dataset.contactPeople + '（缺少认证中图标）',
+                          statusIcon: '/image/auth_failed.png'
+                        }
                       });
                     }
                   }

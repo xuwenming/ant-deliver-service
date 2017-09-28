@@ -32,6 +32,7 @@ function getUrl(url) {
   var tokenId = app.globalData.tokenId;
   if (tokenId)
     url += (url.indexOf("?") == -1 ? "?" : "&") + "tokenId=" + tokenId;
+
   return url;
 }
 

@@ -1,12 +1,12 @@
 <!--page/component/shop-manage/shop-manage.wxml-->
 <view class="container">
-  <view class="ui-mine-header">
+  <view class="ui-mine-header" bindtap='toUser'>
     <view class="ui-mine-icon">
-      <image style="width: 140rpx; height: 140rpx;" mode="scaleToFill" src="{{avatarUrl}}"></image>
+      <image style="width: 140rpx; height: 140rpx;" mode="scaleToFill" src="{{accountInfo.avatarUrl}}"></image>
     </view>
-    <view class="shopName">李宇的门店</view>
-    <view class="shopName">今日有效订单:16</view>
-    <view class="shopName">今日营业额：￥1650</view>
+    <view class="shopName">{{accountInfo.shopName}}</view>
+    <view class="shopName">今日有效订单:{{accountInfo.validOrders}}</view>
+    <view class="shopName">今日营业额：￥{{accountInfo.turnover}}</view>
   </view>
 
   <view class="ui-mine-list">

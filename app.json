@@ -4,20 +4,22 @@
     "page/component/shop-auth/shop-auth",
     "page/component/new-order/new-order",
     "page/component/order-list/order-list",
-    "page/component/shop-manage/shop-manage"
+    "page/component/shop-manage/shop-manage",
+    "page/component/user/user"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",
     "navigationBarTitleText": "仓蚁管家",
     "navigationBarBackgroundColor": "#05C0AB",
     "backgroundColor": "#efefef",
+    "backgroundTextStyle": "dark",
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color": "#b7b7b7",
-    "selectedColor": "#AB956D",
-    "borderStyle": "#f5f5f5",
-    "backgroundColor": "#f5f5f5",
+    "color": "#000000",
+    "selectedColor": "#05C0AB",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "page/component/new-order/new-order",

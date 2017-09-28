@@ -39,9 +39,16 @@ Page({
                 url: config.getShopApplyUrl,
                 success: function (data) {
                   if (data.success && data.obj) {
-                    wx.switchTab({
-                      url: '../component/new-order/new-order'
-                    });
+                    if (data.obj.status == 'DAS02') {
+                      wx.switchTab({
+                        url: '../component/new-order/new-order'
+                      });
+                    } else {
+                      wx.redirectTo({
+                        url: '../component/shop-auth/shop-auth?status=' + data.obj.status
+                      });
+                    }
+                    
                   } else {
                     wx.redirectTo({
                       url: '../component/shop-auth/shop-auth'
@@ -210,6 +217,8 @@ Page({
       data: params,
       success: function (data) {
         if(data.success) {
+          app.globalData.tokenId = data.obj;
+          
           wx.redirectTo({
             url: '../component/shop-auth/shop-auth',
           });
