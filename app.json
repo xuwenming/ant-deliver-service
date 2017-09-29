@@ -5,7 +5,10 @@
     "page/component/new-order/new-order",
     "page/component/order-list/order-list",
     "page/component/shop-manage/shop-manage",
-    "page/component/user/user"
+    "page/component/user/user",
+    "page/component/protocol/protocol",
+    "page/component/refuse-order/refuse-order",
+    "page/component/item-manage/item-manage"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

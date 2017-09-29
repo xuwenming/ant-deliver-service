@@ -2,9 +2,9 @@
  * 小程序配置文件
  */
 
-// var server_host = "http://127.0.0.1:8082";
-var server_host = "http://10.42.0.99:8082";
-//var server_host = "https://www.qrun360.com";
+var server_host = "http://127.0.0.1:8082";
+// var server_host = "http://10.42.0.99:8082";
+// var server_host = "https://www.qrun360.com";
 
 var config = {
 
@@ -34,6 +34,15 @@ var config = {
 
     // 更新用户信息
     updateAccountUrl: `${server_host}/api/deliver/account/edit`,
+
+    // 新订单列表查询
+    newOrdersUrl: `${server_host}/testData/orders.txt`,
+
+    // 拒绝订单
+    refuseOrderUrl: `${server_host}/api/deliver/order/refuseOrder`,
+
+    // 商品管理列表
+    getItemsUrl: `${server_host}/testData/items.txt`,
 };
 
 module.exports = config

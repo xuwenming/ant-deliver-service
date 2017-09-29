@@ -1,53 +1,83 @@
 // page/component/new-order/new-order.js
+var config = require('../../../config');
+var request = require('../../common/request');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    orders:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onLoad');
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log('onReady');
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('onShow');
+    console.log("getNewOrders");
+    this.getNewOrders(true);
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * TODO 暂时没做翻页
+   * isRefresh:true=初始化或下拉刷新 false=上拉加载更多
    */
-  onHide: function () {
-    console.log('onHide');
+  getNewOrders: function (isRefresh){
+    var self = this;
+    request.httpGet({
+      url: config.newOrdersUrl,
+      success: function (data) {
+        if (data.success) {
+          var orders = self.data.orders;
+          if (isRefresh) orders = data.obj;
+          else orders = orders.concat(data.obj);
+          self.setData({
+            orders: orders
+          });
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    console.log('onUnload');
+  processOrder:function(e){
+    // TODO 发送request处理订单
+    var self = this;
+
+    wx.showModal({
+      content: '处理成功，可前往已处理订单查看！',
+      showCancel: false,
+      success:function(res){
+        if (res.confirm) {
+          var orders = self.data.orders;
+          orders.splice(e.target.dataset.index, 1);
+          self.setData({
+            orders: orders
+          });
+        }
+      }
+    });
+    
+  },
+
+  refuseOrder : function(e){
+    wx.navigateTo({
+      url: '/page/component/refuse-order/refuse-order?orderId=' + e.target.dataset.orderId
+    })
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('onPullDownRefresh');
+    this.getNewOrders(true);
     setTimeout(function(){
       wx.stopPullDownRefresh()  
     },1000);
@@ -58,13 +88,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('onReachBottom');
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    this.getNewOrders();
   }
 })

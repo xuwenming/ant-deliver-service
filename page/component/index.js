@@ -41,17 +41,17 @@ Page({
                   if (data.success && data.obj) {
                     if (data.obj.status == 'DAS02') {
                       wx.switchTab({
-                        url: '../component/new-order/new-order'
+                        url: '/page/component/new-order/new-order'
                       });
                     } else {
                       wx.redirectTo({
-                        url: '../component/shop-auth/shop-auth?status=' + data.obj.status
+                        url: '/page/component/shop-auth/shop-auth?status=' + data.obj.status
                       });
                     }
                     
                   } else {
                     wx.redirectTo({
-                      url: '../component/shop-auth/shop-auth'
+                      url: '/page/component/shop-auth/shop-auth'
                     });
                   }
                 }
@@ -220,7 +220,7 @@ Page({
           app.globalData.tokenId = data.obj;
           
           wx.redirectTo({
-            url: '../component/shop-auth/shop-auth',
+            url: '/page/component/shop-auth/shop-auth',
           });
         } else {
           wx.showModal({

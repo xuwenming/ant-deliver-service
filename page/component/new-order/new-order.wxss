@@ -1,1 +1,2 @@
 /* page/component/new-order/new-order.wxss */
+@import '../../common/common.wxss';

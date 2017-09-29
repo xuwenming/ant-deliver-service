@@ -1,4 +1,4 @@
-// page/component/order-list/order-list.js
+// page/component/item-manage/item-manage.js
 var config = require('../../../config');
 var request = require('../../common/request');
 
@@ -8,25 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab : 0,
-    orders: []
+    currentTab:0,
+    items:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(1111);
+    this.getItems(true);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.getOrders(true);
-  },
-
-  switchTab:function(e){
+  switchTab: function (e) {
     var self = this;
 
     if (self.data.currentTab === e.target.dataset.current) {
@@ -35,7 +28,7 @@ Page({
       self.setData({
         currentTab: e.target.dataset.current
       })
-      self.getOrders(true);
+      self.getItems(true);
     }
   },
 
@@ -43,17 +36,17 @@ Page({
    * TODO 暂时没做翻页
    * isRefresh:true=初始化或下拉刷新 false=上拉加载更多
    */
-  getOrders: function (isRefresh) {
+  getItems: function (isRefresh) {
     var self = this;
     request.httpGet({
-      url: config.newOrdersUrl,
+      url: config.getItemsUrl,
       success: function (data) {
         if (data.success) {
-          var orders = self.data.orders;
-          if (isRefresh) orders = data.obj;
-          else orders = orders.concat(data.obj);
+          var items = self.data.items;
+          if (isRefresh) items = data.obj;
+          else items = items.concat(data.obj);
           self.setData({
-            orders: orders
+            items: items
           });
         }
       }

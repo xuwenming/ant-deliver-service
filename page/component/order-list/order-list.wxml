@@ -1,2 +1,58 @@
 <!--page/component/order-list/order-list.wxml-->
-<text>page/component/order-list/order-list.wxml</text>
+<view class='container'>
+  <view class="ui-tab">
+    <view class="ui-col">
+        <view class="ui-title {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchTab">待派送</view>
+    </view>
+    <view class="ui-col">
+        <view class="ui-title {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="switchTab">已出发</view>
+    </view>
+    <view class="ui-col">
+        <view class="ui-title {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="switchTab">已送达</view>
+    </view>
+    <view class="ui-col">
+        <view class="ui-title {{currentTab==3 ? 'active' : ''}}" data-current="3" bindtap="switchTab">已取消</view>
+    </view>
+  </view>
+
+  <view class="newOrders">
+    <view wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
+      <view>订单号:{{order.id}}</view>
+      <view>下单时间:{{order.addtime}}</view>
+      <view>
+        <view>
+          <text>{{order.contactPeople}}</text> 
+          <text>{{order.contactPhone}}</text>  
+          <text>{{order.distance}}</text> 
+        </view>
+        <view>
+          <text>{{order.deliveryAddress}}</text> 
+        </view>
+      </view>
+
+      <view wx:for="{{order.items}}" wx:key="item.id" wx:for-item="item">
+        <view>
+          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
+          {{item.name}}
+        </view>
+        <view>
+          {{item.quantityUnitName}}
+        </view>
+        <view>
+          数量x<text>{{item.quantity}}</text>  
+        </view>
+        <view>
+          配送费<text>{{order.freight}}</text>  
+        </view>
+      </view>
+      <view>
+        <block wx:if="{{order.status=='DOS01'}}">
+          <button size='mini' type="primary" plain="true" data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='orderDeliver'>发货</button> 
+        </block>
+        <block wx:elif="{{order.status=='DOS02'}}">
+          <button size='mini' type="primary" data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='orderComplete'>送达完成</button>
+        </block>
+      </view>
+    </view> 
+  </view>
+</view>

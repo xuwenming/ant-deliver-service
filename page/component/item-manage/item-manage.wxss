@@ -1,4 +1,4 @@
-/* page/component/order-list/order-list.wxss */
+/* page/component/item-manage/item-manage.wxss */
 @import '../../common/common.wxss';
 
 .ui-tab {
@@ -34,5 +34,10 @@
 }
 
 .newOrders{
-  padding-top: 50px;
+  padding-top: 120rpx;
+}
+
+.batch-btn {
+  position: fixed;
+  bottom: 20rpx;
 }

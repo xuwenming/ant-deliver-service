@@ -2,8 +2,15 @@
 <view class="container">
   <block wx:if="{{!status}}">
     <view class='shop-list'>
-      <block wx:for="{{shops}}" wx:key="id" wx:for-item="shop">
-        <view class='shop-item' data-shop-id='{{shop.id}}' data-shop-name='{{shop.name}}' data-address="{{shop.address}}" data-contact-people="{{shop.contactPeople}}" bindtap='chooseShop'>{{shop.name + ' - ' + shop.address}}</view>
+      <block wx:if="{{shops.length > 0}}">
+        <block wx:for="{{shops}}" wx:key="id" wx:for-item="shop">
+          <view class='shop-item' data-shop-id='{{shop.id}}' data-shop-name='{{shop.name}}' data-address="{{shop.address}}" data-contact-people="{{shop.contactPeople}}" bindtap='chooseShop'>{{shop.name + ' - ' + shop.address}}</view>
+        </block>
+      </block>
+      <block wx:else>
+        <view>
+          未检测到相关门店信息，请致电客服电话申请！
+        </view>
       </block>
     </view>
   </block>
@@ -28,6 +35,6 @@
 
   <view class="ui-footer">
     <view>请致电400-165-1654</view>
-    <view>《仓蚁管家商家派单协议》</view>
+    <navigator url="/page/component/protocol/protocol" hover-class="navigator-hover">《仓蚁管家商家派单协议》</navigator>
   </view>
 </view>

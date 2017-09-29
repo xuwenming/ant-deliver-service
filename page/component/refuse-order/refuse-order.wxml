@@ -1,0 +1,9 @@
+<!--page/component/refuse-order/refuse-order.wxml-->
+
+<view class="container">
+  <form bindsubmit="refuseOrder">
+    <textarea placeholder="请填写拒接订单原因" name="content" bindinput="setContent"/>
+    <button size='default' type="primary" form-type='submit' disabled="{{submit_disabled}}">确定</button>
+    <button size='default' type="primary" plain="true" bindtap='cancel'>取消</button> 
+  </form>
+</view>

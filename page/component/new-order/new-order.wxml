@@ -1,57 +1,39 @@
 <!--page/component/new-order/new-order.wxml-->
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
+<view class="container">
+  <view class="newOrders">
+    <view wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
+      <view>订单号:{{order.id}}</view>
+      <view>下单时间:{{order.addtime}}</view>
+      <view>
+        <view>
+          <text>{{order.contactPeople}}</text> 
+          <text>{{order.contactPhone}}</text>  
+          <text>{{order.distance}}</text> 
+        </view>
+        <view>
+          <text>{{order.deliveryAddress}}</text> 
+        </view>
+      </view>
 
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
-<text>page/component/new-order/new-order.wxml</text>
+      <view wx:for="{{order.items}}" wx:key="item.id" wx:for-item="item">
+        <view>
+          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
+          {{item.name}}
+        </view>
+        <view>
+          {{item.quantityUnitName}}
+        </view>
+        <view>
+          数量x<text>{{item.quantity}}</text>  
+        </view>
+        <view>
+          配送费<text>{{order.freight}}</text>  
+        </view>
+      </view>
+      <view>
+        <button size='mini' type="default" plain="true" data-order-id="{{order.id}}" bindtap='refuseOrder'>拒绝</button> 
+        <button size='mini' type="primary" plain="true" data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='processOrder'>开始处理</button>
+      </view>
+    </view> 
+  </view>
+</view>

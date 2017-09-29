@@ -11,8 +11,9 @@ Page({
   data: {
     accountInfo : {
       userName:'',
-      avatarUrl: '../../../image/default_icon.png',
+      avatarUrl: '/image/default_icon.png',
       shopName:'',
+      shopStatus:'',
       validOrders:0,
       turnover:0
     }
@@ -44,6 +45,7 @@ Page({
               userName: data.obj.account.userName,
               avatarUrl: data.obj.account.icon,
               shopName: data.obj.mbShop.name,
+              shopStatus: data.obj.shopDeliverApply.status,
               validOrders: 0,
               turnover: 0
             }
@@ -54,7 +56,7 @@ Page({
   },
   
   toUser : function(){
-    var url = '../user/user?userName=' + this.data.accountInfo.userName 
+    var url = '/page/component/user/user?userName=' + this.data.accountInfo.userName 
       + '&shopName=' + this.data.accountInfo.shopName
       + '&avatarUrl=' + this.data.accountInfo.avatarUrl;
     wx.navigateTo({

@@ -10,17 +10,24 @@
   </view>
 
   <view class="ui-mine-list">
+    <navigator url="/page/component/item-manage/item-manage" hover-class="navigator-hover">
+      <view style='border-top:2px solid #efefef;'>
+        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />商品管理  
+      </view>
+    </navigator>
+
     <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />商品管理  
+      <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />财务信息 
     </view>
+
+    <navigator url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}" hover-class="navigator-hover">
+      <view style='border-top:2px solid #efefef;'>
+        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />门店管理
+      </view>
+    </navigator>
+    
     <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />财务信息 
-    </view>
-    <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />门店管理
-    </view>
-    <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="../../../image/default_icon.png" />我要采购
+      <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />我要采购
     </view>
     
   </view>
