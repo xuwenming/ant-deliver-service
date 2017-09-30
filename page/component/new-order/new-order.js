@@ -1,6 +1,7 @@
 // page/component/new-order/new-order.js
 var config = require('../../../config');
 var request = require('../../common/request');
+var Util = require('../../../util/util').Util;
 
 Page({
 
@@ -36,6 +37,9 @@ Page({
       url: config.newOrdersUrl,
       success: function (data) {
         if (data.success) {
+          for (var i in data.obj) {
+            data.obj[i].freight = Util.fenToYuan(data.obj[i].freight);
+          }
           var orders = self.data.orders;
           if (isRefresh) orders = data.obj;
           else orders = orders.concat(data.obj);

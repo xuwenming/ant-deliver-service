@@ -19,9 +19,5 @@ Page({
       avatarUrl: options.avatarUrl || '/image/default_icon.png',
       shopName: options.shopName
     });
-  },
-
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
   }
 })

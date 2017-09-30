@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "拒绝订单"
+  "navigationBarTitleText": "拒绝订单",
+  "enablePullDownRefresh": false
 }

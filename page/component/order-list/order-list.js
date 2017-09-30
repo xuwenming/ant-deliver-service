@@ -1,6 +1,7 @@
 // page/component/order-list/order-list.js
 var config = require('../../../config');
 var request = require('../../common/request');
+var Util = require('../../../util/util').Util;
 
 Page({
 
@@ -16,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(1111);
+    
   },
 
   /**
@@ -49,6 +50,9 @@ Page({
       url: config.newOrdersUrl,
       success: function (data) {
         if (data.success) {
+          for (var i in data.obj) {
+            data.obj[i].freight = Util.fenToYuan(data.obj[i].freight);
+          }
           var orders = self.data.orders;
           if (isRefresh) orders = data.obj;
           else orders = orders.concat(data.obj);

@@ -30,7 +30,7 @@ Page({
     this.setAccountInfo();
     setTimeout(function(){
       wx.stopPullDownRefresh()
-    }, 1000);
+    }, 500);
     
   },
 
