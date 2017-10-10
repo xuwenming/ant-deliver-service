@@ -12,8 +12,15 @@
 	"projectname": "ant-deliver-service",
 	"condition": {
 		"weapp": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "钱包管理测试",
+					"pathName": "page/component/balance-roll/balance-roll",
+					"query": "type=in"
+				}
+			]
 		},
 		"search": {
 			"current": -1,

@@ -1,0 +1,2 @@
+/* page/component/balance-log-list/balance-log-list.wxss */
+@import '../../common/common.wxss';

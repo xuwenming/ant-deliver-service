@@ -1,0 +1,49 @@
+<!--page/component/balance-roll/balance-roll.wxml-->
+<view class='container'>
+  <view class="ui-tab">
+    <view class="ui-col">
+        <view class="ui-title {{currentTab=='in' ? 'active' : ''}}" data-current="in" bindtap="switchTab">转入到派单钱包</view>
+    </view>
+    <view class="ui-col">
+        <view class="ui-title {{currentTab=='out' ? 'active' : ''}}" data-current="out" bindtap="switchTab">转出到采购钱包</view>
+    </view>
+  </view>
+  
+  <view style='padding-top: 50px;'>
+    金额￥<input name="userName" type="digit" placeholder='这里是个输入框' bindinput="setUserName"></input>
+  </view>
+
+  <view>
+    <block wx:if="{{currentTab=='in'}}">
+        采购金额￥300   全部转入
+    </block>
+    <block wx:else>
+        派单金额￥500   全部转出
+    </block>
+  </view>
+
+  <button type="primary" bindtap="showModal" disabled="{{regBtn.disabled}}" loading="{{regBtn.loading}}">
+    <block wx:if="{{currentTab=='in'}}">
+        转入
+    </block>
+    <block wx:else>
+        转出
+    </block>
+  </button>
+
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <form bindsubmit="register">
+      <view class="form">
+        <view class="form-group list-line">
+          <input name="vcode" type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
+        </view>
+        <button size='mini' type="default" plain="true" class="btn-vcode" catchtap="getVCode" disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
+        
+      </view>
+      <view class="btn-reg">
+        <button formType="submit" type="default" plain="true" disabled="{{regBtn.disabled}}" loading="{{regBtn.loading}}">确认</button>
+      </view>
+    </form>
+  </view>
+</view>

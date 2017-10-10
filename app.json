@@ -8,7 +8,11 @@
     "page/component/user/user",
     "page/component/protocol/protocol",
     "page/component/refuse-order/refuse-order",
-    "page/component/item-manage/item-manage"
+    "page/component/item-manage/item-manage",
+    "page/component/balance/balance",
+    "page/component/balance-roll/balance-roll",
+    "page/component/balance-log-list/balance-log-list",
+    "page/component/balance-log-detail/balance-log-detail"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

@@ -43,6 +43,9 @@ var config = {
 
     // 商品管理列表
     getItemsUrl: `${server_host}/testData/items.txt`,
+
+    // 账户明细列表
+    getBalanceLogsUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDataGrid`,
 };
 
 module.exports = config

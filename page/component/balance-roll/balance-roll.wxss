@@ -1,0 +1,59 @@
+/* page/component/balance-roll/balance-roll.wxss */
+@import '../../common/common.wxss';
+@import '../index.wxss';
+
+.ui-tab {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    background-color: #fff;
+    z-index: 99;
+    box-shadow: 0 0 10px #ccc;
+    display: -webkit-box !important;
+}
+
+.ui-col {
+    -webkit-box-flex: 1;
+}
+
+.ui-tab .ui-col .active {
+    border-bottom: 2px solid #05C0AB;
+    color: #05C0AB;
+}
+
+.ui-tab .ui-col .ui-title {
+    display: block;
+    width: 100%;
+    height: 42px;
+    margin: auto;
+    font-size: 16px;
+    color: #333;
+    display: -webkit-box !important;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}

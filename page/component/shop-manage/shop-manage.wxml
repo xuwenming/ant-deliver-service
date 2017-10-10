@@ -16,9 +16,11 @@
       </view>
     </navigator>
 
-    <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />财务信息 
-    </view>
+    <navigator url="/page/component/balance/balance" hover-class="navigator-hover">
+      <view style='border-top:2px solid #efefef;'>
+        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />财务信息 
+      </view>
+    </navigator>
 
     <navigator url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}" hover-class="navigator-hover">
       <view style='border-top:2px solid #efefef;'>

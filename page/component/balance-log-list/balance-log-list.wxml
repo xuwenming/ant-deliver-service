@@ -1,0 +1,20 @@
+<!--page/component/balance-log-list/balance-log-list.wxml-->
+<view class="container">
+  <view>
+    <text>{{cond.showDate}}</text>
+    <picker mode="date" value="{{cond.date}}" fields="month" start="{{cond.start}}" end="{{cond.end}}" bindchange="bindDateChange">
+      日期图标
+    </picker>
+  </view>
+
+  <view class="balanceLogs">
+    <view wx:for="{{balanceLogs}}" wx:key="id" wx:for-item="balanceLog">
+      <view>
+        <text>{{balanceLog.refTypeName}}</text>
+        订单号：{{balanceLog.id}}
+      </view>
+      <view>{{balanceLog.addtime}}</view>
+      <view>{{balanceLog.amount}}</view>
+    </view>
+  </view>
+</view>
