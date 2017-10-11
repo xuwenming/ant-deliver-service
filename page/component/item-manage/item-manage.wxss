@@ -33,7 +33,7 @@
     -webkit-box-pack: center;
 }
 
-.newOrders{
+.items{
   padding-top: 120rpx;
 }
 

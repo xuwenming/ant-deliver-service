@@ -57,3 +57,7 @@
   background: #fff;
   padding-top: 20rpx;
 }
+
+.btn-vcode{
+  top: inherit;
+}

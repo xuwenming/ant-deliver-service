@@ -12,13 +12,21 @@
 	"projectname": "ant-deliver-service",
 	"condition": {
 		"weapp": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
 					"id": 0,
 					"name": "钱包管理测试",
-					"pathName": "page/component/balance-roll/balance-roll",
-					"query": "type=in"
+					"pathName": "page/component/balance-log-list/balance-log-list",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "商品管理测试",
+					"pathName": "page/component/item-manage/item-manage",
+					"query": "",
+					"scene": "1011"
 				}
 			]
 		},

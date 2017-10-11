@@ -15,7 +15,7 @@
     </view>
   </view>
 
-  <view class="newOrders">
+  <view class="items">
     <view wx:for="{{items}}" wx:key="id" wx:for-item="item">
       <view>
         <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
@@ -33,23 +33,23 @@
 
       <view>
         
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}" bindtap='orderDeliver'>上架</button> 
+          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}" bindtap='orderDeliver' wx:if="{{currentTab == 0 || currentTab == 2}}">上架</button> 
         
         
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete'>下架</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete' wx:if="{{currentTab == 0 || currentTab == 1}}">下架</button>
        
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete'>库存</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete' wx:if="{{currentTab == 1}}">库存</button>
 
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete'>删除</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete' wx:if="{{currentTab == 2}}">删除</button>
       </view>
     </view>
   </view>
 
   <view class="batch-btn">
-          <button size='mini' type="primary" data-item-id="{{item.id}}" data-index="{{index}}" bindtap='orderDeliver'>批量上架</button> 
+          <button size='mini' type="primary" data-item-id="{{item.id}}" data-index="{{index}}" bindtap='batchUp'>批量上架</button> 
         
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete'>批量下架</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-index="{{index}}"bindtap='batchDown'>批量下架</button>
        
-          <button size='default' type="primary"data-item-id="{{item.id}}" data-index="{{index}}"bindtap='orderComplete'>批量删除</button>
+          <button size='default' type="primary"data-item-id="{{item.id}}" data-index="{{index}}"bindtap='batchDel'>批量删除</button>
       </view>
 </view>

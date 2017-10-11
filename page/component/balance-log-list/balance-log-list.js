@@ -59,12 +59,13 @@ Page({
     if (e.detail.value == Util.format(new Date(), 'yyyy-MM')) {
       showDate = '本月'
     } else {
-      showDate = Util.format(new Date(e.detail.value.replace(/-/g, "/")), 'yyyy年M月')
+      showDate = Util.format(new Date(e.detail.value), 'yyyy年M月')
     }
      
     this.setData({
       'cond.showDate': showDate,
-      'cond.date': e.detail.value
+      'cond.date': e.detail.value,
+      balanceLogs: []
     });
 
     this.getBalanceLogs(true);

@@ -1,0 +1,27 @@
+<!--page/component/item-batch/item-batch.wxml-->
+<view class='container'>
+  <view class="items">
+    <checkbox-group bindchange="checkboxChange">
+      <label wx:for="{{items}}" wx:key="id" wx:for-item="item">
+        <checkbox value="{{item.id}}"/>
+        <view>
+          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
+          {{item.name}}
+        </view>
+        <view>
+          {{item.quantityUnitName}}
+        </view>
+        <view>
+          库存：<text>{{item.quantity}}</text>  
+        </view>
+        <view>
+          已送：<text>10</text>  
+        </view>
+      </label>
+    </checkbox-group>
+  </view> 
+
+  <button type="default" plain='true' wx:if="{{optType == 'up'}}">上架</button>  
+  <button type="default" plain='true' wx:if="{{optType == 'down'}}">下架</button>  
+  <button type="default" plain='true' wx:if="{{optType == 'del'}}">删除</button>  
+</view>

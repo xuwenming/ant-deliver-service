@@ -46,6 +46,9 @@ var config = {
 
     // 账户明细列表
     getBalanceLogsUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDataGrid`,
+
+    // 账户明细详情
+    getBalanceLogDetailUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDetial`,
 };
 
 module.exports = config

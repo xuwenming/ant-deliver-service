@@ -9,12 +9,14 @@
 
   <view class="balanceLogs">
     <view wx:for="{{balanceLogs}}" wx:key="id" wx:for-item="balanceLog">
-      <view>
-        <text>{{balanceLog.refTypeName}}</text>
-        订单号：{{balanceLog.id}}
-      </view>
-      <view>{{balanceLog.addtime}}</view>
-      <view>{{balanceLog.amount}}</view>
+      <navigator url="/page/component/balance-log-detail/balance-log-detail?refId={{balanceLog.refId}}" hover-class="navigator-hover">
+        <view>
+          <text>{{balanceLog.refTypeName}}</text>
+          订单号：{{balanceLog.id}}
+        </view>
+        <view>{{balanceLog.addtime}}</view>
+        <view>{{balanceLog.amount}}</view>
+      </navigator>
     </view>
   </view>
 </view>

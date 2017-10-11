@@ -7,14 +7,24 @@ Page({
   data: {
     currentTab: 'in',
     animationData: "",
-    showModalStatus: false
+    showModalStatus: false,
+    vcodeBtn: {
+      msg: '获取验证码',
+      disabled: false
+    },
+    regBtn: {
+      disabled: false,
+      loading: false
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    this.setData({
+      currentTab: options.type
+    })
   },
 
   switchTab: function (e) {
@@ -32,6 +42,7 @@ Page({
   showModal: function () {
     // 显示遮罩层
     var animation = wx.createAnimation({
+      transformOrigin: "50% 50%",
       duration: 200,
       timingFunction: "linear",
       delay: 0

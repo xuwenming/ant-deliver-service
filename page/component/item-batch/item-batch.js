@@ -1,4 +1,4 @@
-// page/component/item-manage/item-manage.js
+// page/component/item-batch/item-batch.js
 var config = require('../../../config');
 var request = require('../../common/request');
 
@@ -8,28 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab:0,
-    items:[]
+    optType:'',
+    items:[],
+    itemIds:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      optType: options.type
+    });
+    wx.setNavigationBarTitle({
+      title: options.type == 'up' ? '批量上架' : (options.type == 'down' ? '批量下架' : '批量删除')
+    });
+
     this.getItems(true);
-  },
-
-  switchTab: function (e) {
-    var self = this;
-
-    if (self.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      self.setData({
-        currentTab: e.target.dataset.current
-      })
-      self.getItems(true);
-    }
   },
 
   /**
@@ -52,34 +47,59 @@ Page({
       }
     })
   },
+
+  checkboxChange: function (e) {
+    this.setData({
+      itemIds: e.detail.value.join(',')
+    });
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
   
-  batchUp:function(){
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=up',
-    })
   },
-  batchDown: function () {
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=down',
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
   },
-  batchDel: function () {
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=del',
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
   
   }
 })
