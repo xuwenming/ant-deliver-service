@@ -2,9 +2,9 @@
  * 小程序配置文件
  */
 
-var server_host = "http://127.0.0.1:8082";
+// var server_host = "http://127.0.0.1:8082";
 // var server_host = "http://10.42.0.99:8082";
-// var server_host = "https://www.qrun360.com";
+var server_host = "https://www.qrun360.com";
 
 var config = {
 
