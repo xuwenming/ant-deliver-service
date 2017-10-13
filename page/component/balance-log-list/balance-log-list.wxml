@@ -3,13 +3,13 @@
   <view>
     <text>{{cond.showDate}}</text>
     <picker mode="date" value="{{cond.date}}" fields="month" start="{{cond.start}}" end="{{cond.end}}" bindchange="bindDateChange">
-      日期图标
+      <image style="width: 55rpx; height: 55rpx;" src="/image/picker_icon.png" />
     </picker>
   </view>
 
   <view class="balanceLogs">
     <view wx:for="{{balanceLogs}}" wx:key="id" wx:for-item="balanceLog">
-      <navigator url="/page/component/balance-log-detail/balance-log-detail?refId={{balanceLog.refId}}" hover-class="navigator-hover">
+      <navigator url="/page/component/balance-log-detail/balance-log-detail?id={{balanceLog.id}}&refId={{balanceLog.refId}}&refType={{balanceLog.refType}}&amount={{balanceLog.amount}}&addtime={{balanceLog.addtime}}" hover-class="navigator-hover">
         <view>
           <text>{{balanceLog.refTypeName}}</text>
           订单号：{{balanceLog.id}}

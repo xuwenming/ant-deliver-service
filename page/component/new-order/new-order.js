@@ -35,6 +35,10 @@ Page({
    */
   getNewOrders: function (isRefresh){
     var self = this;
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
     request.httpGet({
       url: config.getOrdersUrl,
       data: { status: 'DOS10', page: currPage, rows: rows},
@@ -124,16 +128,13 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.hasMore) {
-      wx.showLoading({
-        title: '努力加载中...'
-      })
       this.getNewOrders();
     } else {
-      wx.showToast({
-        title: '无更多商品~',
-        icon: 'loading',
-        duration: 500
-      })
+      // wx.showToast({
+      //   title: '无更多商品~',
+      //   icon: 'loading',
+      //   duration: 500
+      // })
     }
   }
 })

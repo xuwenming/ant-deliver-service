@@ -179,7 +179,38 @@ Page({
   },
 
   transform : function(){
+    var self = this;
+    self.setData({
+      'confirmBtn.loading': true
+    });
 
+    request.httpPost({
+      url: self.data.currentTab == 'in' ? config.balanceToDeliverUrl : config.deliverToBalanceUrl,
+      data: { vcode: self.data.vcode, amount: self.data.amount * 1000 / 10},
+      showLoading: true,
+      success: function (data) {
+        if (data.success) {
+          wx.showToast({
+            title: self.data.currentTab == 'in' ? '转入成功' : '转出成功',
+            icon: 'success',
+            mask: true,
+            complete: function () {
+              self.hideModal();
+              setTimeout(function () {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }, 1000);
+            }
+          })
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+        }
+      }
+    })
   },
 
   showModal: function () {

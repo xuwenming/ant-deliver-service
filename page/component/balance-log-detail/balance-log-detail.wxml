@@ -1,22 +1,22 @@
 <view class="container">
-  <view class="orders">
-    <view wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
-      <view>订单号:{{order.id}}</view>
-      <view>下单时间:{{order.addtime}}</view>
+  <block wx:if="{{refType == 'BT060'}}">
+    <view class="order">
+      <view>订单号:{{balanceDetail.id}}</view>
+      <view>下单时间:{{balanceDetail.addtime}}</view>
       <view>
         <view>
-          <text>{{order.contactPeople}}</text> 
-          <text>{{order.contactPhone}}</text>  
-          <text>{{order.distance}}</text> 
+          <text> {{balanceDetail.contactPeople}}</text> 
+          <text> {{balanceDetail.contactPhone}}</text>  
+          <text> {{balanceDetail.distance}}km</text> 
         </view>
         <view>
-          <text>{{order.deliveryAddress}}</text> 
+          <text>{{balanceDetail.deliveryAddress}}</text> 
         </view>
       </view>
 
-      <view wx:for="{{order.items}}" wx:key="item.id" wx:for-item="item">
+      <view wx:for="{{balanceDetail.deliverOrderItemList}}" wx:key="item.id" wx:for-item="item">
         <view>
-          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
+          <image style="width: 80rpx; height: 80rpx;" src="{{item.pictureUrl}}" />
           {{item.name}}
         </view>
         <view>
@@ -25,19 +25,21 @@
         <view>
           数量x<text>{{item.quantity}}</text>  
         </view>
-        <view>
-          配送费<text>{{order.freight}}</text>  
-        </view>
       </view>
-    </view> 
-  </view>
+      <view>
+        订单金额<text>{{balanceDetail.amount}}元</text>  
+      </view>
+    </view>
+  </block>
 
-  <view>
-    <view><text>账单信息</text></view>
-    <view>流水号：1000001</view>
-    <view>类型：派单钱包转出到采购钱包</view>
-    <view>金额：15</view>
-    <view>时间：09-08 15：30</view>
-  </view>
+  <block wx:else>
+    <view>
+      <view><text>账单信息</text></view>
+      <view>流水号：{{balanceDetail.id}}</view>
+      <view>类型：{{balanceDetail.refTypeName}}</view>
+      <view>金额：{{balanceDetail.amount}}</view>
+      <view>时间：{{balanceDetail.addtime}}</view>
+    </view>
+  </block>
 </view>
 

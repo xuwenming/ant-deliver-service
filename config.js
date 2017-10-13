@@ -2,7 +2,7 @@
  * 小程序配置文件
  */
 
-//var server_host = "http://127.0.0.1:8082";
+// var server_host = "http://127.0.0.1:8082";
 // var server_host = "http://10.42.0.99:8082";
 var server_host = "https://www.qrun360.com";
 
@@ -61,6 +61,27 @@ var config = {
     // 商品管理列表-下架
     getOfflineItemsUrl: `${server_host}/api/deliver/item/getShopItemOffline`,
 
+    // 商品上架
+    updateItemOnlineUrl: `${server_host}/api/deliver/item/updateItemOnline`,
+
+    // 商品批量上架
+    updateBatchItemOnlineUrl: `${server_host}/api/deliver/item/updateBatchItemOnline`,
+
+    // 商品下架
+    updateItemOfflineUrl: `${server_host}/api/deliver/item/updateItemOffline`,
+
+    // 商品批量下架
+    updateBatchItemOfflineUrl: `${server_host}/api/deliver/item/updateBatchShopItemOffline`,
+
+    // 商品删除
+    deleteItemUrl: `${server_host}/api/deliver/item/deleteShopItem`,
+
+    // 商品批量删除
+    deleteBatchItemUrl: `${server_host}/api/deliver/item/deleteBatchShopItem`,
+
+    // 修改商品库存
+    updateItemQuantityUrl: `${server_host}/api/deliver/item/updateShopItemQuantity`,
+
     // 获取钱包余额
     getBalanceUrl: `${server_host}/api/deliver/deliverBalance/viewBalance`,
 
@@ -72,6 +93,12 @@ var config = {
 
     // 账户明细详情
     getBalanceLogDetailUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDetial`,
+
+    // 转出到采购钱包
+    deliverToBalanceUrl: `${server_host}/api/deliver/deliverBalance/transformAmountDeliverToBalance`,
+
+    // 转入到派单钱包
+    balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/transformAmountBalanceToDeliver`
 };
 
 module.exports = config

@@ -16,14 +16,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getBalance();
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getBalance();
   },
 
   // 获取钱包余额

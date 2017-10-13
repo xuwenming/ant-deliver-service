@@ -95,7 +95,7 @@ function http(options) {
       if (options.complete)
         options.complete();
 
-      wx.hideLoading();
+      if (!options.showLoading) wx.hideLoading();
     }
   })
 }

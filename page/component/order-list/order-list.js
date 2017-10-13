@@ -38,7 +38,7 @@ Page({
     } else {
       self.setData({
         currentTab: e.target.dataset.current,
-        items: []
+        orders: []
       })
       currPage = 1;
       self.getOrders(true);
@@ -114,6 +114,11 @@ Page({
     else if (currentTab == 2) status = 'DOS30,DOS40';
     else status = 'DOS15';
 
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
+
     request.httpGet({
       url: config.getOrdersUrl,
       data: { status: status, page: currPage, rows: rows },
@@ -160,16 +165,13 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.hasMore) {
-      wx.showLoading({
-        title: '努力加载中...'
-      })
       this.getOrders();
     } else {
-      wx.showToast({
-        title: '无更多商品~',
-        icon: 'loading',
-        duration: 500
-      })
+      // wx.showToast({
+      //   title: '无更多商品~',
+      //   icon: 'loading',
+      //   duration: 500
+      // })
     }
   }
 })

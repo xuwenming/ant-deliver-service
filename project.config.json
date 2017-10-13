@@ -17,7 +17,7 @@
 				{
 					"id": 0,
 					"name": "钱包管理测试",
-					"pathName": "page/component/balance-roll/balance-roll",
+					"pathName": "page/component/balance/balance",
 					"query": "",
 					"scene": "1011"
 				},

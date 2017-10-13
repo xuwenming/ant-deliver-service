@@ -3,6 +3,8 @@ var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
 
+var currPage = 1, rows = 10;
+
 Page({
 
   /**
@@ -15,7 +17,8 @@ Page({
       date: Util.format(new Date(), 'yyyy-MM'),
       start : '2017-01',
       end : Util.format(new Date(), 'yyyy-MM')
-    }
+    },
+    hasMore: false
   },
 
   /**
@@ -27,11 +30,27 @@ Page({
 
   getBalanceLogs: function (isRefresh) {
     var self = this;
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
+
     request.httpGet({
       url: config.getBalanceLogsUrl,
-      data: { date: self.data.cond.date},
+      data: { date: self.data.cond.date, page: currPage, rows: rows},
       success: function (data) {
         if (data.success) {
+          if (data.obj.rows.length >= 10) {
+            currPage++;
+            self.setData({
+              hasMore: true
+            });
+          } else {
+            self.setData({
+              hasMore: false
+            });
+          }
+
           for (var i in data.obj.rows) {
             var pre, balanceLog = data.obj.rows[i];
             var amount = balanceLog.amount;
@@ -68,55 +87,34 @@ Page({
       balanceLogs: []
     });
 
+    currPage = 1;
     this.getBalanceLogs(true);
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    currPage = 1;
+    this.getBalanceLogs(true);
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 200);
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    if (this.data.hasMore) {
+      this.getBalanceLogs();
+    } else {
+      // wx.showToast({
+      //   title: '无更多商品~',
+      //   icon: 'loading',
+      //   duration: 500
+      // })
+    }
   }
+
 })
