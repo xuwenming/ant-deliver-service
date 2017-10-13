@@ -1,4 +1,9 @@
 // page/component/balance-roll/balance-roll.js
+var config = require('../../../config');
+var request = require('../../common/request');
+var Util = require('../../../util/util').Util;
+var time = 59;
+
 Page({
 
   /**
@@ -6,16 +11,29 @@ Page({
    */
   data: {
     currentTab: 'in',
+    purchase:{
+      amountByY:0,
+      amountByF:0
+    },
+    deliver: {
+      amountByY: 0,
+      amountByF: 0
+    },
+    amount:null,
+    vcode: '',
     animationData: "",
     showModalStatus: false,
     vcodeBtn: {
       msg: '获取验证码',
       disabled: false
     },
-    regBtn: {
-      disabled: false,
+    rollBtn: {
+      disabled: true
+    },
+    confirmBtn: {
+      disabled: true,
       loading: false
-    }
+    },
   },
 
   /**
@@ -23,7 +41,126 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      currentTab: options.type
+      currentTab: options.type || 'in'
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getBalance();
+  },
+
+  setAmount:function(e) {
+    var amount = Util.clearNoNum(e.detail.value), amountByF = this.data.currentTab == 'in' ? this.data.purchase.amountByF : this.data.deliver.amountByF;
+    
+    if (!Util.isEmpty(amount) && amount * 1000 / 10 <= amountByF) {
+      this.setData({
+        'rollBtn.disabled': false,
+        amount: amount
+      });
+    } else {
+      this.setData({
+        'rollBtn.disabled': true
+      });
+    }
+  },
+
+  setVcode: function (e) {
+    var vcode = e.detail.value;
+    
+    if (!Util.isEmpty(vcode)) {
+      this.setData({
+        'confirmBtn.disabled': false,
+        vcode: vcode
+      });
+    } else {
+      this.setData({
+        'confirmBtn.disabled': true
+      });
+    }
+    
+  },
+
+  rollAll:function(){
+    var amountByY = this.data.currentTab == 'in' ? this.data.purchase.amountByY : this.data.deliver.amountByY;
+
+    this.setData({
+      'rollBtn.disabled': false,
+      amount: amountByY
+    });
+  },
+
+  getVCode: function (e) {
+    var self = this;
+    self.setData({
+      vcodeBtn: {
+        msg: '重发' + time,
+        disabled: true
+      }
+    });
+
+    time--;
+    var interval = setInterval(function () {
+      self.setData({
+        'vcodeBtn.msg': '重发' + time
+      });
+      if (time == 0) {
+        clearInterval(interval);
+        self.setData({
+          vcodeBtn: {
+            msg: '获取验证码',
+            disabled: false
+          }
+        });
+        time = 59;
+      } else {
+        time--;
+      }
+    }, 1000);
+
+    request.httpPost({
+      url: config.getBalanceRollVcodeUrl,
+      success: function (data) {
+        if (!data.success) {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+          clearInterval(interval);
+          self.setData({
+            vcodeBtn: {
+              msg: '获取验证码',
+              disabled: false
+            }
+          });
+          time = 59;
+        }
+      }
+    })
+  },
+
+  // 获取钱包余额
+  getBalance: function () {
+    var self = this;
+
+    request.httpGet({
+      url: config.getBalanceUrl,
+      success: function (data) {
+        if (data.success) {
+          self.setData({
+            purchase: {
+              amountByY: Util.fenToYuan(data.obj.balance.amount),
+              amountByF: data.obj.balance.amount
+            },
+            deliver: {
+              amountByY: Util.fenToYuan(data.obj.deliverBalance.amount),
+              amountByF: data.obj.deliverBalance.amount
+            }
+          });
+        }
+      }
     })
   },
 
@@ -34,9 +171,15 @@ Page({
       return false;
     } else {
       self.setData({
-        currentTab: e.target.dataset.current
+        currentTab: e.target.dataset.current,
+        amount:null,
+        'rollBtn.disabled': true
       })
     }
+  },
+
+  transform : function(){
+
   },
 
   showModal: function () {
@@ -82,51 +225,13 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    this.getBalance();
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 200);
   }
+
 })

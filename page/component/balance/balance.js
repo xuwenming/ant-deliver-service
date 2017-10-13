@@ -26,11 +26,20 @@ Page({
   
   },
 
+  // 获取钱包余额
   getBalance :function() {
-    // TODO 获取钱包余额
-    this.setData({
-      balanceAmount: Util.fenToYuan(1600)
-    });
+    var self = this;
+
+    request.httpGet({
+      url: config.getBalanceUrl,
+      success: function (data) {
+        if (data.success) {
+          self.setData({
+            balanceAmount: Util.fenToYuan(data.obj.deliverBalance.amount)
+          });
+        }
+      }
+    })
   },
 
   /**

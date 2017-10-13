@@ -40,14 +40,15 @@ Page({
       url: config.getAccountInfoUrl,
       success: function (data) {
         if (data.success) {
+          console.log(data);
           self.setData({
             accountInfo: {
               userName: data.obj.account.userName,
               avatarUrl: data.obj.account.icon,
               shopName: data.obj.mbShop.name,
               shopStatus: data.obj.shopDeliverApply.status,
-              validOrders: 0,
-              turnover: 0
+              validOrders: data.obj.todayQuantity,
+              turnover: Util.fenToYuan(data.obj.todayAmount)
             }
           });
         }

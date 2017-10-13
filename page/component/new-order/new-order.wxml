@@ -6,19 +6,19 @@
       <view>下单时间:{{order.addtime}}</view>
       <view>
         <view>
-          <text>{{order.contactPeople}}</text> 
-          <text>{{order.contactPhone}}</text>  
-          <text>{{order.distance}}</text> 
+          <text> {{order.contactPeople}}</text> 
+          <text> {{order.contactPhone}}</text>  
+          <text> {{order.distance}}km</text> 
         </view>
         <view>
           <text>{{order.deliveryAddress}}</text> 
         </view>
       </view>
 
-      <view wx:for="{{order.items}}" wx:key="item.id" wx:for-item="item">
+      <view wx:for="{{order.deliverOrderShopItemList}}" wx:key="item.id" wx:for-item="item">
         <view>
-          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
-          {{item.name}}
+          <image style="width: 80rpx; height: 80rpx;" src="{{item.pictureUrl}}" />
+          {{item.itemName}}
         </view>
         <view>
           {{item.quantityUnitName}}
@@ -26,9 +26,9 @@
         <view>
           数量x<text>{{item.quantity}}</text>  
         </view>
-        <view>
-          配送费<text>{{order.freight}}</text>  
-        </view>
+      </view>
+      <view>
+        订单金额<text>{{order.amount}}元</text>  
       </view>
       <view>
         <button size='mini' type="default" plain="true" data-order-id="{{order.id}}" bindtap='refuseOrder'>拒绝</button> 

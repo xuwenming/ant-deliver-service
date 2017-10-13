@@ -78,14 +78,24 @@ function http(options) {
     },
     fail: function (res) {
       console.log(options.url + '接口调用失败', res);
-      if (options.fail)
-        options.fail();
+      wx.showModal({
+        content: '服务器异常，请稍后再试！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            if (options.fail)
+              options.fail();
+          }
+        }
+      });
     },
     complete: function (res) {
       // 请求完成，释放记录的key，可以发起下次请求了
       removeRequestKey(ajaxKey);
       if (options.complete)
         options.complete();
+
+      wx.hideLoading();
     }
   })
 }

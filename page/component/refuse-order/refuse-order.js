@@ -30,14 +30,22 @@ Page({
 
   refuseOrder: function(e){
     var self = this, params = e.detail.value;
-    params.orderId = orderId;
+    params.id = orderId;
 
-    request.httpGet({
+    request.httpPost({
       url: config.refuseOrderUrl,
       data: params,
       success: function (data) {
         if (data.success) {
-          self.cancel();
+          wx.showModal({
+            content: '拒绝成功，可前往已处理订单查看！',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                self.cancel();
+              } 
+            }
+          })
         }
       },
       error:function(){

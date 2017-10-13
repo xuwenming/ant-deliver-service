@@ -10,19 +10,19 @@
   </view>
   
   <view style='padding-top: 50px;'>
-    金额￥<input name="userName" type="digit" placeholder='这里是个输入框' bindinput="setUserName"></input>
+    金额￥<input value="{{amount}}" type="digit" placeholder='这里是个输入框' bindinput="setAmount"></input>
   </view>
 
   <view>
     <block wx:if="{{currentTab=='in'}}">
-        采购金额￥300   全部转入
+        采购金额￥{{purchase.amountByY}}   <text bindtap='rollAll'>全部转入</text>
     </block>
     <block wx:else>
-        派单金额￥500   全部转出
+        派单金额￥{{deliver.amountByY}}   <text bindtap='rollAll'>全部转出</text>
     </block>
   </view>
 
-  <button type="primary" bindtap="showModal" disabled="{{regBtn.disabled}}" loading="{{regBtn.loading}}">
+  <button type="primary" bindtap="showModal" disabled="{{rollBtn.disabled}}">
     <block wx:if="{{currentTab=='in'}}">
         转入
     </block>
@@ -36,13 +36,13 @@
     <form bindsubmit="register">
       <view class="form">
         <view class="form-group list-line">
-          <input name="vcode" type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
+          <input type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
         </view>
         <button size='mini' type="default" plain="true" class="btn-vcode" catchtap="getVCode" disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
         
       </view>
       <view class="btn-reg">
-        <button formType="submit" type="default" plain="true" disabled="{{regBtn.disabled}}" loading="{{regBtn.loading}}">确认</button>
+        <button type="default" plain="true" disabled="{{confirmBtn.disabled}}" loading="{{confirmBtn.loading}}" bindtap='transform'>确认</button>
       </view>
     </form>
   </view>

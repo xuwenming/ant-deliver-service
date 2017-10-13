@@ -34,12 +34,13 @@ Page({
   getItems: function (isRefresh) {
     var self = this;
     request.httpGet({
-      url: config.getItemsUrl,
+      url: config.getAllItemsUrl,
+      data: { page: 1, rows: 10 },
       success: function (data) {
         if (data.success) {
           var items = self.data.items;
-          if (isRefresh) items = data.obj;
-          else items = items.concat(data.obj);
+          if (isRefresh) items = data.obj.rows;
+          else items = items.concat(data.obj.rows);
           self.setData({
             items: items
           });

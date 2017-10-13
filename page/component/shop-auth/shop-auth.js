@@ -27,34 +27,45 @@ Page({
         success: function (data) {
           if (data.success) {
             self.setData({
-              shops: data.obj
+              shops: data.obj.rows
             });
           }
         }
       })
     } else {
-      request.httpPost({
-        url: config.getShopApplyUrl,
-        success: function (data) {
-          if (data.success && data.obj) {
-            self.setData({
-              status: status,
-              mbShop: {
-                name: data.obj.mbShop.name,
-                address: data.obj.mbShop.address,
-                contactPeople: data.obj.mbShop.contactPeople + '（缺少认证中图标）',
-                statusIcon: status == 'DAS01' ? '/image/auth_failed.png' : (status == 'DAS01' ? '/image/auth_success.png' : '/image/auth_failed.png')
-              }
-            });
-          }
-        }
-      })
+      self.getShopApply();
     } 
 
   },
 
+  getShopApply: function (){
+    var self = this, status = this.data.status;
+    console.log();
+    request.httpPost({
+      url: config.getShopApplyUrl,
+      success: function (data) {
+        if (data.success && data.obj) {
+          self.setData({
+            status: status,
+            mbShop: {
+              name: data.obj.mbShop.name,
+              address: data.obj.mbShop.address,
+              contactPeople: data.obj.mbShop.contactPeople,
+              statusIcon: status == 'DAS01' ? '/image/auth_ing.png' : (status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
+            }
+          });
+        }
+      }
+    })
+  },
+
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
+    if(this.data.status) {
+      this.getShopApply();
+    }
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 500);
   },
 
   chooseShop : function(e){
@@ -80,8 +91,8 @@ Page({
                         mbShop:{
                           name: e.target.dataset.shopName,
                           address: e.target.dataset.address,
-                          contactPeople: e.target.dataset.contactPeople + '（缺少认证中图标）',
-                          statusIcon: '/image/auth_failed.png'
+                          contactPeople: e.target.dataset.contactPeople,
+                          statusIcon: '/image/auth_ing.png'
                         }
                       });
                     }

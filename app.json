@@ -37,14 +37,14 @@
       },
       {
         "pagePath": "page/component/order-list/order-list",
-        "iconPath": "image/32.png",
-        "selectedIconPath": "image/31.png",
+        "iconPath": "image/22.png",
+        "selectedIconPath": "image/21.png",
         "text": "已处理订单"
       },
       {
         "pagePath": "page/component/shop-manage/shop-manage",
-        "iconPath": "image/42.png",
-        "selectedIconPath": "image/41.png",
+        "iconPath": "image/32.png",
+        "selectedIconPath": "image/31.png",
         "text": "门店管理"
       }
     ]
