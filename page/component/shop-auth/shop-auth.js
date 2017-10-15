@@ -69,6 +69,7 @@ Page({
   },
 
   chooseShop : function(e){
+    console.log(e)
     var self = this;
     wx.showModal({
       title:'提示',

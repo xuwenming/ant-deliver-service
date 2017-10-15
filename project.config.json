@@ -10,6 +10,7 @@
 	"libVersion": "1.5.4",
 	"appid": "wx0b54b1b16b700f4b",
 	"projectname": "ant-deliver-service",
+	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {
 			"current": -1,

@@ -1,4 +1,9 @@
 @import '../common/common.wxss';
+
+button[plain]::after {
+  border-width:1px;
+}
+
 .form {
     position: relative;
     background-color: #fff;
@@ -26,7 +31,6 @@
     top: 50%;
     right: 28rpx;
     margin-top: -88rpx;
-    border: 1px solid #05C0AB;
     color: #05C0AB;
     border-radius: 3rpx;
     z-index: 99;
