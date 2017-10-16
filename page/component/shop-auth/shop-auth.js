@@ -40,18 +40,17 @@ Page({
 
   getShopApply: function (){
     var self = this, status = this.data.status;
-    console.log();
     request.httpPost({
       url: config.getShopApplyUrl,
       success: function (data) {
         if (data.success && data.obj) {
           self.setData({
-            status: status,
+            status: data.obj.status,
             mbShop: {
               name: data.obj.mbShop.name,
               address: data.obj.mbShop.address,
               contactPeople: data.obj.mbShop.contactPeople,
-              statusIcon: status == 'DAS01' ? '/image/auth_ing.png' : (status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
+              statusIcon: data.obj.status == 'DAS01' ? '/image/auth_ing.png' : (data.obj.status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
             }
           });
         }
@@ -60,6 +59,7 @@ Page({
   },
 
   onPullDownRefresh: function () {
+    console.log(this.data.status);
     if(this.data.status) {
       this.getShopApply();
     }

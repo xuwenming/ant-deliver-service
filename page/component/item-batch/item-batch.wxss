@@ -1,2 +1,8 @@
 /* page/component/item-batch/item-batch.wxss */
 @import '../../common/common.wxss';
+
+.batch-btn {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+}

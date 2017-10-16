@@ -1,7 +1,7 @@
 <!--page/component/shop-auth/shop-auth.wxml-->
 <view class="container">
   <!-- un -->
-  <view wx:if="{{!status}}">
+  <view wx:if="{{!status}}" class="content">
 
     <!--有列表  -->
     <view class='shop-list' wx:if="{{shops.length > 0}}">
@@ -14,7 +14,7 @@
   </view>
 
   <!-- has -->
-  <view wx:else>
+  <view wx:else class="content">
     <view class="list line-after line-before">	
       <view class="list-item line">
         <text>{{mbShop.name}}</text>

@@ -30,14 +30,14 @@
 
       <view>
         
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{currentTab == 0 || currentTab == 2}}">上架</button> 
+          <button size='mini' type="default" plain="true" data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{currentTab == 0 || currentTab == 2}}">上架</button> 
         
         
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='offline' wx:if="{{currentTab == 0 || currentTab == 1}}">下架</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='offline' wx:if="{{currentTab == 0 || currentTab == 1}}">下架</button>
        
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-item-name="{{item.name}}" data-index="{{index}}" data-quantity="{{item.quantity}}" bindtap='showModal' wx:if="{{currentTab == 1}}">库存</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}" data-index="{{index}}" data-quantity="{{item.quantity}}" bindtap='showModal' wx:if="{{currentTab == 1}}">库存</button>
 
-          <button size='mini' type="default" plain="true" data-item-id="{{item.id}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{currentTab == 2}}">删除</button>
+          <button size='mini' type="default" plain="true" data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{currentTab == 2}}">删除</button>
       </view>
     </view>
   </view>

@@ -1,9 +1,13 @@
 /* page/component/shop-auth/shop-auth.wxss */
 @import '../../common/common.wxss';
 
+.content{
+  padding-top: 20rpx;
+}
+
 .shop-list{
   background: #fff;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
 }
 
 .shop-item {
@@ -18,7 +22,7 @@
 
 .list{
   position: relative;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
   background-color: #fff;
 }
 
