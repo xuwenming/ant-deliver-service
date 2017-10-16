@@ -41,7 +41,7 @@ Page({
           id: options.id,
           refTypeName: options.refType == 'BT051' ? '采购钱包转入到派单钱包' : '派单钱包转出到采购钱包',
           amount: options.amount,
-          addtime: Util.format(new Date(options.addtime), 'yyyy-MM HH:mm')
+          addtime: Util.format(new Date(options.addtime.replace(/-/g, "/")), 'MM-dd HH:mm')
         }
       });
     }
