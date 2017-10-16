@@ -22,7 +22,7 @@
       </view>
     </navigator>
 
-    <navigator url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}" hover-class="navigator-hover">
+    <navigator url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}&from=1" hover-class="navigator-hover">
       <view style='border-top:2px solid #efefef;'>
         <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />门店管理
       </view>

@@ -10,6 +10,7 @@ Page({
   data: {
     shops : [],
     status : null,
+    isFromAuthManage:false,
     mbShop:{}
   },
 
@@ -19,7 +20,10 @@ Page({
   onLoad: function (options) {
     var self = this;
     var status = options.status;
-    self.setData({status:status});
+    self.setData({
+      status:status,
+      isFromAuthManage: options.from || false
+    });
 
     if (!status) {
       request.httpGet({
@@ -44,15 +48,21 @@ Page({
       url: config.getShopApplyUrl,
       success: function (data) {
         if (data.success && data.obj) {
-          self.setData({
-            status: data.obj.status,
-            mbShop: {
-              name: data.obj.mbShop.name,
-              address: data.obj.mbShop.address,
-              contactPeople: data.obj.mbShop.contactPeople,
-              statusIcon: data.obj.status == 'DAS01' ? '/image/auth_ing.png' : (data.obj.status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
-            }
-          });
+          if (!self.data.isFromAuthManage && data.obj.status == 'DAS02') {
+            wx.switchTab({
+              url: '/page/component/new-order/new-order'
+            });
+          } else {
+            self.setData({
+              status: data.obj.status,
+              mbShop: {
+                name: data.obj.mbShop.name,
+                address: data.obj.mbShop.address,
+                contactPeople: data.obj.mbShop.contactPeople,
+                statusIcon: data.obj.status == 'DAS01' ? '/image/auth_ing.png' : (data.obj.status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
+              }
+            });
+          }
         }
       }
     })
