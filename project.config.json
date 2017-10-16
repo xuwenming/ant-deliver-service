@@ -13,7 +13,7 @@
 	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -28,6 +28,11 @@
 					"pathName": "page/component/item-manage/item-manage",
 					"query": "",
 					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "aa",
+					"pathName": "page/component/order-list/order-list"
 				}
 			]
 		},
