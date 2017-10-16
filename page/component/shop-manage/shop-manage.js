@@ -11,11 +11,11 @@ Page({
   data: {
     accountInfo : {
       userName:'',
-      avatarUrl: '/image/default_icon.png',
-      shopName:'',
+      avatarUrl: '/image/test/avatr.jpg',
+      shopName:'Ryan的门店',
       shopStatus:'',
-      validOrders:0,
-      turnover:0
+      validOrders:6,
+      turnover:20
     }
   },
 

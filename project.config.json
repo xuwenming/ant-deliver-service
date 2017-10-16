@@ -13,7 +13,7 @@
 	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -32,7 +32,14 @@
 				{
 					"id": -1,
 					"name": "aa",
-					"pathName": "page/component/order-list/order-list"
+					"pathName": "page/component/order-list/order-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bb",
+					"pathName": "page/component/shop-manage/shop-manage",
+					"query": ""
 				}
 			]
 		},

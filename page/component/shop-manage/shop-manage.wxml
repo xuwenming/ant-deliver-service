@@ -1,36 +1,47 @@
 <!--page/component/shop-manage/shop-manage.wxml-->
 <view class="container">
-  <view class="ui-mine-header" bindtap='toUser'>
-    <view class="ui-mine-icon">
-      <image style="width: 140rpx; height: 140rpx;" mode="scaleToFill" src="{{accountInfo.avatarUrl}}"></image>
+  <!--头部  -->
+  <view class='header'>
+    <view class='header-bar'></view>
+    <view class='flex header-bottom'>
+        <view class='flex-row left'>
+          <view class='h3'>{{accountInfo.validOrders}}</view>
+          <view class='p'>今日有效订单</view>
+        </view> 
+        <view class='flex-row center'>
+          <view class='top'>
+            <image mode="scaleToFill center" src="{{accountInfo.avatarUrl}}"></image>
+          </view>
+          <view class='name'>{{accountInfo.shopName}}</view>
+        </view>
+        <view class='flex-row left'>
+          <view class='h3'>￥{{accountInfo.turnover}}</view>
+          <view class='p'>今日营业额</view>
+        </view>
     </view>
-    <view class="shopName">{{accountInfo.shopName}}</view>
-    <view class="shopName">今日有效订单:{{accountInfo.validOrders}}</view>
-    <view class="shopName">今日营业额：￥{{accountInfo.turnover}}</view>
   </view>
 
-  <view class="ui-mine-list">
-    <navigator url="/page/component/item-manage/item-manage" hover-class="navigator-hover">
-      <view style='border-top:2px solid #efefef;'>
-        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />商品管理  
-      </view>
+  <!--6宫格  -->
+  <view class='box flex'>
+    <navigator class='flex-row' url="/page/component/item-manage/item-manage">
+      <view class='icon'><image src='../../../image/box_1.png'></image></view>
+      <view class='label'>商品管理</view>
     </navigator>
-
-    <navigator url="/page/component/balance/balance" hover-class="navigator-hover">
-      <view style='border-top:2px solid #efefef;'>
-        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />财务信息 
-      </view>
+    <navigator class='flex-row' url="/page/component/balance/balance">
+      <view class='icon'><image src='../../../image/box_2.png'></image></view>
+      <view class='label'>财务信息</view>
     </navigator>
-
-    <navigator url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}&from=1" hover-class="navigator-hover">
-      <view style='border-top:2px solid #efefef;'>
-        <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />门店管理
-      </view>
+    <navigator class='flex-row' url="/page/component/shop-auth/shop-auth?status={{accountInfo.shopStatus}}&from=1">
+      <view class='icon'><image src='../../../image/box_3.png'></image></view>
+      <view class='label'>门店管理</view>
     </navigator>
-    
-    <view style='border-top:2px solid #efefef;'>
-      <image style="width: 55rpx; height: 55rpx;" src="/image/default_icon.png" />我要采购
-    </view>
-    
+  </view>
+  <view class='box flex'>
+    <navigator class='flex-row'>
+      <view class='icon'><image src='../../../image/box_4.png'></image></view>
+      <view class='label'>我要采购</view>
+    </navigator>
+    <navigator class='flex-row'></navigator>
+    <navigator class='flex-row'></navigator>
   </view>
 </view>
