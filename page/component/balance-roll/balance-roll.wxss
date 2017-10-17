@@ -2,36 +2,58 @@
 @import '../../common/common.wxss';
 @import '../index.wxss';
 
-.ui-tab {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    height: 42px;
-    background-color: #fff;
-    z-index: 99;
-    box-shadow: 0 0 10px #ccc;
-    display: -webkit-box !important;
+.tab{
+  height: 88rpx;
+  background-color: #fff;
 }
 
-.ui-col {
-    -webkit-box-flex: 1;
+.tab .flex-row{
+  line-height: 88rpx;
+  text-align: center;
 }
 
-.ui-tab .ui-col .active {
-    border-bottom: 2px solid #05C0AB;
-    color: #05C0AB;
+.tab .flex-row.active{
+  color: #05C0AB;
+  border-bottom: 2px solid #05C0AB;
 }
 
-.ui-tab .ui-col .ui-title {
-    display: block;
-    width: 100%;
-    height: 42px;
-    margin: auto;
-    font-size: 16px;
-    color: #333;
-    display: -webkit-box !important;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
+.money{
+  height: 100rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 0 24rpx;
+}
+
+.money .title{
+  max-width: 80rpx;
+  min-width: 80rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+}
+
+.money .input input{
+  height: 100rpx;
+  text-align: right;
+  width: 100%;
+  font-size: 28rpx;
+}
+
+.label{
+  padding:24rpx 24rpx 40rpx 24rpx; 
+  font-size: 28rpx;
+}
+
+.label .lf text{
+  color: #fe9900;
+}
+
+.label .rg{
+  color: #05C0AB;
+  text-align: right;
+}
+
+.btns{
+  padding: 0 24rpx;
 }
 
 .commodity_screen {
@@ -55,9 +77,26 @@
   left: 0;
   z-index: 2000;
   background: #fff;
-  padding-top: 20rpx;
+  padding: 20rpx;
 }
 
-.btn-vcode{
-  top: inherit;
+.form-group {
+    position: relative;
+    height: 100rpx;
+}
+
+.form-group input{
+  height: 100rpx;
+}
+
+.form-group .btns{
+  position: absolute;
+  right: 20rpx;
+  top:20rpx;
+  height: 60rpx;
+}
+
+.btn-reg {
+  margin: 60rpx 40rpx 0 40rpx;
+  border-radius: 4px;
 }

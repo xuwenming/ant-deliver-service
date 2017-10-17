@@ -13,7 +13,7 @@
 	"miniprogramRoot": "./",
 	"condition": {
 		"weapp": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": 0,
@@ -39,6 +39,48 @@
 					"id": -1,
 					"name": "bb",
 					"pathName": "page/component/shop-manage/shop-manage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "cc",
+					"pathName": "page/component/refuse-order/refuse-order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "dd",
+					"pathName": "page/component/user/user",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "ee",
+					"pathName": "page/component/shop-manage/shop-manage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "ff",
+					"pathName": "page/component/new-order/new-order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "gg",
+					"pathName": "page/component/balance/balance",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "hh",
+					"pathName": "page/component/balance-log-list/balance-log-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "qq",
+					"pathName": "page/component/balance-roll/balance-roll",
 					"query": ""
 				}
 			]

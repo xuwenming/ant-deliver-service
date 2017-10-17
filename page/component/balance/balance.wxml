@@ -1,17 +1,26 @@
 <!--page/component/balance/balance.wxml-->
 <view class='container'>
-  <view>￥{{balanceAmount}}</view>
-  <view>
-    <navigator url="/page/component/balance-log-list/balance-log-list" hover-class="navigator-hover">
-      查看明细
-    </navigator>
+  <view class='header'>
+    <view>
+      <image src='/image/money.png'></image>
+    </view>
+    <view class='moeny'>￥{{balanceAmount}}</view>
   </view>
-  <view>
-    <navigator url="/page/component/balance-roll/balance-roll?type=in" hover-class="navigator-hover">
-      <button size='mini' type="primary">转入</button> 
+
+  <navigator class='flex log' url="/page/component/balance-log-list/balance-log-list">
+    <navigator class='flex-row lf' url="/page/component/balance-log-list/balance-log-list">查看明细</navigator>
+    <view class='flex-row img rg'>
+      <image src='/image/right.png'></image>
+    </view>
+  </navigator>
+
+  <view class='btns flex'>
+    <navigator class='flex-row' url="/page/component/balance-roll/balance-roll?type=in">
+      转入
     </navigator>
-    <navigator url="/page/component/balance-roll/balance-roll?type=out" hover-class="navigator-hover">
-      <button size='mini' type="primary" plain="true">转出</button> 
-    </navigator>
+    <navigator class='flex-row' url="/page/component/balance-roll/balance-roll?type=out">
+      转出
+    </navigator>    
   </view>
+
 </view>

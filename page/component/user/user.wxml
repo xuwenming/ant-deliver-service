@@ -1,15 +1,19 @@
 <!--page/component/user/user.wxml-->
 <view class="container">
-  <view class="ui-mine-list">
-    <view style='border-top:2px solid #efefef;'>
-      头像  <image style="width: 55rpx; height: 55rpx;" src="{{avatarUrl}}" />
+  <view class='list line-after line-before'>
+    <view class='item flex line-bl'>
+      <view class='flex-row label'>头像</view>
+      <view class='flex-row icon'>
+        <image src="{{avatarUrl}}"></image>
+      </view>
     </view>
-    <view style='border-top:2px solid #efefef;'>
-      店铺 {{shopName}} 
+    <view class='item flex line-bl'>
+      <view class='flex-row label'>店铺</view>
+      <view class='flex-row value'>{{shopName}} </view>
     </view>
-    <view style='border-top:2px solid #efefef;'>
-      手机号 {{userName}} 
+    <view class='item flex line-bl'>
+      <view class='flex-row label'>手机号</view>
+      <view class='flex-row value'>{{userName}} </view>
     </view>
-    
   </view>
 </view>
