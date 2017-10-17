@@ -2,6 +2,8 @@
 var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
+var timer = require('../../../util/wxTimer');
+
 
 var currPage = 1, rows = 10;
 
@@ -12,7 +14,8 @@ Page({
    */
   data: {
     orders:[],
-    hasMore: false
+    hasMore: false,
+    wxTimerList: {}
   },
 
   /**
@@ -55,9 +58,40 @@ Page({
             });
           }
 
-          for (var i in data.obj.rows) {
+          for (var i=0; i<data.obj.rows.length; i++) {
             data.obj.rows[i].amount = Util.fenToYuan(data.obj.rows[i].amount);
-            data.obj.rows[i].addtime = Util.format(new Date(data.obj.rows[i].addtime.replace(/-/g, "/")), 'MM-dd HH:mm')
+            data.obj.rows[i].addtime = Util.format(new Date(data.obj.rows[i].addtime.replace(/-/g, "/")), 'MM-dd HH:mm');
+
+            if(!self.data.wxTimerList["wxTimer" + data.obj.rows[i].id]) {
+              var time = data.obj.rows[i].millisecond;
+              // if (time > 0) {
+              if (time) {
+                time = time/1000;
+                var m = Math.floor(((time % 86400) % 3600) / 60),
+                    s = Math.floor(((time % 86400) % 3600) % 60);
+                var wxTimer = new timer({
+                  //beginTime: "00:" + m + ":" + s,
+                  beginTime: "00:10:00",
+                  name: "wxTimer" + data.obj.rows[i].id,
+                  complete: function () {
+                    var orders = self.data.orders;
+                    for (var j in orders) {
+                      if (orders[j].id == this.name.substr(7)) {
+                        orders.splice(j, 1);
+                        break;
+                      }
+                    }
+
+                    self.setData({
+                      orders: orders
+                    });
+                  }
+                })
+                wxTimer.start(self);
+              } else {
+                data.obj.rows.splice(i--, 1);
+              }
+            }
           }
           var orders = self.data.orders;
           if (isRefresh) orders = data.obj.rows;

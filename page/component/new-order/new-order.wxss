@@ -175,11 +175,20 @@
 }
 
 .order-list .bottoms .carry{
-  padding: 20rpx 0rpx;
+  padding: 20rpx 0rpx 10rpx 0rpx;
   font-size: 28rpx;
 }
 
 .order-list .bottoms .carry text{
   color: #05C0AB;
   font-size: 36rpx;
+}
+
+.order-list .bottoms .order-down{
+  padding: 0rpx 0rpx 20rpx 0rpx;
+  font-size: 28rpx;
+}
+
+.order-list .bottoms .order-down text{
+  color: red;
 }

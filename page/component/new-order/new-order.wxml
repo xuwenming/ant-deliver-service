@@ -46,6 +46,7 @@
         </view> 
         <view class='bottoms'>
           <view class='carry'>订单金额 <text>{{order.amount}}元</text></view>
+          <view class='order-down'>接单截止 <text>{{wxTimerList['wxTimer' + order.id].wxTimer}}</text></view>
           <view>
             <button data-order-id="{{order.id}}" bindtap='refuseOrder'>拒绝</button> 
             <button data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='processOrder'>开始处理</button>
