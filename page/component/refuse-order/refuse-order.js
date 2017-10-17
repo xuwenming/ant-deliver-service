@@ -20,7 +20,7 @@ Page({
     orderId = options.orderId;
   },
 
-  setContent: function(e){
+  setRemark: function(e){
     if (Util.isEmpty(e.detail.value)) {
       this.setData({ submit_disabled:true});
     } else {

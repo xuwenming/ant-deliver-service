@@ -10,7 +10,7 @@
             <view class='flex-row flex flex-align-center'>              
               <view class='icon'>
                 <view>待处理</view>
-                <image src='../../../image/tips.png'></image>
+                <image src='/image/tips.png'></image>
               </view>
             </view>
             <view class='flex-row'>
@@ -20,13 +20,13 @@
         </view>
         <view class='flex info line-after-bl'>
           <view class='flex-row icon'>
-            <image src='../../../image/address.png'></image>
+            <image src='/image/address.png'></image>
           </view>
           <view class='flex-row rg'>
             <view class='flex header'>
-              <view class='flex-row'><text> {{order.contactPeople}}</text></view>
-              <view class='flex-row'><text> {{order.contactPhone}}</text></view>
-              <view class='flex-row'><text> {{order.distance}}km</text></view>
+              <view class='flex-row'><text>{{order.contactPeople}}</text></view>
+              <view class='flex-row'><text>{{order.contactPhone}}</text></view>
+              <view class='flex-row'><text wx:if="{{order.distance > 0}}">{{order.distance}}km</text></view>
             </view>
             <view class='address'><text>{{order.deliveryAddress}}</text></view>
           </view>
@@ -39,13 +39,13 @@
           <view class='flex-row right'>
             <view class='name'>{{item.itemName}}</view>
             <view class='bottom flex'>
-              <view class='flex-row'>数量x<text>{{item.quantity}}</text></view>
-              <view class='flex-row rg'>订单金额<text>{{order.amount}}元</text></view>
+              <view class='flex-row'><text>{{item.quantityUnitName}}</text></view>
+              <view class='flex-row rg'>数量x<text>{{item.quantity}}</text></view>
             </view>
           </view>
         </view> 
         <view class='bottoms'>
-          <view class='carry'>配送费：<text>10元</text></view>
+          <view class='carry'>订单金额 <text>{{order.amount}}元</text></view>
           <view>
             <button data-order-id="{{order.id}}" bindtap='refuseOrder'>拒绝</button> 
             <button data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='processOrder'>开始处理</button>

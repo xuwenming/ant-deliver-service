@@ -10,7 +10,7 @@
         </view> 
         <view class='flex-row center'>
           <view class='top'>
-            <image mode="scaleToFill center" src="{{accountInfo.avatarUrl}}"></image>
+            <image mode="scaleToFill center" src="{{accountInfo.avatarUrl}}" bindtap='toUser'></image>
           </view>
           <view class='name'>{{accountInfo.shopName}}</view>
         </view>
@@ -37,11 +37,11 @@
     </navigator>
   </view>
   <view class='box flex'>
-    <navigator class='flex-row'>
+    <view class='flex-row' bindtap='toPurchase'>
       <view class='icon'><image src='../../../image/box_4.png'></image></view>
       <view class='label'>我要采购</view>
-    </navigator>
-    <navigator class='flex-row'></navigator>
-    <navigator class='flex-row'></navigator>
+    </view>
+    <view class='flex-row'></view>
+    <view class='flex-row'></view>
   </view>
 </view>

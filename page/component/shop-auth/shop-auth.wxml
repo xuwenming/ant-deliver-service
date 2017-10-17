@@ -1,5 +1,5 @@
 <!--page/component/shop-auth/shop-auth.wxml-->
-<view class="container">
+<view class="container" wx:if="{{pageLoad}}">
   <!-- un -->
   <view wx:if="{{!status}}" class="content">
 

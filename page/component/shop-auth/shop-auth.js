@@ -11,7 +11,8 @@ Page({
     shops : [],
     status : null,
     isFromAuthManage:false,
-    mbShop:{}
+    mbShop:{},
+    pageLoad: false
   },
 
   /**
@@ -31,7 +32,8 @@ Page({
         success: function (data) {
           if (data.success) {
             self.setData({
-              shops: data.obj.rows
+              shops: data.obj.rows,
+              pageLoad:true
             });
           }
         }
@@ -60,7 +62,8 @@ Page({
                 address: data.obj.mbShop.address,
                 contactPeople: data.obj.mbShop.contactPeople,
                 statusIcon: data.obj.status == 'DAS01' ? '/image/auth_ing.png' : (data.obj.status == 'DAS02' ? '/image/auth_success.png' : '/image/auth_failed.png')
-              }
+              },
+              pageLoad: true
             });
           }
         }

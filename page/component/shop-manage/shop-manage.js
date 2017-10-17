@@ -11,11 +11,11 @@ Page({
   data: {
     accountInfo : {
       userName:'',
-      avatarUrl: '/image/test/avatr.jpg',
-      shopName:'Ryan的门店',
+      avatarUrl: '/image/default_icon.png',
+      shopName:'',
       shopStatus:'',
-      validOrders:6,
-      turnover:20
+      validOrders:0,
+      turnover:0
     }
   },
 
@@ -30,7 +30,7 @@ Page({
     this.setAccountInfo();
     setTimeout(function(){
       wx.stopPullDownRefresh()
-    }, 500);
+    }, 200);
     
   },
 
@@ -63,5 +63,12 @@ Page({
     wx.navigateTo({
       url: url
     })
+  },
+
+  toPurchase: function(){
+    wx.showModal({
+      content: '请关注微信公众号【上海奔翔实业有限公司】进行采购！',
+      showCancel: false
+    });
   }
 })
