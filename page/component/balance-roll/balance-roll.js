@@ -69,6 +69,7 @@ Page({
 
   setVcode: function (e) {
     var vcode = e.detail.value;
+    console.log(vcode);
     
     if (!Util.isEmpty(vcode)) {
       this.setData({
@@ -77,7 +78,8 @@ Page({
       });
     } else {
       this.setData({
-        'confirmBtn.disabled': true
+        'confirmBtn.disabled': true,
+        vcode: vcode
       });
     }
     
@@ -213,28 +215,8 @@ Page({
     })
   },
 
-  showModal: function () {
-    // 显示遮罩层
-    var animation = wx.createAnimation({
-      transformOrigin: "50% 50%",
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      showModalStatus: true
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 200)
-  },
-  hideModal: function () {
+  cancel:function(){
+    console.log(this.data.vcode);
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -253,6 +235,36 @@ Page({
         showModalStatus: false
       })
     }.bind(this), 200)
+  },
+
+  showModal: function () {
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      transformOrigin: "50% 50%",
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+      'confirmBtn.disabled': true,
+      vcode: ''
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  hideModal: function () {
+    if (!Util.isEmpty(this.data.vcode)) {
+      return;
+    }
+    this.cancel();
   },
 
   /**

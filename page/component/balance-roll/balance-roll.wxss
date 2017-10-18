@@ -94,9 +94,13 @@
   right: 20rpx;
   top:20rpx;
   height: 60rpx;
+  z-index: 99;
 }
 
 .btn-reg {
   margin: 60rpx 40rpx 0 40rpx;
   border-radius: 4px;
+}
+.btn-reg button:last-child{
+  margin-top: 20rpx;
 }

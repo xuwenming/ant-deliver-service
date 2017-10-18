@@ -21,7 +21,7 @@
           派单金额：<text>￥{{deliver.amountByY}}</text>  
       </block>
     </view>
-    <view class='flex-row rg'>
+    <view class='flex-row rg' bindtap='rollAll'>
       <block wx:if="{{currentTab=='in'}}">
           全部转入
       </block>
@@ -32,7 +32,7 @@
   </view>
 
   <view class='btns'>
-    <button type="yellow" bindtap="showModal">
+    <button type="yellow" bindtap="showModal" disabled="{{rollBtn.disabled}}">
       <block wx:if="{{currentTab=='in'}}">
           转入
       </block>
@@ -49,12 +49,13 @@
   <form bindsubmit="register">
     <view class='form-group line-after'>
       <input type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
-      <view class='btns'>
-        <button size='mini' catchtap="getVCode">{{vcodeBtn.msg}}</button>
+      <view class='btns' catchtap="getVCode">
+        <button size='mini' disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
       </view>
     </view>
     <view class="btn-reg">
-      <button type="yellow" plain="true"  loading="{{confirmBtn.loading}}" bindtap='transform'>确认</button>
+      <button type="yellow" plain="true" disabled="{{confirmBtn.disabled}}"  loading="{{confirmBtn.loading}}" bindtap='transform'>确认</button>
+      <button bindtap='cancel' class="cancel">取消</button>
     </view>
   </form>
 </view>

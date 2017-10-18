@@ -58,13 +58,22 @@ Page({
           request.httpPost({
             url: config.deliverOrderUrl,
             data: { id: e.target.dataset.orderId },
+            showLoading: true,
             success: function (data) {
               if (data.success) {
-                var orders = self.data.orders;
-                orders.splice(e.target.dataset.index, 1);
-                self.setData({
-                  orders: orders
-                });
+                wx.showToast({
+                  title: "发货成功",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var orders = self.data.orders;
+                    orders.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      orders: orders
+                    });
+                  }
+                })
               }
             }
           })
@@ -87,13 +96,22 @@ Page({
           request.httpPost({
             url: config.completeOrderUrl,
             data: { id: e.target.dataset.orderId },
+            showLoading: true,
             success: function (data) {
               if (data.success) {
-                var orders = self.data.orders;
-                orders.splice(e.target.dataset.index, 1);
-                self.setData({
-                  orders: orders
-                });
+                wx.showToast({
+                  title: "送达完成",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var orders = self.data.orders;
+                    orders.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      orders: orders
+                    });
+                  }
+                })
               }
             }
           })

@@ -29,7 +29,7 @@
 }
 
 .refuse .btns view:first-child button{
-  background-color: #fe9900;
+  /* background-color: #fe9900; */
   color: #fff;
   margin-left: 20rpx;
 }

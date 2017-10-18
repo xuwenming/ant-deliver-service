@@ -8,7 +8,9 @@
   </view>
 
   <navigator class='flex log' url="/page/component/balance-log-list/balance-log-list">
-    <navigator class='flex-row lf' url="/page/component/balance-log-list/balance-log-list">查看明细</navigator>
+    <view class='flex-row lf'>
+      查看明细               
+    </view>
     <view class='flex-row img rg'>
       <image src='/image/right.png'></image>
     </view>

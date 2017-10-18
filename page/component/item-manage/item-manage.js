@@ -110,19 +110,21 @@ Page({
             data: { itemId: e.target.dataset.itemId },
             showLoading: true,
             success: function (data) {
-              wx.showToast({
-                title: "上架成功",
-                icon: 'success',
-                mask: true,
-                duration: 500,
-                complete: function () {
-                  var items = self.data.items;
-                  items.splice(e.target.dataset.index, 1);
-                  self.setData({
-                    items: items
-                  });
-                }
-              })
+              if (data.success) {
+                wx.showToast({
+                  title: "上架成功",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var items = self.data.items;
+                    items.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      items: items
+                    });
+                  }
+                })
+              }
             }
           })
         }
@@ -143,19 +145,21 @@ Page({
             data: { itemId: e.target.dataset.itemId },
             showLoading: true,
             success: function (data) {
-              wx.showToast({
-                title: "下架成功",
-                icon: 'success',
-                mask: true,
-                duration: 500,
-                complete: function () {
-                  var items = self.data.items;
-                  items.splice(e.target.dataset.index, 1);
-                  self.setData({
-                    items: items
-                  });
-                }
-              })
+              if (data.success) {
+                wx.showToast({
+                  title: "下架成功",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var items = self.data.items;
+                    items.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      items: items
+                    });
+                  }
+                })
+              }
             }
           })
         }
@@ -171,22 +175,24 @@ Page({
       data: { itemId: self.data.updateQuantityItemId, quantity: self.data.quantity },
       showLoading: true,
       success: function (data) {
-        wx.showToast({
-          title: "库存修改成功",
-          icon: 'success',
-          mask: true,
-          duration: 500,
-          complete: function () {
-            var items = self.data.items;
-            var currItem = items[self.data.updateQuantityIndex];
-            currItem.quantity = self.data.quantity
-            items.splice(self.data.updateQuantityIndex, 1, currItem);
-            self.setData({
-              items: items
-            });
-            self.hideModal();
-          }
-        })
+        if (data.success) {
+          wx.showToast({
+            title: "库存修改成功",
+            icon: 'success',
+            mask: true,
+            duration: 500,
+            complete: function () {
+              var items = self.data.items;
+              var currItem = items[self.data.updateQuantityIndex];
+              currItem.quantity = self.data.quantity
+              items.splice(self.data.updateQuantityIndex, 1, currItem);
+              self.setData({
+                items: items
+              });
+              self.hideModal();
+            }
+          })
+        }
       }
     })
   }, 
@@ -204,19 +210,21 @@ Page({
             data: { itemId: e.target.dataset.itemId },
             showLoading: true,
             success: function (data) {
-              wx.showToast({
-                title: "删除成功",
-                icon: 'success',
-                mask: true,
-                duration: 500,
-                complete: function () {
-                  var items = self.data.items;
-                  items.splice(e.target.dataset.index, 1);
-                  self.setData({
-                    items: items
-                  });
-                }
-              })
+              if (data.success) {
+                wx.showToast({
+                  title: "删除成功",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var items = self.data.items;
+                    items.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      items: items
+                    });
+                  }
+                })
+              }
             }
           })
         }

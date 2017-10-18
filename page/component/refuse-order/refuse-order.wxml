@@ -5,7 +5,7 @@
     <textarea maxlength="100" placeholder="请填写拒接订单原因" name="remark" bindinput="setRemark"/>
     <view class='btns line-before flex'>
       <view class='flex-row'>
-        <button size='default' form-type='submit' disabled="{{submit_disabled}}">确定</button>
+        <button size='default' type="yellow" form-type='submit' disabled="{{submit_disabled}}">确定</button>
       </view>
       <view class='flex-row'>
         <button size='default' bindtap='cancel'>取消</button> 

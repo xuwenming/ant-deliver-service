@@ -4,7 +4,7 @@
     <view class='item flex line-bl'>
       <view class='flex-row label'>头像</view>
       <view class='flex-row icon'>
-        <image src="{{avatarUrl}}"></image>
+        <image src="{{avatarUrl}}" bindtap='showAvatar'></image>
       </view>
     </view>
     <view class='item flex line-bl'>

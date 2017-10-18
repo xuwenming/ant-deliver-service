@@ -44,7 +44,7 @@ Page({
           self.setData({
             accountInfo: {
               userName: data.obj.account.userName,
-              avatarUrl: data.obj.account.icon,
+              avatarUrl: data.obj.account.icon || '/image/default_icon.png',
               shopName: data.obj.mbShop.name,
               shopStatus: data.obj.shopDeliverApply.status,
               validOrders: data.obj.todayQuantity,

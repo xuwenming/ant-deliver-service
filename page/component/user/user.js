@@ -19,5 +19,12 @@ Page({
       avatarUrl: options.avatarUrl || '/image/default_icon.png',
       shopName: options.shopName
     });
+  },
+
+  showAvatar:function(){
+    var self = this;
+    wx.previewImage({
+      urls: [self.data.avatarUrl] 
+    })
   }
 })
