@@ -83,8 +83,13 @@
 }
 
 .order-list .order-item .info .rg .header .flex-row:first-child{
-  max-width: 120rpx;
-  min-width: 120rpx;
+  max-width: 140rpx;
+  min-width: 140rpx;
+  height: 32rpx;
+  line-height:32rpx; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .order-list .order-item .info .rg .header .flex-row:last-child{
