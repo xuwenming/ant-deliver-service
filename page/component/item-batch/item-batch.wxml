@@ -1,26 +1,29 @@
 <!--page/component/item-batch/item-batch.wxml-->
 <view class='container'>
-  <view class="items">
-    <checkbox-group bindchange="checkboxChange">
-      <label wx:for="{{items}}" wx:key="id" wx:for-item="item">
-        <checkbox value="{{optType == 'up' ? item.id : item.itemId}}"/>
-        <view>
-          <image style="width: 80rpx; height: 80rpx;" src="{{item.url}}" />
-          {{item.name}}
+  <checkbox-group class="list line-after">
+      <view class='item line flex' wx:for="{{items}}" wx:key="id" wx:for-item="item">
+        <view class='flex-row check flex flex-align-center'>
+          <checkbox value="{{optType == 'up' ? item.id : item.itemId}}"></checkbox>
         </view>
-        <view>
-          {{item.quantityUnitName}}
+        <view class='flex-row flex main'>
+          <view class='flex-row img left'>
+            <image src="{{item.url}}"></image>
+          </view>
+          <view class='flex-row right'>
+            <view class='name'>{{item.name}}</view>
+            <view class='bottom'>
+              <view class='row'>{{item.quantityUnitName}}</view>
+              <view class='row'>库存：<text>{{item.quantity}}</text></view>
+            </view>
+          </view>
         </view>
-        <view>
-          库存：<text>{{item.quantity}}</text>  
-        </view>
-      </label>
-    </checkbox-group>
-  </view> 
+      </view>
+  </checkbox-group>
 
-  <view class="batch-btn">
-    <button type="yellow" wx:if="{{optType == 'up'}}" bindtap='batchOnline'>上架</button>  
-    <button type="yellow" wx:if="{{optType == 'down'}}" bindtap='batchOffline'>下架</button>  
-    <button type="yellow" wx:if="{{optType == 'del'}}" bindtap='batchDel'>删除</button>  
+  <view class='btns'>
+    <view wx:if="{{optType == 'up'}}" bindtap='batchOnline'>上架</view>
+    <view wx:if="{{optType == 'down'}}" bindtap='batchOffline'>下架</view>
+    <view wx:if="{{optType == 'del'}}" bindtap='batchDel'>删除</view>
   </view>
+
 </view>
