@@ -4,6 +4,10 @@ button[plain]::after {
   border-width:1px;
 }
 
+.content {
+  padding-top: 20rpx; 
+}
+
 .form {
     position: relative;
     background-color: #fff;
@@ -32,7 +36,6 @@ button[plain]::after {
     right: 28rpx;
     margin-top: -88rpx;
     color: #05C0AB;
-    border-radius: 3rpx;
     z-index: 99;
 }
 

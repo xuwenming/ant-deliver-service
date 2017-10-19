@@ -1,7 +1,7 @@
 <!--page/component/item-batch/item-batch.wxml-->
 <view class='container'>
-  <checkbox-group class="list line-after">
-      <view class='item line flex' wx:for="{{items}}" wx:key="id" wx:for-item="item">
+  <checkbox-group class="list line-after" bindchange="checkboxChange">
+      <label class='item line flex' wx:for="{{items}}" wx:key="id" wx:for-item="item">
         <view class='flex-row check flex flex-align-center'>
           <checkbox value="{{optType == 'up' ? item.id : item.itemId}}"></checkbox>
         </view>
@@ -17,7 +17,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </label>
   </checkbox-group>
 
   <view class='btns'>
