@@ -18,7 +18,7 @@
               <view class='flex flex-pack-end label'>下单时间：<text>{{order.addtime}}</text></view>
             </view>
         </view>
-        <view class='flex info line-after-bl'>
+        <view class='flex info line-after-bl' bindtap="openMap" data-latitude="{{order.latitude}}" data-longitude="{{order.longitude}}" data-address="{{order.deliveryAddress}}">
           <view class='flex-row icon'>
             <image src='/image/address.png'></image>
           </view>
@@ -28,7 +28,7 @@
               <view class='flex-row'><text>{{order.contactPhone}}</text></view>
               <view class='flex-row'><text>{{order.distance}}</text></view>
             </view>
-            <view class='address'><text>{{order.deliveryAddress}}</text></view>
+            <view class='address'><text >{{order.deliveryAddress}}</text></view>
           </view>
         </view>
         <!-- goods list -->

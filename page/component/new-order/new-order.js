@@ -1,4 +1,5 @@
 // page/component/new-order/new-order.js
+var app = getApp();
 var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
@@ -172,5 +173,34 @@ Page({
       //   duration: 500
       // })
     }
+  },
+
+  openMap: function(e){
+    var self = this, 
+        latitude = e.currentTarget.dataset.latitude, 
+        longitude = e.currentTarget.dataset.longitude;
+    if (!latitude || !longitude) {
+      wx.showModal({
+        content: '未知位置，无法规划路线！',
+        showCancel: false
+      });
+      return;
+    }
+    wx.getLocation({
+      success: function (res) {
+        wx.openLocation({
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          address: e.currentTarget.dataset.address
+        })
+      },
+      fail: function(){
+        app.getAuthorize({
+          scope: 'scope.userLocation',
+          content: '检测到您没打开定位权限，是否去设置打开？',
+          required: true // 必须授权
+        })
+      }
+    })
   }
 })

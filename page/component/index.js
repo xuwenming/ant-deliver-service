@@ -99,6 +99,7 @@ Page({
             self.setData({
               userInfo: res.userInfo
             });
+            //self.setUserLocationScope();
           }
         })
       }
