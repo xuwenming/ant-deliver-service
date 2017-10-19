@@ -55,7 +55,7 @@ Page({
   setAmount:function(e) {
     var amount = Util.clearNoNum(e.detail.value), amountByF = this.data.currentTab == 'in' ? this.data.purchase.amountByF : this.data.deliver.amountByF;
     
-    if (!Util.isEmpty(amount) && amount * 1000 / 10 <= amountByF) {
+    if (!Util.isEmpty(amount) && amount != 0 && amount * 1000 / 10 <= amountByF) {
       this.setData({
         'rollBtn.disabled': false,
         amount: amount
@@ -88,10 +88,11 @@ Page({
   rollAll:function(){
     var amountByY = this.data.currentTab == 'in' ? this.data.purchase.amountByY : this.data.deliver.amountByY;
 
-    this.setData({
-      'rollBtn.disabled': false,
-      amount: amountByY
-    });
+    if (amountByY > 0)
+      this.setData({
+        'rollBtn.disabled': false,
+        amount: amountByY
+      });
   },
 
   getVCode: function (e) {
