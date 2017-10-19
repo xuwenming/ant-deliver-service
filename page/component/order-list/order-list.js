@@ -155,7 +155,8 @@ Page({
 
           for (var i in data.obj.rows) {
             data.obj.rows[i].amount = Util.fenToYuan(data.obj.rows[i].amount);
-            data.obj.rows[i].addtime = Util.format(new Date(data.obj.rows[i].addtime.replace(/-/g, "/")), 'MM-dd HH:mm')
+            data.obj.rows[i].addtime = Util.format(new Date(data.obj.rows[i].addtime.replace(/-/g, "/")), 'MM-dd HH:mm');
+            data.obj.rows[i].distance = Util.distanceConvert(data.obj.rows[i].distance);
           }
           var orders = self.data.orders;
           if (isRefresh) orders = data.obj.rows;

@@ -37,7 +37,8 @@ Util.checkPhone = function (v) {
 };
 
 Util.isEmpty = function (v) {
-  var val = v.trim();
+  if(v == null) return true;
+  var val = (v+'').replace(/(^\s*)|(\s*$)/g, '');
   if (val == "" || val.length == 0) {
     return true;
   }
@@ -74,6 +75,30 @@ Util.fenToYuan = function (fen) {
     yuan = yuan.replace(re, "$1,$2")
   }
   return yuan;
+};
+
+Util.distanceConvert = function (m) {
+  if(m === undefined) return '未知';
+  if(m < 1000) return m + "m";
+  var km = Math.round(m);
+  
+  km = km.toString();
+  var len = km.length;
+  var before = len > 3 ? km.substr(0, km.length - 3) : '0';
+  var end = km.substr(km.length - 3, 3);
+  
+  km = before + "." + end;
+  return parseFloat(km).toFixed(1) + 'km';
+};
+
+Util.arrayRemove = function (arr, v) {
+  var index = -1;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == v) index = i;
+  }
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
 };
 
 Util.format = function (date, fmt) { //author: meizz

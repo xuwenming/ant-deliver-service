@@ -1,9 +1,9 @@
-// page/component/item-manage/item-manage.js
+// page/component/item-search/item-search.js
 var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
 
-var currPage = 1, rows = 10;
+var currPage = 1, rows = 10, q;
 
 Page({
 
@@ -11,9 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab:0,
-    items:[],
-    hasMore:false,
+    items: [],
+    hasMore: false,
 
     animationData: "",
     showModalStatus: false,
@@ -21,16 +20,9 @@ Page({
       disabled: true,
       loading: false
     },
-    quantity:null,
-    updateQuantityIndex:null,
-    updateQuantityItemId:null,
-
-    showSearchStatus : false,
-    searchInpFocus:true,
-    searchValue:'',
-    searchTxt:'',
-    searchDelete:false,
-    searchList:[]
+    quantity: null,
+    updateQuantityIndex: null,
+    updateQuantityItemId: null
   },
 
   /**
@@ -38,22 +30,8 @@ Page({
    */
   onLoad: function (options) {
     currPage = 1;
+    q = options.q;
     this.getItems(true);
-  },
-
-  switchTab: function (e) {
-    var self = this;
-
-    if (self.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      self.setData({
-        currentTab: e.target.dataset.current,
-        items:[]
-      });
-      currPage = 1;
-      self.getItems(true);
-    }
   },
 
   /**
@@ -62,13 +40,6 @@ Page({
    */
   getItems: function (isRefresh) {
     var self = this;
-    var url;
-    if (self.data.currentTab == 0) 
-      url = config.getAllItemsUrl;
-    else if (self.data.currentTab == 1)
-      url = config.getOnlineItemsUrl;
-    else if (self.data.currentTab == 2)
-      url = config.getOfflineItemsUrl;
 
     wx.showLoading({
       title: '努力加载中...',
@@ -76,13 +47,12 @@ Page({
     })
 
     request.httpGet({
-      url: url,
-      data: {page: currPage, rows: rows },
+      url: config.getAllItemsUrl,
+      data: { page: currPage, rows: rows, name:q },
       success: function (data) {
-        console.log(data);
         if (data.success) {
           if (data.obj.rows.length >= 10) {
-            currPage ++;
+            currPage++;
             self.setData({
               hasMore: true
             });
@@ -104,7 +74,7 @@ Page({
   },
 
   // 上架
-  online : function(e){
+  online: function (e) {
     var self = this;
 
     wx.showModal({
@@ -137,7 +107,7 @@ Page({
         }
       }
     });
-  }, 
+  },
   // 下架
   offline: function (e) {
     var self = this;
@@ -172,7 +142,7 @@ Page({
         }
       }
     });
-  }, 
+  },
   // 修改库存
   updateQuantity: function (e) {
     var self = this;
@@ -202,7 +172,7 @@ Page({
         }
       }
     })
-  }, 
+  },
   // 删除
   del: function (e) {
     var self = this;
@@ -237,9 +207,9 @@ Page({
         }
       }
     });
-  }, 
+  },
 
-  setQuantity:function(e){
+  setQuantity: function (e) {
     var quantity = e.detail.value;
 
     if (!Util.isEmpty(quantity)) {
@@ -250,52 +220,8 @@ Page({
     } else {
       this.setData({
         'confirmBtn.disabled': true,
-        quantity:''
+        quantity: ''
       });
-    }
-  },
-  
-  batchUp:function(){
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=up',
-    })
-  },
-  batchDown: function () {
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=down',
-    })
-  },
-  batchDel: function () {
-    wx.navigateTo({
-      url: '/page/component/item-batch/item-batch?type=del',
-    })
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    if (this.data.showSearchStatus) return;
-    currPage = 1;
-    this.getItems(true);
-    setTimeout(function () {
-      wx.stopPullDownRefresh()
-    }, 200);
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    if (this.data.showSearchStatus) return;
-    if(this.data.hasMore) {
-      this.getItems();
-    } else {
-      // wx.showToast({
-      //   title: '无更多商品~',
-      //   icon:'loading',
-      //   duration:500
-      // })
     }
   },
 
@@ -325,7 +251,7 @@ Page({
       quantity: e.target.dataset.quantity || null,
       updateQuantityIndex: e.target.dataset.index,
       updateQuantityItemId: e.target.dataset.itemId,
-      'confirmBtn.disabled' : e.target.dataset.quantity > 0 ? false : true
+      'confirmBtn.disabled': e.target.dataset.quantity > 0 ? false : true
     });
     // 显示遮罩层
     var animation = wx.createAnimation({
@@ -348,119 +274,29 @@ Page({
     }.bind(this), 200)
   },
   hideModal: function () {
-    console.log(this.data.quantity);
     if (!Util.isEmpty(this.data.quantity)) {
       return;
     }
     this.cancel();
   },
 
-  showSearch:function(){
-    this.setData({
-      showSearchStatus: true
-    });
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    currPage = 1;
+    this.getItems(true);
+    setTimeout(function () {
+      wx.stopPullDownRefresh()
+    }, 200);
+  },
 
-    var searchValue = this.data.searchValue, searchHistory = wx.getStorageSync('searchHistory') || [];
-    if (Util.isEmpty(searchValue) && searchHistory.length != 0) {
-      this.setData({
-        searchTxt:'最近搜索',
-        searchDelete:true,
-        searchList: searchHistory
-      });
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    if (this.data.hasMore) {
+      this.getItems();
     }
-  }, 
-  hideSearch: function () {
-    this.setData({
-      showSearchStatus: false,
-      searchValue:'',
-      searchTxt: '',
-      searchDelete: false,
-      searchList: []
-    });
-  },
-  setSearchValue:function(e){
-    var self = this, searchValue = e.detail.value, searchHistory = wx.getStorageSync('searchHistory') || [];
-    self.setData({ searchValue: searchValue});
-    if (Util.isEmpty(searchValue)) {
-      if (searchHistory.length == 0) {
-        self.setData({
-          searchTxt: '',
-          searchDelete: false,
-          searchList: []
-        });
-      } else {
-        self.setData({
-          searchTxt: '最近搜索',
-          searchDelete: true,
-          searchList: searchHistory
-        });
-      }
-
-      return;
-    }
-
-    request.httpGet({
-      url: config.getAllItemsUrl,
-      data: { page: 1, rows: 50, name: searchValue},
-      success: function (data) {
-        if (data.success) {
-          var result = data.obj.rows;
-          if (result.length == 0) {
-            if (searchHistory.length == 0) {
-              self.setData({
-                searchTxt: '',
-                searchDelete: false,
-                searchList: []
-              });
-            } else {
-              self.setData({
-                searchTxt: '最近搜索',
-                searchDelete: true,
-                searchList: searchHistory
-              });
-            }
-          } else {
-            var items = [];
-            for (var i in result) {
-              items.push(result[i].name);
-            }
-            self.setData({
-              searchTxt: '搜索发现',
-              searchDelete: false,
-              searchList: items
-            });
-          }
-        }
-      }
-    })
-  },
-  search:function(e){
-    var searchValue = e.target.dataset.itemName;
-    if (!searchValue) searchValue = this.data.searchValue;
-    if (Util.isEmpty(searchValue)) {
-      this.setData({ searchInpFocus:true});
-      return;
-    }
-    this.setSearchHistory(searchValue);
-
-    wx.navigateTo({
-      url: '/page/component/item-search/item-search?q=' + searchValue
-    })
-  },
-  clearHistory:function(){
-    wx.removeStorageSync('searchHistory');
-    this.setData({
-      searchTxt: '',
-      searchDelete: false,
-      searchList: []
-    });
-  },
-
-  setSearchHistory:function(value){
-    var searchHistory = wx.getStorageSync('searchHistory') || [];
-    Util.arrayRemove(searchHistory, value);
-    if (searchHistory.length == 10) searchHistory.pop();
-    searchHistory.unshift(value);
-    wx.setStorageSync('searchHistory', searchHistory);
-  },
+  }
 })

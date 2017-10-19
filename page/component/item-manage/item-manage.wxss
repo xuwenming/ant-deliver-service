@@ -60,7 +60,7 @@
 }
 
 .box .header .left input{
-  width: 100%;
+  /* width: 100%; */
   height: 60rpx;
   padding: 0 80rpx;
   font-size: 26rpx;
@@ -190,5 +190,109 @@
   background-color: #fe9900;
   color: #fff;
   border-radius: 4px;
+}
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+}
+
+.form-group {
+    position: relative;
+    height: 100rpx;
+}
+
+.form-group input{
+  height: 100rpx;
+}
+
+.form-group .btns{
+  position: absolute;
+  right: 20rpx;
+  top:20rpx;
+  height: 60rpx;
+  z-index: 99;
+}
+
+.btn-reg {
+  margin: 60rpx 80rpx 0 40rpx;
+  border-radius: 4px;
+}
+.btn-reg button:last-child{
+  margin-top: 20rpx;
+}
+
+
+.ui-search-mask {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: #FFF;
+}
+.ui-search {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	background-color: #FFF;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+  padding:0;
+}
+.ui-search .searchContent {
+	padding: 10rpx 30rpx 0;
+	height: 100%;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.ui-search .searchContent .searchRes .title {
+	line-height: 40px;
+	font-size: 14px;
+	color: #888;
+	height: 40px;
+}
+.ui-search .searchContent .searchRes .title .txt {
+	float: left;
+}
+.ui-search .searchContent .searchRes .searchList .item {
+	float: left;
+	height: 0;
+	font-size: 14px;
+	cursor: pointer;
+	margin: 0 10px 10px 0;
+	line-height: 0;
+	border-radius: 3px;
+	padding: 14px 14px;
+	background-color: #f2f2f2;
+}
+
+.ui-search .searchContent .searchRes .title .delete {
+	float: right;
+	width: 30px;
+	text-align: center;
 }
 

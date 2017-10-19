@@ -13,7 +13,8 @@
     "page/component/balance-roll/balance-roll",
     "page/component/balance-log-list/balance-log-list",
     "page/component/balance-log-detail/balance-log-detail",
-    "page/component/item-batch/item-batch"
+    "page/component/item-batch/item-batch",
+    "page/component/item-search/item-search"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

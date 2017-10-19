@@ -16,7 +16,13 @@ Page({
       shopStatus:'',
       validOrders:0,
       turnover:0
-    }
+    },
+    online:{
+      type:'',
+      online:0,
+      name:''
+    },
+    pageLoad:false
   },
 
   /**
@@ -24,6 +30,34 @@ Page({
    */
   onLoad: function (options) {
     this.setAccountInfo();
+  },
+
+  changeOnline:function(e){
+    var self = this, online = self.data.online.online == 1 ? 0 : 1;
+    request.httpPost({
+      url: config.updateOnlineUrl,
+      data: { online: online},
+      showLoading: true,
+      success: function (data) {
+        if (data.success) {
+          wx.showToast({
+            title: online == 1 ? '营业中' : '停止营业',
+            icon: 'success',
+            mask: true,
+            duration: 1000,
+            complete: function () {
+              self.setData({
+                online: {
+                  type: online == 1 ? 'yellow' : 'default',
+                  online: online,
+                  name: online == 1 ? '营业中' : '停止营业'
+                }
+              });
+            }
+          })
+        }
+      }
+    })
   },
 
   onPullDownRefresh: function () {
@@ -40,7 +74,7 @@ Page({
       url: config.getAccountInfoUrl,
       success: function (data) {
         if (data.success) {
-          console.log(data);
+          var online = data.obj.shopDeliverApply.online;
           self.setData({
             accountInfo: {
               userName: data.obj.account.userName,
@@ -49,7 +83,13 @@ Page({
               shopStatus: data.obj.shopDeliverApply.status,
               validOrders: data.obj.todayQuantity,
               turnover: Util.fenToYuan(data.obj.todayAmount)
-            }
+            },
+            online:{
+              type: online == 1 ? 'yellow' : 'default',
+              online: online,
+              name: online == 1 ? '营业中' : '停止营业'
+            },
+            pageLoad:true
           });
         }
       }

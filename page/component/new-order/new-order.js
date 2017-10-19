@@ -61,6 +61,7 @@ Page({
           for (var i=0; i<data.obj.rows.length; i++) {
             data.obj.rows[i].amount = Util.fenToYuan(data.obj.rows[i].amount);
             data.obj.rows[i].addtime = Util.format(new Date(data.obj.rows[i].addtime.replace(/-/g, "/")), 'MM-dd HH:mm');
+            data.obj.rows[i].distance = Util.distanceConvert(data.obj.rows[i].distance);
 
             if(!self.data.wxTimerList["wxTimer" + data.obj.rows[i].id]) {
               var time = data.obj.rows[i].millisecond;
@@ -70,7 +71,7 @@ Page({
                 var m = Math.floor(((time % 86400) % 3600) / 60),
                     s = Math.floor(((time % 86400) % 3600) % 60);
                 var wxTimer = new timer({
-                  //beginTime: "00:" + m + ":" + s,
+                  // beginTime: "00:" + m + ":" + s,
                   beginTime: "00:10:00",
                   name: "wxTimer" + data.obj.rows[i].id,
                   complete: function () {

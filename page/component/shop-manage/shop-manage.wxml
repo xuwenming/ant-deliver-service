@@ -1,8 +1,10 @@
 <!--page/component/shop-manage/shop-manage.wxml-->
-<view class="container">
+<view class="container" wx:if="{{pageLoad}}">
   <!--头部  -->
   <view class='header'>
-    <view class='header-bar'></view>
+    <view class='header-bar'>
+      <button size="mini" type="{{online.type}}" plain='true' class="online" bindtap='changeOnline'>{{online.name}}</button>
+    </view>
     <view class='flex header-bottom'>
         <view class='flex-row left'>
           <view class='h3'>{{accountInfo.validOrders}}</view>

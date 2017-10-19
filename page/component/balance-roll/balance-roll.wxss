@@ -98,7 +98,7 @@
 }
 
 .btn-reg {
-  margin: 60rpx 40rpx 0 40rpx;
+  margin: 60rpx 80rpx 0 40rpx;
   border-radius: 4px;
 }
 .btn-reg button:last-child{

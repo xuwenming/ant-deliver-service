@@ -26,7 +26,7 @@
             <view class='flex header'>
               <view class='flex-row'><text>{{order.contactPeople}}</text></view>
               <view class='flex-row'><text>{{order.contactPhone}}</text></view>
-              <view class='flex-row'><text wx:if="{{order.distance > 0}}">{{order.distance}}km</text></view>
+              <view class='flex-row'><text>{{order.distance}}</text></view>
             </view>
             <view class='address'><text>{{order.deliveryAddress}}</text></view>
           </view>

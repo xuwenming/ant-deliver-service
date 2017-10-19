@@ -36,6 +36,9 @@ var config = {
     // 更新用户信息
     updateAccountUrl: `${server_host}/api/deliver/account/edit`,
 
+    // 更新营业状态
+    updateOnlineUrl: `${server_host}/api/deliver/account/updateOnline`,
+
     // 订单列表查询
     getOrdersUrl: `${server_host}/api/deliver/deliverOrder/dataGrid`,
     // getOrdersUrl: `${server_host}/testData/orders.txt`,
