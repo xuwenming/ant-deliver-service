@@ -1,44 +1,57 @@
 <view class="container">
   <block wx:if="{{refType == 'BT060'}}">
-    <view class="order">
-      <view>订单号:{{balanceDetail.id}}</view>
-      <view>下单时间:{{balanceDetail.addtime}}</view>
-      <view>
-        <view>
-          <text> {{balanceDetail.contactPeople}}</text> 
-          <text> {{balanceDetail.contactPhone}}</text>  
-          <text> {{balanceDetail.distance}}km</text> 
-        </view>
-        <view>
-          <text>{{balanceDetail.deliveryAddress}}</text> 
-        </view>
-      </view>
-
-      <view wx:for="{{balanceDetail.deliverOrderItemList}}" wx:key="item.id" wx:for-item="item">
-        <view>
-          <image style="width: 80rpx; height: 80rpx;" src="{{item.pictureUrl}}" />
-          {{item.name}}
-        </view>
-        <view>
-          {{item.quantityUnitName}}
-        </view>
-        <view>
-          数量x<text>{{item.quantity}}</text>  
-        </view>
-      </view>
-      <view>
-        订单金额<text>{{balanceDetail.amount}}元</text>  
-      </view>
+    <!-- list -->
+    <view class="order-list">
+      <!-- item -->
+      <view class='order-item'>
+          <view class='top line-after flex'>
+              <view class='flex-row flex flex-align-center'>              
+                <view class='flex flex-pack-end label'>订单号：<text>{{balanceDetail.id}}</text></view>
+              </view>
+              <view class='flex-row'>
+                <view class='flex flex-pack-end label'>下单时间：<text>{{balanceDetail.addtime}}</text></view>
+              </view>
+          </view>
+          <view class='flex info line-after-bl'>
+            <view class='flex-row icon'>
+              <image src='/image/address.png'></image>
+            </view>
+            <view class='flex-row rg'>
+              <view class='flex header'>
+                <view class='flex-row'><text> {{balanceDetail.contactPeople}}</text></view>
+                <view class='flex-row'><text> {{balanceDetail.contactPhone}}</text></view>
+                <view class='flex-row'><text> {{balanceDetail.distance}}</text></view>
+              </view>
+              <view class='address'><text>{{balanceDetail.deliveryAddress}}</text></view>
+            </view>
+          </view>
+          <!-- goods list -->
+          <view class='flex order-goods line-after-bl' wx:for="{{balanceDetail.deliverOrderItemList}}" wx:key="item.id" wx:for-item="item">
+            <view class='flex-row left'>
+              <image mode="center aspectFit" src="{{item.pictureUrl}}"></image>
+            </view>
+            <view class='flex-row right'>
+              <view class='name'>{{item.name}}</view>
+              <view class='bottom flex'>
+                <view class='flex-row'><text>{{item.quantityUnitName}}</text></view>
+                <view class='flex-row rg'>数量x<text>{{item.quantity}}</text></view>
+              </view>
+            </view>
+          </view> 
+          <view class='bottoms'>
+            <view class='carry'>订单金额 <text>{{order.amount}}元</text></view>
+          </view>
+      </view>    
     </view>
-  </block>
+  </block>  
 
   <block wx:else>
-    <view>
-      <view><text>账单信息</text></view>
-      <view>流水号：{{balanceDetail.id}}</view>
-      <view>类型：{{balanceDetail.refTypeName}}</view>
-      <view>金额：{{balanceDetail.amount}}</view>
-      <view>时间：{{balanceDetail.addtime}}</view>
+    <view class='box'>
+      <view class='header line-after'>账单信息</view>
+      <view class='info'>流水号：{{balanceDetail.id}}</view>
+      <view class='info'>类型：{{balanceDetail.refTypeName}}</view>
+      <view class='info'>金额：{{balanceDetail.amount}}</view>
+      <view class='info'>时间：{{balanceDetail.addtime}}</view>
     </view>
   </block>
 </view>

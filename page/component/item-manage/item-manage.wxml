@@ -64,7 +64,7 @@
       <input type="number" value="{{quantity}}" maxlength="8" class='form-control' placeholder='请输入库存' bindinput="setQuantity"></input>
     </view>
     <view class="btn-reg">
-      <button type="yellow" plain="true" disabled="{{confirmBtn.disabled}}"  loading="{{confirmBtn.loading}}" bindtap='updateQuantity'>确认</button>
+      <button type="yellow" id='btn' plain="true" disabled="{{confirmBtn.disabled}}"  loading="{{confirmBtn.loading}}" bindtap='updateQuantity'>确认</button>
       <button bindtap='cancel' class="cancel">取消</button>
     </view>
   </form>

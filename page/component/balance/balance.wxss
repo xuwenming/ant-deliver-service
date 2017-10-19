@@ -1,6 +1,10 @@
 /* page/component/balance/balance.wxss */
 @import '../../common/common.wxss';
 
+.container{
+  background-color: #fff;
+}
+
 .header{
   position: relative;
   padding: 120rpx 0;
@@ -19,16 +23,18 @@
 
 .log{
   padding: 0 40rpx;
+  height: 140rpx;
 }
 
 .log .lf{
-  line-height: 32rpx; 
+  line-height: 140rpx; 
 }
 
 .log .rg{
   max-width: 18rpx;
   min-width: 18rpx;
   height: 32rpx;
+  margin-top: 54rpx;
 }
 
 .btns{

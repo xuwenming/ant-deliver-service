@@ -88,7 +88,7 @@
    max-width: 160rpx;
    min-width: 160rpx;
    height: 160rpx;
-   border: 1px solid #eee;
+   /* border: 1px solid #eee; */
 }
 
 .list .item .main .right{
@@ -296,3 +296,6 @@
 	text-align: center;
 }
 
+button[plain]::after {
+  border-width:1px;
+}

@@ -40,6 +40,12 @@
 					"name": "bb",
 					"pathName": "page/component/item-batch/item-batch",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "cc",
+					"pathName": "page/component/balance-log-detail/balance-log-detail",
+					"query": ""
 				}
 			]
 		},
