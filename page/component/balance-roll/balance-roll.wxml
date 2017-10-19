@@ -8,7 +8,7 @@
   <view class='money flex'>
     <view class='flex-row title'>金额</view>
     <view class='flex-row input'>
-      <input value="{{amount}}" type="digit" placeholder='请输入' bindinput="setAmount"></input>
+      <input value="{{amount}}" maxlength='8' type="digit" placeholder='请输入' bindinput="setAmount"></input>
     </view>
   </view>  
 
