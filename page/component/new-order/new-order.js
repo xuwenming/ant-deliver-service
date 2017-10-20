@@ -68,14 +68,14 @@ Page({
 
             if(!self.data.wxTimerList["wxTimer" + data.obj.rows[i].id]) {
               var time = data.obj.rows[i].millisecond;
-              // if (time > 0) {
-              if (time) {
+              if (time > 0) {
+              // if (time) {
                 time = time/1000;
                 var m = Math.floor(((time % 86400) % 3600) / 60),
                     s = Math.floor(((time % 86400) % 3600) % 60);
                 var wxTimer = new timer({
-                  // beginTime: "00:" + m + ":" + s,
-                  beginTime: "00:10:00",
+                  beginTime: "00:" + m + ":" + s,
+                  // beginTime: "00:10:00",
                   name: "wxTimer" + data.obj.rows[i].id,
                   complete: function () {
                     var orders = self.data.orders;
