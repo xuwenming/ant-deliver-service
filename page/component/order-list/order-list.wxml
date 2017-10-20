@@ -18,7 +18,7 @@
   </view>
 
   <!-- list -->
-  <view class="order-list">
+  <view class="order-list" wx:if="{{orders == null || orders.length > 0}}">
     <!-- item -->
     <view class='order-item' wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
         <view class='top line-after flex'>
@@ -62,7 +62,11 @@
             <button data-order-id="{{order.id}}" data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='orderComplete' wx:elif="{{order.status=='DOS25'}}">送达完成</button>
           </view>
         </view>
-    </view>    
+    </view>
+  </view>
+
+  <view wx:else>
+     <include src="/page/common/noDataTemplate.wxml"/>   
   </view>
   
 </view>

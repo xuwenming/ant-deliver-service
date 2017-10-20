@@ -67,6 +67,8 @@ Page({
               });
               wx.hideNavigationBarLoading();
             }
+
+            self.getUserInfo();
           },
           complete : function(){
             
@@ -80,7 +82,7 @@ Page({
   },
 
   onShow : function(){
-    this.getUserInfo();
+    
   },
 
   onPullDownRefresh: function () {
@@ -96,10 +98,23 @@ Page({
       callback: function () {
         wx.getUserInfo({
           success: function (res) {
-            self.setData({
-              userInfo: res.userInfo
-            });
-            //self.setUserLocationScope();
+            if(app.globalData.tokenId) {
+              request.httpPost({
+                url: config.updateAccountUrl,
+                data: {
+                  nickName: res.userInfo.nickName,
+                  icon: res.userInfo.avatarUrl,
+                  sex: res.userInfo.gender
+                },
+                success: function (data) {
+                  if (data.success) {}
+                }
+              })
+            } else {
+              self.setData({
+                userInfo: res.userInfo
+              });
+            }
           }
         })
       }

@@ -11,14 +11,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    balanceLogs:[],
+    balanceLogs:null,
     cond:{
       showDate : '本月',
       date: Util.format(new Date(), 'yyyy-MM'),
       start : '2017-01',
       end : Util.format(new Date(), 'yyyy-MM')
     },
-    hasMore: false
+    hasMore: false,
+
+    noDataMsg:'您这个月没有相关的账单哦~'
   },
 
   /**

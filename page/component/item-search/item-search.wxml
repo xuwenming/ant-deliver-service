@@ -30,7 +30,7 @@
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <form bindsubmit="register">
     <view class='form-group line-after'>
-      <input type="number" value="{{quantity}}" maxlength="8" class='form-control' placeholder='请输入库存' bindinput="setQuantity"></input>
+      <input type="number" value="{{quantity}}" focus="true" maxlength="8" class='form-control' placeholder='请输入库存' bindinput="setQuantity"></input>
     </view>
     <view class="btn-reg">
       <button type="yellow" plain="true" disabled="{{confirmBtn.disabled}}"  loading="{{confirmBtn.loading}}" bindtap='updateQuantity'>确认</button>

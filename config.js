@@ -34,7 +34,7 @@ var config = {
     getAccountInfoUrl: `${server_host}/api/deliver/account/get`,
 
     // 更新用户信息
-    updateAccountUrl: `${server_host}/api/deliver/account/edit`,
+    updateAccountUrl: `${server_host}/api/deliver/account/update`,
 
     // 更新营业状态
     updateOnlineUrl: `${server_host}/api/deliver/account/updateOnline`,

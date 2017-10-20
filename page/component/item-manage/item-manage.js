@@ -12,7 +12,7 @@ Page({
    */
   data: {
     currentTab:0,
-    items:[],
+    items:null,
     hasMore:false,
 
     animationData: "",
@@ -30,7 +30,9 @@ Page({
     searchValue:'',
     searchTxt:'',
     searchDelete:false,
-    searchList:[]
+    searchList:[],
+
+    noDataMsg:'没有相关商品哦~'
   },
 
   /**

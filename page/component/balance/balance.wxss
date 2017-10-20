@@ -1,14 +1,11 @@
 /* page/component/balance/balance.wxss */
 @import '../../common/common.wxss';
 
-.container{
-  background-color: #fff;
-}
-
 .header{
   position: relative;
   padding: 120rpx 0;
-  text-align: center
+  text-align: center;
+  background-color: #fff;
 }
 
 .header image{
@@ -23,7 +20,9 @@
 
 .log{
   padding: 0 40rpx;
+  margin: 20rpx 0;
   height: 140rpx;
+  background-color: #fff;
 }
 
 .log .lf{

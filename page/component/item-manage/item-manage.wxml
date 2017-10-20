@@ -23,7 +23,7 @@
     </view>
 
     <!-- list -->
-    <view class='list'>
+    <view class='list'  wx:if="{{items == null || items.length > 0}}">
         <view class='item' wx:for="{{items}}" wx:key="id" wx:for-item="item">
           <view class='flex main line-after'>
             <view class='flex-row img left'>
@@ -45,6 +45,10 @@
           </view>
         </view>
     </view>
+
+    <view wx:else>
+     <include src="/page/common/noDataTemplate.wxml"/>   
+    </view>
   </view>
 
   <view class='footer'>
@@ -61,7 +65,7 @@
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <form bindsubmit="register">
     <view class='form-group line-after'>
-      <input type="number" value="{{quantity}}" maxlength="8" class='form-control' placeholder='请输入库存' bindinput="setQuantity"></input>
+      <input type="number" value="{{quantity}}" focus="true" maxlength="8" class='form-control' placeholder='请输入库存' bindinput="setQuantity"></input>
     </view>
     <view class="btn-reg">
       <button type="yellow" id='btn' plain="true" disabled="{{confirmBtn.disabled}}"  loading="{{confirmBtn.loading}}" bindtap='updateQuantity'>确认</button>

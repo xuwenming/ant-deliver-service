@@ -11,9 +11,11 @@ Page({
    */
   data: {
     optType:'',
-    items:[],
+    items:null,
     itemIds:'',
-    hasMore: false
+    hasMore: false,
+
+    noDataMsg: '没有相关商品哦~'
   },
 
   /**

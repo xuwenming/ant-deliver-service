@@ -14,9 +14,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orders:[],
+    orders:null,
     hasMore: false,
-    wxTimerList: {}
+    wxTimerList: {},
+
+    noDataMsg: 'Sorry！没有新的订单哦~'
   },
 
   /**

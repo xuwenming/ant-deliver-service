@@ -13,8 +13,10 @@ Page({
    */
   data: {
     currentTab : 0,
-    orders: [],
-    hasMore: false
+    orders: null,
+    hasMore: false,
+
+    noDataMsg:'没有相关订单哦~'
   },
 
   /**

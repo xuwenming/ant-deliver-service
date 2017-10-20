@@ -29,7 +29,7 @@ Util.checkPassword = function (v) {
 
 // 手机号校验
 Util.checkPhone = function (v) {
-  var reg = /^0{0,1}(13[0-9]|15[0-9]|18[0-9]|177)[0-9]{8}$/;
+  var reg = /^0{0,1}(13[0-9]|15[0-9]|18[0-9]|177|176)[0-9]{8}$/;
   if (reg.test(v)) {
     return true;
   }
