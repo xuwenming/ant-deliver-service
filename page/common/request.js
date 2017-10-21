@@ -73,6 +73,13 @@ function http(options) {
       'sign': MD5.md5(params)
     },
     success: function (res) {
+      if (res.data && res.data.success === undefined) {
+        wx.showModal({
+          content: '服务器维护中，请稍后再试！',
+          showCancel: false
+        });
+        return;
+      }
       if (options.success)
         options.success(res.data);
     },
