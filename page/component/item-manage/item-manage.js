@@ -39,6 +39,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+  },
+
+  onShow: function(){
     currPage = 1;
     this.getItems(true);
   },
@@ -81,7 +85,6 @@ Page({
       url: url,
       data: {page: currPage, rows: rows },
       success: function (data) {
-        console.log(data);
         if (data.success) {
           if (data.obj.rows.length >= 10) {
             currPage ++;
@@ -127,7 +130,14 @@ Page({
                   duration: 500,
                   complete: function () {
                     var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    if (self.data.currentTab == 0) {
+                      var currItem = items[e.target.dataset.index];
+                      currItem.online = true;
+                      items.splice(e.target.dataset.index, 1, currItem);
+                    } else {
+                      items.splice(e.target.dataset.index, 1);
+                    }
+                    
                     self.setData({
                       items: items
                     });
@@ -162,7 +172,14 @@ Page({
                   duration: 500,
                   complete: function () {
                     var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    if (self.data.currentTab == 0) {
+                      var currItem = items[e.target.dataset.index];
+                      currItem.online = false;
+                      items.splice(e.target.dataset.index, 1, currItem);
+                    } else {
+                      items.splice(e.target.dataset.index, 1);
+                    }
+
                     self.setData({
                       items: items
                     });
@@ -227,7 +244,13 @@ Page({
                   duration: 500,
                   complete: function () {
                     var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    if (self.data.currentTab == 0) {
+                      var currItem = items[e.target.dataset.index];
+                      currItem.online = null;
+                      items.splice(e.target.dataset.index, 1, currItem);
+                    } else {
+                      items.splice(e.target.dataset.index, 1);
+                    }
                     self.setData({
                       items: items
                     });
@@ -446,7 +469,7 @@ Page({
     this.setSearchHistory(searchValue);
 
     wx.navigateTo({
-      url: '/page/component/item-search/item-search?q=' + searchValue
+      url: '/page/component/item-search/item-search?q=' + encodeURI(searchValue)
     })
   },
   clearHistory:function(){

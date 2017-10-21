@@ -6,7 +6,7 @@ var Util = require('../../../util/util').Util;
 var timer = require('../../../util/wxTimer');
 
 
-var currPage = 1, rows = 10;
+var currPage = 1, rows = 10, newOrderIntervar;
 
 Page({
 
@@ -25,14 +25,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getNewOrders(true);
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var self = this;
+    newOrderIntervar = setInterval(function () {
+      self.getNewOrders(true);
+    }, 10000);
+    self.getNewOrders(true);
+  },
+  onHide:function(){
+    clearInterval(newOrderIntervar);
   },
 
   /**
@@ -41,25 +48,26 @@ Page({
    */
   getNewOrders: function (isRefresh){
     var self = this;
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
     request.httpGet({
       url: config.getOrdersUrl,
-      data: { status: 'DOS10', page: currPage, rows: rows},
+      // data: { status: 'DOS10', page: currPage, rows: rows},
+      data: { status: 'DOS10'},
       success: function (data) {
         if (data.success) {
-          if (data.obj.rows.length >= rows) {
-            currPage++;
-            self.setData({
-              hasMore: true
-            });
-          } else {
-            self.setData({
-              hasMore: false
-            });
-          }
+          // if (data.obj.rows.length >= rows) {
+          //   currPage++;
+          //   self.setData({
+          //     hasMore: true
+          //   });
+          // } else {
+          //   self.setData({
+          //     hasMore: false
+          //   });
+          // }
 
           for (var i=0; i<data.obj.rows.length; i++) {
             data.obj.rows[i].amount = Util.fenToYuan(data.obj.rows[i].amount);
@@ -155,6 +163,10 @@ Page({
    */
   onPullDownRefresh: function () {
     currPage = 1;
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
     this.getNewOrders(true);
     setTimeout(function(){
       wx.stopPullDownRefresh()  
@@ -167,7 +179,7 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.hasMore) {
-      this.getNewOrders();
+      //this.getNewOrders();
     } else {
       // wx.showToast({
       //   title: '无更多商品~',

@@ -72,7 +72,6 @@ Page({
   },
 
   onPullDownRefresh: function () {
-    console.log(this.data.status);
     if(this.data.status) {
       this.getShopApply();
     }
@@ -82,7 +81,6 @@ Page({
   },
 
   chooseShop : function(e){
-    console.log(e)
     var self = this;
     wx.showModal({
       title:'提示',

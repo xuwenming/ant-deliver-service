@@ -94,8 +94,9 @@ Page({
                   mask: true,
                   duration: 500,
                   complete: function () {
-                    var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    var items = self.data.items, currItem = items[e.target.dataset.index];
+                    currItem.online = true;
+                    items.splice(e.target.dataset.index, 1, currItem);
                     self.setData({
                       items: items
                     });
@@ -129,8 +130,9 @@ Page({
                   mask: true,
                   duration: 500,
                   complete: function () {
-                    var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    var items = self.data.items, currItem = items[e.target.dataset.index];
+                    currItem.online = false;
+                    items.splice(e.target.dataset.index, 1, currItem);
                     self.setData({
                       items: items
                     });
@@ -194,8 +196,9 @@ Page({
                   mask: true,
                   duration: 500,
                   complete: function () {
-                    var items = self.data.items;
-                    items.splice(e.target.dataset.index, 1);
+                    var items = self.data.items, currItem = items[e.target.dataset.index];
+                    currItem.online = null;
+                    items.splice(e.target.dataset.index, 1, currItem);
                     self.setData({
                       items: items
                     });
