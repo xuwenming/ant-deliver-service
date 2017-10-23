@@ -96,6 +96,7 @@ Page({
   },
 
   getVCode: function (e) {
+    console.log(111);
     var self = this;
     self.setData({
       vcodeBtn: {

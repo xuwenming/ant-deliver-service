@@ -47,9 +47,11 @@
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
   <form bindsubmit="register">
-    <view class='form-group line-after'>
-      <input type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
-      <view class='btns' catchtap="getVCode">
+    <view class='form-group line-after flex'>
+      <view class='flex-row'>
+        <input type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
+      </view>
+      <view class='flex-row flex flex-align-center' catchtap="getVCode">
         <button size='mini' disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
       </view>
     </view>

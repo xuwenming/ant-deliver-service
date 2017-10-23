@@ -86,15 +86,17 @@
 }
 
 .form-group input{
-  height: 100rpx;
+  width: 100%;
 }
 
 .form-group .btns{
-  position: absolute;
-  right: 20rpx;
-  top:20rpx;
-  height: 60rpx;
-  z-index: 99;
+  max-width: 200rpx;
+  min-width: 200rpx;
+  text-align: right;
+}
+
+.form-group input{
+  height: 100rpx;
 }
 
 .btn-reg {
