@@ -130,10 +130,14 @@ Page({
    */
   getOrders: function (isRefresh) {
     var self = this, currentTab = this.data.currentTab, status;
+    var url = config.getOrdersUrl;
     if (currentTab == 0) status = 'DOS20';
     else if (currentTab == 1) status = 'DOS25';
     else if (currentTab == 2) status = 'DOS30,DOS40';
-    else status = 'DOS15';
+    else {
+      status = 'DOS15';
+      url = config.getRefusedOrdersUrl;
+    }
 
     wx.showLoading({
       title: '努力加载中...',

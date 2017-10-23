@@ -41,6 +41,8 @@ var config = {
 
     // 订单列表查询
     getOrdersUrl: `${server_host}/api/deliver/deliverOrder/dataGrid`,
+    // 订单列表查询(取消)
+    getRefusedOrdersUrl: `${server_host}/api/deliver/deliverOrder/viewRefusedDataGrid`,
     // getOrdersUrl: `${server_host}/testData/orders.txt`,
 
     // 拒绝订单

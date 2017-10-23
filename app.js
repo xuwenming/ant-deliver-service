@@ -2,7 +2,21 @@ var openIdUrl = require('./config').openIdUrl;
 
 App({
   onLaunch: function () {
+    var self = this;
+    wx.getNetworkType({
+      success: function (res) {
+        // 返回网络类型, 有效值：
+        // wifi/2g/3g/4g/unknown(Android下不常见的网络类型)/none(无网络)
+        self.globalData.network.networkType = res.networkType
+      }
+    })
     // console.log('App Launch')
+    wx.onNetworkStatusChange(function (res) {
+      self.globalData.network = {
+        isConnected: res.isConnected,
+        networkType: res.networkType
+      }
+    })
   },
   onShow: function () {
     // console.log('App Show')
@@ -12,7 +26,11 @@ App({
   },
   globalData: {
     openid: null,
-    tokenId: null
+    tokenId: null,
+    network:{
+      isConnected:true,
+      networkType:''
+    }
   },
   
   /**

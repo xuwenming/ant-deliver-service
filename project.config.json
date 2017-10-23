@@ -14,40 +14,7 @@
 	"condition": {
 		"weapp": {
 			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "钱包管理测试",
-					"pathName": "page/component/balance/balance",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": 1,
-					"name": "商品管理测试",
-					"pathName": "page/component/item-manage/item-manage",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "aa",
-					"pathName": "page/component/item-manage/item-manage",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "bb",
-					"pathName": "page/component/item-batch/item-batch",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "cc",
-					"pathName": "page/component/balance-log-detail/balance-log-detail",
-					"query": ""
-				}
-			]
+			"list": []
 		},
 		"search": {
 			"current": -1,

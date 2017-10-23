@@ -37,6 +37,14 @@ function getUrl(url) {
 }
 
 function http(options) {
+  if (!app.globalData.network.isConnected) {
+    wx.showModal({
+      content: '网络有异常，请检查你的网络设置！',
+      showCancel: false
+    });
+    return;
+  }
+
   if (!options || !options.url) throw Error('请求参数有误！');
 
   options.method = (options.method || 'GET').toUpperCase();

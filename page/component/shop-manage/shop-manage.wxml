@@ -40,8 +40,10 @@
   </view>
   <view class='box flex'>
     <view class='flex-row' bindtap='toPurchase'>
+    <!-- <navigator class='flex-row' url="/page/component/purchase/purchase"> -->
       <view class='icon'><image src='../../../image/box_4.png'></image></view>
       <view class='label'>我要采购</view>
+    <!-- </navigator> -->
     </view>
     <view class='flex-row'></view>
     <view class='flex-row'></view>
