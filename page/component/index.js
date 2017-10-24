@@ -215,7 +215,7 @@ Page({
   },
   
   register : function(e){
-    console.log(e);
+    var self = this;
     this.setData({
       'regBtn.loading': true
     });
@@ -242,6 +242,9 @@ Page({
           wx.showModal({
             content: data.msg,
             showCancel: false
+          });
+          self.setData({
+            'regBtn.loading': false
           });
         }
       }

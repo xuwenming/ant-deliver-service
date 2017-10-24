@@ -25,6 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // wx.playBackgroundAudio({
+    //   dataUrl: 'http://img.qrun360.com/test.wav'
+    // })
     
   },
 
@@ -58,6 +61,9 @@ Page({
       data: { status: 'DOS10'},
       success: function (data) {
         if (data.success) {
+          if (data.obj.rows.length > 0) {
+            self.voiceReminder();
+          }
           // if (data.obj.rows.length >= rows) {
           //   currPage++;
           //   self.setData({
@@ -155,6 +161,27 @@ Page({
   refuseOrder : function(e){
     wx.navigateTo({
       url: '/page/component/refuse-order/refuse-order?orderId=' + e.target.dataset.orderId
+    })
+  },
+
+  voiceReminder: function(){
+    request.httpGet({
+      url: config.getNewOrderCountUrl,
+      success: function (data) {
+        if (data.success && data.obj > 0) {
+          request.httpGet({
+            url: config.getBaseDataByKeyUrl,
+            data: { key:'DSV300'},
+            success: function (data) {
+              if (data.success && data.obj) {
+                wx.playBackgroundAudio({
+                  dataUrl: data.obj.icon
+                })
+              }
+            }
+          })
+        }
+      }
     })
   },
 

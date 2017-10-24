@@ -51,8 +51,8 @@
       <view class='flex-row'>
         <input type="number" maxlength="6" class='form-control' placeholder='请输入验证码' bindinput="setVcode"></input>
       </view>
-      <view class='flex-row flex flex-align-center' catchtap="getVCode">
-        <button size='mini' disabled="{{vcodeBtn.disabled}}">{{vcodeBtn.msg}}</button>
+      <view class='flex-row flex flex-align-center'>
+        <button size='mini' disabled="{{vcodeBtn.disabled}}" catchtap="getVCode">{{vcodeBtn.msg}}</button>
       </view>
     </view>
     <view class="btn-reg">

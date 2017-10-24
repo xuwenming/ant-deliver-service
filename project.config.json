@@ -14,14 +14,7 @@
 	"condition": {
 		"weapp": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "aa",
-					"pathName": "page/component/balance-roll/balance-roll",
-					"query": ""
-				}
-			]
+			"list": []
 		},
 		"search": {
 			"current": -1,

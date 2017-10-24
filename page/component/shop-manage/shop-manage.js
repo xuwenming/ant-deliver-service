@@ -110,9 +110,17 @@ Page({
   },
 
   toPurchase: function(){
-    wx.showModal({
-      content: '请关注微信公众号【上海奔翔实业有限公司】进行采购！',
-      showCancel: false
-    });
+    request.httpGet({
+      url: config.getBaseDataByKeyUrl,
+      data: { key: 'DSV400' },
+      success: function (data) {
+        if (data.success && data.obj) {
+          wx.showModal({
+            content: '请关注微信公众号【' + data.obj.name + '】进行采购！',
+            showCancel: false
+          });
+        }
+      }
+    })
   }
 })

@@ -55,8 +55,12 @@ Page({
     } else {
       self.setData({
         currentTab: e.target.dataset.current,
-        items:[]
+        items:null
       });
+      wx.showLoading({
+        title: '努力加载中...',
+        mask: true
+      })
       currPage = 1;
       self.getItems(true);
     }
@@ -75,11 +79,6 @@ Page({
       url = config.getOnlineItemsUrl;
     else if (self.data.currentTab == 2)
       url = config.getOfflineItemsUrl;
-
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
 
     request.httpGet({
       url: url,
@@ -301,6 +300,12 @@ Page({
    */
   onPullDownRefresh: function () {
     if (this.data.showSearchStatus) return;
+
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
+
     currPage = 1;
     this.getItems(true);
     setTimeout(function () {
@@ -313,7 +318,12 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.showSearchStatus) return;
+
     if(this.data.hasMore) {
+      wx.showLoading({
+        title: '努力加载中...',
+        mask: true
+      })
       this.getItems();
     } else {
       // wx.showToast({
@@ -334,7 +344,7 @@ Page({
     this.animation = animation
     animation.translateY(300).step()
     this.setData({
-      animationData: animation.export(),
+      animationData: animation.export()
     })
     setTimeout(function () {
       animation.translateY(0).step()
@@ -373,7 +383,6 @@ Page({
     }.bind(this), 200)
   },
   hideModal: function () {
-    console.log(this.data.quantity);
     if (!Util.isEmpty(this.data.quantity)) {
       return;
     }
@@ -382,7 +391,8 @@ Page({
 
   showSearch:function(){
     this.setData({
-      showSearchStatus: true
+      showSearchStatus: true,
+      items:null
     });
 
     var searchValue = this.data.searchValue, searchHistory = wx.getStorageSync('searchHistory') || [];
@@ -402,6 +412,12 @@ Page({
       searchDelete: false,
       searchList: []
     });
+    wx.showLoading({
+      title: '努力加载中...',
+      mask: true
+    })
+    currPage = 1;
+    this.getItems(true);
   },
   setSearchValue:function(e){
     var self = this, searchValue = e.detail.value, searchHistory = wx.getStorageSync('searchHistory') || [];
@@ -468,6 +484,7 @@ Page({
     }
     this.setSearchHistory(searchValue);
 
+    console.log(encodeURI(searchValue));
     wx.navigateTo({
       url: '/page/component/item-search/item-search?q=' + encodeURI(searchValue)
     })

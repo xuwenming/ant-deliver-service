@@ -87,7 +87,7 @@ Page({
     this.setData({
       'cond.showDate': showDate,
       'cond.date': e.detail.value,
-      balanceLogs: []
+      balanceLogs: null
     });
 
     currPage = 1;

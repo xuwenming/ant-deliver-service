@@ -41,7 +41,7 @@ Page({
     } else {
       self.setData({
         currentTab: e.target.dataset.current,
-        orders: []
+        orders: null
       })
       currPage = 1;
       self.getOrders(true);

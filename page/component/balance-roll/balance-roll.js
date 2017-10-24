@@ -69,7 +69,6 @@ Page({
 
   setVcode: function (e) {
     var vcode = e.detail.value;
-    console.log(vcode);
     
     if (!Util.isEmpty(vcode)) {
       this.setData({
@@ -96,7 +95,6 @@ Page({
   },
 
   getVCode: function (e) {
-    console.log(111);
     var self = this;
     self.setData({
       vcodeBtn: {
@@ -211,6 +209,9 @@ Page({
           wx.showModal({
             content: data.msg,
             showCancel: false
+          });
+          self.setData({
+            'confirmBtn.loading': false
           });
         }
       }

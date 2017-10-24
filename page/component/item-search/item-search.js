@@ -30,7 +30,7 @@ Page({
    */
   onLoad: function (options) {
     currPage = 1;
-    q = options.q;
+    q = decodeURI(options.q);
     this.getItems(true);
   },
 

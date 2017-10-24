@@ -57,6 +57,9 @@ var config = {
     // 订单送达完成
     completeOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderComplete`,
 
+    // 获取有效新订单数量
+    getNewOrderCountUrl: `${server_host}/api/deliver/deliverOrder/countNewAllocationOrder`,
+
     // 商品管理列表-全部
     getAllItemsUrl: `${server_host}/api/deliver/item/getAllItemList`,
 
@@ -103,7 +106,10 @@ var config = {
     deliverToBalanceUrl: `${server_host}/api/deliver/deliverBalance/transformAmountDeliverToBalance`,
 
     // 转入到派单钱包
-    balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/transformAmountBalanceToDeliver`
+    balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/transformAmountBalanceToDeliver`,
+
+    // 获取数据字典
+    getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`
 };
 
 module.exports = config

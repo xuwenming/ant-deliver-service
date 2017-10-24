@@ -1,5 +1,5 @@
 <view class="container">
-  <block wx:if="{{refType == 'BT060'}}">
+  <block wx:if="{{refType == 'BT060' || refType == 'BT061'}}">
     <!-- list -->
     <view class="order-list">
       <!-- item -->
