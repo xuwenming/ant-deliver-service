@@ -146,7 +146,7 @@ Page({
     wx.showNavigationBarLoading();
 
     request.httpGet({
-      url: config.getOrdersUrl,
+      url: url,
       data: { status: status, page: currPage, rows: rows },
       success: function (data) {
         if (data.success) {
