@@ -71,6 +71,11 @@
   margin-left: 20rpx;
 }
 
+.list .item .btns .gray{
+  background-color: #efefef;
+  color:#b7b7b7;
+}
+
 .commodity_screen {
   width: 100%;
   height: 100%;

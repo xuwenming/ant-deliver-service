@@ -16,10 +16,11 @@
             </view>
           </view>
           <view class='btns'>
-            <view data-item-id="{{item.id}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{item.online != true}}">上架</view>
+            <view data-item-id="{{item.id}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{item.status == null || item.status == 'SIS03' || (item.status == 'SIS02' && item.online != true)}}">上架</view>
             <view data-item-id="{{item.id}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='offline' wx:if="{{item.online == true}}">下架</view>
             <view data-item-id="{{item.id}}" data-item-name="{{item.name}}" data-index="{{index}}" data-quantity="{{item.quantity}}" bindtap='showModal' wx:if="{{item.online == true}}">库存</view>
-            <view data-item-id="{{item.id}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{item.online == false}}">删除</view>
+            <view data-item-id="{{item.id}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{item.online == false && item.status == 'SIS02'}}">删除</view>
+            <view class="gray" wx:if="{{item.status == 'SIS01'}}">审核中</view>
           </view>
         </view>
     </view>

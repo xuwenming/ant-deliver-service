@@ -69,6 +69,9 @@ var config = {
     // 商品管理列表-下架
     getOfflineItemsUrl: `${server_host}/api/deliver/item/getShopItemOffline`,
 
+    // 商品管理列表-审核中
+    getAuditItemsUrl: `${server_host}/api/deliver/item/getShopItemWaitAudit`,
+
     // 商品上架
     updateItemOnlineUrl: `${server_host}/api/deliver/item/updateItemOnline`,
 

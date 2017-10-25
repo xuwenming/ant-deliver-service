@@ -4,6 +4,7 @@
   <view class='tab'>
     <view class='flex tab-con'>
       <view class="flex-row {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchTab">全部</view>
+      <view class="flex-row {{currentTab==3 ? 'active' : ''}}" data-current="3" bindtap="switchTab">审核中</view>
       <view class="flex-row {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="switchTab">已上架</view>
       <view class="flex-row {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="switchTab">已下架</view>
     </view>
@@ -31,17 +32,30 @@
             </view>
             <view class='flex-row right'>
               <view class='name'>{{item.name}}</view>
-              <view class='bottom'>
-                <view class='row'>{{item.quantityUnitName}}</view>
-                <view class='row'>库存：<text>{{item.quantity}}</text></view>
-              </view>
+              <block wx:if="{{currentTab == 1 || currentTab == 2}}">
+                <view class='next'>
+                  <view class='row'>{{item.quantityUnitName}}</view>
+                  <view class='row'>库存：<text>{{item.quantity}}</text></view>
+                </view>
+                <view class='bottom'>
+                  <view class='row'>售价：￥{{item.price}}</view>
+                  <view class='row'>配送费：<text>￥{{item.freight}}</text></view>
+                </view>
+              </block>
+              <block wx:else>
+                <view class='bottom'>
+                  <view class='row'>{{item.quantityUnitName}}</view>
+                  <view class='row'>库存：<text>{{item.quantity}}</text></view>
+                </view>
+              </block>
             </view>
           </view>
           <view class='btns'>
-            <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{(currentTab == 0 && item.online != true) || currentTab == 2}}">上架</view>
+            <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}" data-index="{{index}}" bindtap='online' wx:if="{{(currentTab == 0 && (item.status == null || item.status == 'SIS03' || (item.status == 'SIS02' && item.online != true))) || currentTab == 2}}">上架</view>
             <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='offline' wx:if="{{(currentTab == 0 && item.online == true) || currentTab == 1}}">下架</view>
             <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}" data-index="{{index}}" data-quantity="{{item.quantity}}" bindtap='showModal' wx:if="{{currentTab == 1 || item.online == true}}">库存</view>
-            <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{currentTab == 2 || item.online == false}}">删除</view>
+            <view data-item-id="{{currentTab == 0 ? item.id : item.itemId}}" data-item-name="{{item.name}}"  data-index="{{index}}" bindtap='del' wx:if="{{currentTab == 2 || (item.online == false && item.status == 'SIS02')}}">删除</view>
+            <view class="gray" wx:if="{{(currentTab == 0 || currentTab == 3) && item.status == 'SIS01'}}">审核中</view>
           </view>
         </view>
     </view>

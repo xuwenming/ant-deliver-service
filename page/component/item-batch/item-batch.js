@@ -1,6 +1,7 @@
 // page/component/item-batch/item-batch.js
 var config = require('../../../config');
 var request = require('../../common/request');
+var Util = require('../../../util/util').Util;
 
 var currPage = 1, rows = 10;
 
@@ -47,10 +48,11 @@ Page({
     else if (self.data.optType == 'del')
       url = config.getOfflineItemsUrl;
 
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
+    wx.showNavigationBarLoading();
 
     request.httpGet({
       url: url,
@@ -66,6 +68,15 @@ Page({
             self.setData({
               hasMore: false
             });
+          }
+
+          if (self.data.optType != 'up') {
+            for (var i in data.obj.rows) {
+              if (data.obj.rows[i].price)
+                data.obj.rows[i].price = Util.fenToYuan(data.obj.rows[i].price);
+              if (data.obj.rows[i].freight)
+                data.obj.rows[i].freight = Util.fenToYuan(data.obj.rows[i].freight);
+            }
           }
 
           var items = self.data.items;

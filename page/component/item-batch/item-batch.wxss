@@ -3,7 +3,7 @@
 
 .list{
   background-color: #fff;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
   position: relative;
   margin-bottom: 140rpx;
 }
@@ -71,6 +71,18 @@
 }
 
 .list .item .main .right .bottom .row:last-child{
+  padding-left: 40rpx;
+}
+
+.list .item .main .right .next .row{
+  float: left;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.list .item .main .right .next .row:last-child{
   padding-left: 40rpx;
 }
 

@@ -110,7 +110,10 @@ function http(options) {
       if (options.complete)
         options.complete();
 
-      if (!options.showLoading) wx.hideLoading();
+      if (!options.showLoading) {
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
+      }
     }
   })
 }

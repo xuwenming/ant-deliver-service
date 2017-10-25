@@ -41,10 +41,11 @@ Page({
   getItems: function (isRefresh) {
     var self = this;
 
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
+    wx.showNavigationBarLoading();
 
     request.httpGet({
       url: config.getAllItemsUrl,
@@ -95,7 +96,11 @@ Page({
                   duration: 500,
                   complete: function () {
                     var items = self.data.items, currItem = items[e.target.dataset.index];
-                    currItem.online = true;
+                    if (currItem.status == 'SIS02') {
+                      currItem.online = true;
+                    } else {
+                      currItem.status = 'SIS01';
+                    }
                     items.splice(e.target.dataset.index, 1, currItem);
                     self.setData({
                       items: items

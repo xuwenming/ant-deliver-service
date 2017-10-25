@@ -57,10 +57,10 @@ Page({
         currentTab: e.target.dataset.current,
         items:null
       });
-      wx.showLoading({
-        title: '努力加载中...',
-        mask: true
-      })
+      // wx.showLoading({
+      //   title: '努力加载中...',
+      //   mask: true
+      // })
       currPage = 1;
       self.getItems(true);
     }
@@ -79,7 +79,10 @@ Page({
       url = config.getOnlineItemsUrl;
     else if (self.data.currentTab == 2)
       url = config.getOfflineItemsUrl;
+    else if (self.data.currentTab == 3)
+      url = config.getAuditItemsUrl;
 
+    wx.showNavigationBarLoading();
     request.httpGet({
       url: url,
       data: {page: currPage, rows: rows },
@@ -94,6 +97,14 @@ Page({
             self.setData({
               hasMore: false
             });
+          }
+          if (self.data.currentTab == 1 || self.data.currentTab == 2) {
+            for (var i in data.obj.rows) {
+              if (data.obj.rows[i].price) 
+                data.obj.rows[i].price = Util.fenToYuan(data.obj.rows[i].price);
+              if (data.obj.rows[i].freight)
+                data.obj.rows[i].freight = Util.fenToYuan(data.obj.rows[i].freight);
+            }
           }
 
           var items = self.data.items;
@@ -131,7 +142,12 @@ Page({
                     var items = self.data.items;
                     if (self.data.currentTab == 0) {
                       var currItem = items[e.target.dataset.index];
-                      currItem.online = true;
+                      if (currItem.status == 'SIS02') {
+                        currItem.online = true;
+                      } else {
+                        currItem.status = 'SIS01';
+                      }
+                      
                       items.splice(e.target.dataset.index, 1, currItem);
                     } else {
                       items.splice(e.target.dataset.index, 1);
@@ -301,10 +317,10 @@ Page({
   onPullDownRefresh: function () {
     if (this.data.showSearchStatus) return;
 
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
 
     currPage = 1;
     this.getItems(true);
@@ -320,10 +336,10 @@ Page({
     if (this.data.showSearchStatus) return;
 
     if(this.data.hasMore) {
-      wx.showLoading({
-        title: '努力加载中...',
-        mask: true
-      })
+      // wx.showLoading({
+      //   title: '努力加载中...',
+      //   mask: true
+      // })
       this.getItems();
     } else {
       // wx.showToast({
@@ -412,10 +428,8 @@ Page({
       searchDelete: false,
       searchList: []
     });
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+
+    // wx.showNavigationBarLoading();
     currPage = 1;
     this.getItems(true);
   },

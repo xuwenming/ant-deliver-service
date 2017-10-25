@@ -51,7 +51,8 @@
 .order-list .order-item .top .label text{
   display: block;
   width: 80px;
-  margin-left: 10rpx;
+  margin-left: 4rpx;
+  margin-top: 2rpx;
 }
 
 .order-list .order-item .info{

@@ -28,7 +28,6 @@ Page({
     // wx.playBackgroundAudio({
     //   dataUrl: 'http://img.qrun360.com/test.wav'
     // })
-    
   },
 
   /**
@@ -39,6 +38,7 @@ Page({
     newOrderIntervar = setInterval(function () {
       self.getNewOrders(true);
     }, 10000);
+    wx.showNavigationBarLoading();
     self.getNewOrders(true);
   },
   onHide:function(){
@@ -190,10 +190,11 @@ Page({
    */
   onPullDownRefresh: function () {
     currPage = 1;
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
+    wx.showNavigationBarLoading();
     this.getNewOrders(true);
     setTimeout(function(){
       wx.stopPullDownRefresh()  

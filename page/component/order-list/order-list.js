@@ -139,10 +139,11 @@ Page({
       url = config.getRefusedOrdersUrl;
     }
 
-    wx.showLoading({
-      title: '努力加载中...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '努力加载中...',
+    //   mask: true
+    // })
+    wx.showNavigationBarLoading();
 
     request.httpGet({
       url: config.getOrdersUrl,
