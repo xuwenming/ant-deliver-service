@@ -3,7 +3,7 @@
 
 .header{
   position: relative;
-  padding: 120rpx 0;
+  padding: 100rpx 0 20rpx 0;
   text-align: center;
   background-color: #fff;
 }
@@ -20,9 +20,13 @@
 
 .log{
   padding: 0 40rpx;
-  margin: 20rpx 0;
+  margin: 20rpx 0 0 0;
   height: 140rpx;
   background-color: #fff;
+}
+
+.cashlog {
+  margin:0rpx;
 }
 
 .log .lf{
@@ -60,4 +64,9 @@
 .btns navigator:last-child{
   margin-left: 20rpx;
   color: #fe9900;
+}
+
+.btns navigator.cash {
+  margin-left:0;
+  color: #fff;
 }

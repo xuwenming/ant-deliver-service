@@ -1,10 +1,12 @@
 /**
  * 小程序配置文件
+ * pro appid=wx0b54b1b16b700f4b
+ * qa  appid=wx6196df0ee20f5fa3
  */
 
-// var server_host = "http://127.0.0.1:8082";
-// var server_host = "http://10.42.0.99:8082";
-var server_host = "https://www.qrun360.com";
+// var server_host = "http://192.168.1.170:8082"; // dev
+var server_host = "http://101.132.177.151:8080"; // qa
+// var server_host = "https://www.qrun360.com"; // pro
 
 var config = {
 
@@ -110,6 +112,12 @@ var config = {
 
     // 转入到派单钱包
     balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/transformAmountBalanceToDeliver`,
+
+    // 申请余额提现
+    balanceCashUrl: `${server_host}/api/deliver/deliverBalance/withdraw`,
+
+    // 提现记录列表
+    getBalanceCashLogsUrl: `${server_host}/api/deliver/deliverBalance/withdrawDataGrid`,
 
     // 获取数据字典
     getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`

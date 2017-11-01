@@ -30,7 +30,11 @@ Page({
    */
   onLoad: function (options) {
     currPage = 1;
-    q = decodeURI(options.q);
+    try {
+      q = decodeURIComponent(options.q);
+    } catch(e) {
+      q = options.q;
+    }
     this.getItems(true);
   },
 
@@ -46,7 +50,6 @@ Page({
     //   mask: true
     // })
     wx.showNavigationBarLoading();
-
     request.httpGet({
       url: config.getAllItemsUrl,
       data: { page: currPage, rows: rows, name:q },

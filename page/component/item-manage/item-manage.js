@@ -498,9 +498,10 @@ Page({
     }
     this.setSearchHistory(searchValue);
 
-    console.log(encodeURI(searchValue));
+    searchValue = encodeURIComponent(searchValue).replace(/[!]/g, "%21").replace(/[']/g, "%27")
+      .replace(/[(]/g, "%28").replace(/[)]/g, "%29").replace(/[~]/g, "%7E");
     wx.navigateTo({
-      url: '/page/component/item-search/item-search?q=' + encodeURI(searchValue)
+      url: '/page/component/item-search/item-search?q=' + searchValue
     })
   },
   clearHistory:function(){

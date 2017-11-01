@@ -34,7 +34,7 @@
 .money .input input{
   height: 100rpx;
   text-align: right;
-  width: 100%;
+  width: 96%;
   font-size: 28rpx;
 }
 
