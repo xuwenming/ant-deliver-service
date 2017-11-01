@@ -26,12 +26,12 @@
             </view>
           </view>
           <!-- goods list -->
-          <view class='flex order-goods line-after-bl' wx:for="{{balanceDetail.deliverOrderItemList}}" wx:key="item.id" wx:for-item="item">
+          <view class='flex order-goods line-after-bl' wx:for="{{balanceDetail.deliverOrderShopItemList}}" wx:key="item.id" wx:for-item="item">
             <view class='flex-row left'>
               <image mode="center aspectFit" src="{{item.pictureUrl}}"></image>
             </view>
             <view class='flex-row right'>
-              <view class='name'>{{item.name}}</view>
+              <view class='name'>{{item.itemName}}</view>
               <view class='bottom flex'>
                 <view class='flex-row'><text>{{item.quantityUnitName}}</text></view>
                 <view class='flex-row rg'>数量x<text>{{item.quantity}}</text></view>
@@ -39,7 +39,7 @@
             </view>
           </view> 
           <view class='bottoms'>
-            <view class='carry'>订单金额 <text>{{order.amount}}元</text></view>
+            <view class='carry'>订单金额 <text>{{balanceDetail.amount}}元</text></view>
           </view>
       </view>    
     </view>
