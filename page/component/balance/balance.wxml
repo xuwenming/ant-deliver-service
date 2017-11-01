@@ -21,7 +21,7 @@
     </view>
   </navigator>
 
-  <navigator class='flex log cashlog' url="/page/component/balance-log-list/balance-log-list">
+  <navigator class='flex log cashlog' url="/page/component/balance-cash-list/balance-cash-list">
     <view class='flex-row lf'>
       提现记录               
     </view>

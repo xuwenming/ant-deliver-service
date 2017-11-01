@@ -1,26 +1,27 @@
 <!--page/component/balance-cash/balance-cash.wxml-->
 <view class='container'>
+  <view class='content'>
+    <view class='money flex'>
+      <view class='flex-row title'>提现金额</view>
+      <view class='flex-row input'>
+        <input value="{{amount}}" maxlength='8' type="digit" placeholder='请输入' bindinput="setAmount"></input>
+      </view>
+    </view>  
 
-  <view class='money flex'>
-    <view class='flex-row title'>提现金额</view>
-    <view class='flex-row input'>
-      <input value="{{amount}}" maxlength='8' type="digit" placeholder='请输入' bindinput="setAmount"></input>
+    <view class='flex label'>
+      <view class='flex-row lf'>
+        可提现金额：<text>￥{{deliver.amountByY}}</text> 
+      </view>
+      <view class='flex-row rg' bindtap='cashAll'>
+        全部提现
+      </view>
     </view>
-  </view>  
 
-  <view class='flex label'>
-    <view class='flex-row lf'>
-      可提现金额：<text>￥{{deliver.amountByY}}</text> 
+    <view class='btns'>
+      <button type="yellow" bindtap="showModal" disabled="{{cashBtn.disabled}}">
+        提现
+      </button>
     </view>
-    <view class='flex-row rg' bindtap='cashAll'>
-      全部提现
-    </view>
-  </view>
-
-  <view class='btns'>
-    <button type="yellow" bindtap="showModal" disabled="{{cashBtn.disabled}}">
-      提现
-    </button>
   </view>
 
 </view>

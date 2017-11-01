@@ -51,6 +51,7 @@
       <view class='info'>流水号：{{balanceDetail.id}}</view>
       <view class='info'>类型：{{balanceDetail.refTypeName}}</view>
       <view class='info'>金额：{{balanceDetail.amount}}</view>
+      <view class='info' wx:if="{{balanceDetail.status != null}}">当前状态：{{balanceDetail.status}}</view>
       <view class='info'>时间：{{balanceDetail.addtime}}</view>
     </view>
   </block>

@@ -1,9 +1,11 @@
 /* page/component/balance-log-list/balance-log-list.wxss */
 @import '../../common/common.wxss';
-
+.content {
+  padding-top: 10rpx;
+}
 .box{
   background-color: #fff;
-  margin-top: 10rpx;
+  /* margin-top: 10rpx; */
 }
 
 .box .header{

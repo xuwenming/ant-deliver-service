@@ -17,8 +17,7 @@
     "page/component/item-search/item-search",
     "page/component/purchase/purchase",
     "page/component/balance-cash/balance-cash",
-    "page/component/balance-cash-list/balance-cash-list",
-    "page/component/balance-cash-detail/balance-cash-detail"
+    "page/component/balance-cash-list/balance-cash-list"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

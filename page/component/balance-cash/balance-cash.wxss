@@ -2,25 +2,13 @@
 @import '../../common/common.wxss';
 @import '../index.wxss';
 
-.tab{
-  height: 88rpx;
-  background-color: #fff;
-}
-
-.tab .flex-row{
-  line-height: 88rpx;
-  text-align: center;
-}
-
-.tab .flex-row.active{
-  color: #05C0AB;
-  border-bottom: 2px solid #05C0AB;
+.content{
+  padding-top: 20rpx;
 }
 
 .money{
   height: 100rpx;
   background-color: #fff;
-  margin-top: 20rpx;
   padding: 0 24rpx;
 }
 
