@@ -1,0 +1,18 @@
+<!--page/component/order-complete/order-complete.wxml-->
+<view class="container">
+  <view class='complete'>
+    <textarea maxlength="100" placeholder="请填写备注" name="completeRemark" bindinput="setCompleteRemark"/>
+    <view class='order-item' wx:for="{{tempFilePaths}}" wx:key="tempFilePath" wx:for-item="tempFilePath">
+      <image src="{{tempFilePath}}" style="width:150rpx;height:150rpx;" data-index="{{index}}" bindtap='showImage'/>
+    </view>
+    <view wx:if="{{tempFilePaths == null || tempFilePaths.length < 3}}"><button size='default' bindtap='chooseImage'>选择图片</button> </view>
+    <view class='btns line-before flex'>
+      <view class='flex-row'>
+        <button size='default' type="yellow" bindtap='orderComplete' disabled="{{complete_disabled}}">确定送达</button>
+      </view>
+      <view class='flex-row'>
+        <button size='default' bindtap='cancel'>取消</button> 
+      </view>      
+    </view>
+  </view>
+</view>

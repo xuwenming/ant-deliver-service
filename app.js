@@ -74,5 +74,59 @@ App({
         }
       }
     })
+  },
+
+  uploadImage: function (options) {
+    var self = this,
+      index = options.index || 0,
+      result = options.result || ''
+    wx.uploadFile({
+      url: options.url, //仅为示例，非真实的接口地址
+      filePath: options.filePaths[index],
+      name: options.name || 'file',
+      formData: options.formData || null,
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode == 200 && res.data) {
+          var data = JSON.parse(res.data);
+          index++;
+          if (result != '') result += ';';
+          result += data.obj;
+          if (index == options.filePaths.length) {
+            if (options.success)
+              options.success(result);
+          } else {
+            options.index = index;
+            options.result = result;
+            self.uploadImage(options);
+          }
+        } else {
+          wx.showModal({
+            content: '请求超时，请稍后再试！',
+            showCancel: false
+          });
+        }
+
+      },
+      fail: function (res) {
+        console.log('图片【' + (index + 1) + '】上传失败！', res);
+        wx.showModal({
+          content: '图片【' + (index + 1) + '】上传失败！',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              if (options.fail)
+                options.fail();
+            }
+          }
+        });
+      },
+      complete: function (res) {
+        if (!options.showLoading) {
+          wx.hideLoading();
+          wx.hideNavigationBarLoading();
+        }
+      }
+    })
   }
 })

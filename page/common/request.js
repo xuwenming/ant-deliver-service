@@ -94,7 +94,7 @@ function http(options) {
     fail: function (res) {
       console.log(options.url + '接口调用失败', res);
       wx.showModal({
-        content: '服务器异常，请稍后再试！',
+        content: '请求超时，请稍后再试！',
         showCancel: false,
         success: function (res) {
           if (res.confirm) {

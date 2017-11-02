@@ -59,6 +59,8 @@ var config = {
     // 订单送达完成
     completeOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderComplete`,
 
+    uploadImageUrl: `${server_host}/api/deliver/deliverOrder/uploadImage`,
+
     // 获取有效新订单数量
     getNewOrderCountUrl: `${server_host}/api/deliver/deliverOrder/countNewAllocationOrder`,
 

@@ -90,37 +90,9 @@ Page({
   orderComplete: function (e) {
     // 发送request处理订单
     var self = this;
-
-    wx.showModal({
-      title: '提示',
-      content: '是否确定订单号【' + e.target.dataset.orderId + '】已送达完成？',
-      success: function (res) {
-        if (res.confirm) {
-          request.httpPost({
-            url: config.completeOrderUrl,
-            data: { id: e.target.dataset.orderId },
-            showLoading: true,
-            success: function (data) {
-              if (data.success) {
-                wx.showToast({
-                  title: "送达完成",
-                  icon: 'success',
-                  mask: true,
-                  duration: 500,
-                  complete: function () {
-                    var orders = self.data.orders;
-                    orders.splice(e.target.dataset.index, 1);
-                    self.setData({
-                      orders: orders
-                    });
-                  }
-                })
-              }
-            }
-          })
-        }
-      }
-    });
+    wx.navigateTo({
+      url: '/page/component/order-complete/order-complete?orderId=' + e.target.dataset.orderId
+    })
 
   },
 
@@ -149,6 +121,7 @@ Page({
       url: url,
       data: { status: status, page: currPage, rows: rows },
       success: function (data) {
+        console.log(data);
         if (data.success) {
           if (data.obj.rows.length >= rows) {
             currPage++;

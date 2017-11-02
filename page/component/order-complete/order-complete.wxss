@@ -1,0 +1,43 @@
+/* page/component/order-complete/order-complete.wxss */
+@import '../../common/common.wxss';
+
+.complete textarea{
+  height: 300rpx;
+  padding: 24rpx;
+  background-color: #fff;
+  width: 100%;
+}
+
+.complete .btns{
+  position: relative;
+  padding: 40rpx 24rpx;
+}
+
+.complete .btns button{
+   display:inline-block; 
+  font-size: 28rpx;
+  width: 100%;
+  border-style: none;
+}
+
+.complete .btns button::after{
+  border: 1px solid #fe9900;
+}
+
+.complete .btns view:first-child{
+  padding-right: 24rpx;
+}
+
+.complete .btns view:first-child button{
+  /* background-color: #fe9900; */
+  color: #fff;
+  margin-left: 20rpx;
+}
+
+.complete .btns view:last-child{
+  padding-left: 24rpx;
+}
+
+.complete .btns view:last-child button{
+  color: #fe9900;
+}
