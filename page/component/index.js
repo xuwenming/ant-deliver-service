@@ -58,14 +58,22 @@ Page({
               })
               
             } else {
-              app.globalData.openid = data.obj;
-              wx.setNavigationBarTitle({
-                title: '注册'
-              });
-              self.setData({
-                pageLoad: true
-              });
-              wx.hideNavigationBarLoading();
+              if(data.obj) {
+                app.globalData.openid = data.obj;
+                wx.setNavigationBarTitle({
+                  title: '注册'
+                });
+                self.setData({
+                  pageLoad: true
+                });
+                wx.hideNavigationBarLoading();
+              } else {
+                wx.showModal({
+                  content: '请求超时，请稍后再试！',
+                  showCancel: false
+                });
+              }
+              
             }
 
             self.getUserInfo();

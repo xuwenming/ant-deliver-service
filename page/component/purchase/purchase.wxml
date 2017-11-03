@@ -1,5 +1,5 @@
 <!--page/component/purchase/purchase.wxml-->
-<view class="container">
+<!-- <view class="container">
   <view class='main'>
     <view><text>微信扫描</text> 二维码</view>
 
@@ -8,6 +8,9 @@
     <view>
       <image src="/image/wechat_qrcode.jpg"></image>
     </view>
-    <!-- <view class="tip">长按二维码</view> -->
+    <view class="tip">长按二维码</view>
   </view>
-</view>
+</view> -->
+
+ <web-view src="https://www.qrun360.com/shopweb/home/index.html"></web-view> 
+<!-- <web-view src="https://mp.weixin.qq.com/"></web-view> -->
