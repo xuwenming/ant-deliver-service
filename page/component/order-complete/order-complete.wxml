@@ -1,6 +1,51 @@
 <!--page/component/order-complete/order-complete.wxml-->
 <view class="container">
-  <view class='complete'>
+  <view class='textarea'>
+    <textarea maxlength="100" placeholder="请填写备注" name="completeRemark" bindinput="setCompleteRemark"/>
+  </view>
+  <view class='upload'>
+    <view class='item'>
+      <view class='del'>-</view>
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='item'>
+      <view class='del'>-</view>
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='item'>
+      <view class='del'>-</view>
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='item'>
+      <view class='del'>-</view>    
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='item'>
+      <view class='del'>-</view>    
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='item'>
+      <view class='del'>-</view>    
+      <image src="/image/wechat_qrcode.jpg" mode="center aspectFit"></image>
+    </view>
+    <view class='add'>
+      <image src="/image/plus.png"></image>
+    </view>
+  </view>
+
+  <view class='btns flex'>
+    <view class='flex-row .btn-item'>
+      <view>取消</view>
+    </view>
+    <view class='flex-row .btn-item'>
+      <view>确定送达</view>
+    </view>
+  </view>
+
+</view>
+
+
+<!-- <view class='complete'>
     <textarea maxlength="100" placeholder="请填写备注" name="completeRemark" bindinput="setCompleteRemark"/>
     <view class='order-item' wx:for="{{tempFilePaths}}" wx:key="tempFilePath" wx:for-item="tempFilePath">
       <image src="{{tempFilePath}}" style="width:150rpx;height:150rpx;" data-index="{{index}}" bindtap='showImage'/>
@@ -14,5 +59,4 @@
         <button size='default' bindtap='cancel'>取消</button> 
       </view>      
     </view>
-  </view>
-</view>
+  </view> -->

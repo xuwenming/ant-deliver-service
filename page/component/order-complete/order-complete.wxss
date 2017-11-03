@@ -1,43 +1,89 @@
 /* page/component/order-complete/order-complete.wxss */
 @import '../../common/common.wxss';
 
-.complete textarea{
+.textarea textarea{
+  width: 100%;
   height: 300rpx;
   padding: 24rpx;
   background-color: #fff;
-  width: 100%;
 }
 
-.complete .btns{
+.upload{
   position: relative;
-  padding: 40rpx 24rpx;
+  padding-top: 5vw;
+  background-color: #fff;
+  overflow: hidden;
+  padding-bottom: 3vw;
 }
 
-.complete .btns button{
-   display:inline-block; 
-  font-size: 28rpx;
-  width: 100%;
-  border-style: none;
+.upload .item{
+  position: relative;
+  float: left;
+  margin-left: 4vw;
+  width: 20vw;
+  height: 20vw;
+  margin-bottom: 2vw;
 }
 
-.complete .btns button::after{
-  border: 1px solid #fe9900;
-}
-
-.complete .btns view:first-child{
-  padding-right: 24rpx;
-}
-
-.complete .btns view:first-child button{
-  /* background-color: #fe9900; */
+.upload .item .del{
+  position: absolute;
+  right: -20rpx;
+  top: -20rpx;
+  width: 40rpx;
+  background-color: #d81e06;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
   color: #fff;
-  margin-left: 20rpx;
+  z-index: 22;
+  border-radius: 50%;
 }
 
-.complete .btns view:last-child{
-  padding-left: 24rpx;
+.upload .add{
+  float: left;
+  margin-left: 4vw;
+  width: 20vw;
+  height: 20vw;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+  margin-bottom: 2vw;
 }
 
-.complete .btns view:last-child button{
+.upload .item image{
+  width: 100%;
+  height: 100%;
+}
+
+.upload .add image{
+  display: block;
+  width: 10.5vw;
+  height: 10.5vw;
+  margin: 6vw auto;
+}
+
+.btns{
+  padding-top: 40rpx;
+}
+
+.btns .btn-item{
+  max-width: 50%;
+  min-width: 50%;
+  padding: 0 24rpx;
+}
+
+.btns .btn-item view{
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align:center;
+  border: 1px solid #fe9900;
+  width: 100%;
+}
+
+.btns .btn-item:first-child view{
   color: #fe9900;
+}
+
+.btns .btn-item:last-child view{
+  background-color: #fe9900;
+  color: #fff;
 }
