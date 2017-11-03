@@ -26,9 +26,10 @@ Page({
         url: config.getBalanceLogDetailUrl,
         data: { refId: options.refId, refType: options.refType },
         success: function (data) {
-          console.log(data);
           if (data.success) {
             data.obj.amount = Util.fenToYuan(data.obj.amount);
+            data.obj.addtime = Util.format(new Date(data.obj.addtime.replace(/-/g, "/")), 'MM-dd HH:mm');
+            data.obj.distance = Util.distanceConvert(data.obj.distance);
             self.setData({
               balanceDetail: data.obj
             });

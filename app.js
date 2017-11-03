@@ -81,12 +81,11 @@ App({
       index = options.index || 0,
       result = options.result || ''
     wx.uploadFile({
-      url: options.url, //仅为示例，非真实的接口地址
+      url: options.url, 
       filePath: options.filePaths[index],
       name: options.name || 'file',
       formData: options.formData || null,
       success: function (res) {
-        console.log(res);
         if (res.statusCode == 200 && res.data) {
           var data = JSON.parse(res.data);
           index++;

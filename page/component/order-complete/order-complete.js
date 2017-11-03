@@ -14,7 +14,6 @@ Page({
     tempFilePaths:[],
     completeImages:null,
     completeRemark:null,
-    complete_disabled:true,
     uploadRequired:true
   },
 
@@ -32,7 +31,6 @@ Page({
       success: function (data) {
         if (data.success && data.obj) {
           self.setData({
-            complete_disabled: false,
             uploadRequired: data.obj.uploadRequired
           });
         }
@@ -54,6 +52,14 @@ Page({
           tempFilePaths: tempFilePaths
         })
       }
+    })
+  },
+
+  delImage : function(e){
+    var tempFilePaths = this.data.tempFilePaths;
+    tempFilePaths.splice(e.target.dataset.index, 1);
+    this.setData({
+      tempFilePaths: tempFilePaths
     })
   },
 
@@ -83,7 +89,7 @@ Page({
         filePaths: this.data.tempFilePaths,
         name: 'imageFile',
         success: function (completeImages) {
-          console.log(completeImages);
+          // console.log(completeImages);
           self.setData({
             completeImages: completeImages
           });

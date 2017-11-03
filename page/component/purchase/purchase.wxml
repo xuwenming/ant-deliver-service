@@ -12,5 +12,5 @@
   </view>
 </view> -->
 
- <web-view src="https://www.qrun360.com/shopweb/home/index.html"></web-view> 
+ <web-view src="https://www.qrun360.com/shopweb/home/index.html#wechat_redirect"></web-view> 
 <!-- <web-view src="https://mp.weixin.qq.com/"></web-view> -->

@@ -1,9 +1,13 @@
 /* page/component/order-complete/order-complete.wxss */
 @import '../../common/common.wxss';
 
+.textarea {
+  margin-bottom:20rpx; 
+}
+
 .textarea textarea{
   width: 100%;
-  height: 300rpx;
+  height: 260rpx;
   padding: 24rpx;
   background-color: #fff;
 }
@@ -37,6 +41,7 @@
   color: #fff;
   z-index: 22;
   border-radius: 50%;
+  margin: 20rpx;
 }
 
 .upload .add{
@@ -58,7 +63,7 @@
   display: block;
   width: 10.5vw;
   height: 10.5vw;
-  margin: 6vw auto;
+  margin: 5vw auto;
 }
 
 .btns{
