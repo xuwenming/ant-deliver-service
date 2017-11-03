@@ -86,7 +86,7 @@ Page({
 
   rollAll:function(){
     var amountByY = this.data.currentTab == 'in' ? this.data.purchase.amountByY : this.data.deliver.amountByY;
-
+    amountByY = amountByY.replace(/[,]/g, '')
     if (amountByY > 0)
       this.setData({
         'rollBtn.disabled': false,

@@ -67,28 +67,29 @@ Page({
 
   orderComplete:function(){
     var self = this, uploadRequired = self.data.uploadRequired;
-    if (uploadRequired) {
-      if (self.data.tempFilePaths.length == 0) {
+    if (uploadRequired && self.data.tempFilePaths.length == 0) {
         wx.showModal({
           content: '请至少上传一张图片！',
           showCancel: false
         });
         return;
-      }
+    }
 
+    if (self.data.tempFilePaths.length == 0) {
+      self.complete();
+    } else {
       app.uploadImage({
         url: config.uploadImageUrl,
         filePaths: this.data.tempFilePaths,
         name: 'imageFile',
         success: function (completeImages) {
+          console.log(completeImages);
           self.setData({
             completeImages: completeImages
           });
           self.complete();
         }
       });
-    } else {
-      self.complete();
     }
   },
 
@@ -109,9 +110,10 @@ Page({
                   title: "送达完成",
                   icon: 'success',
                   mask: true,
-                  duration: 1500,
                   complete: function () {
-                    self.cancel();
+                    setTimeout(function(){
+                      self.cancel();
+                    }, 1000);
                   }
                 })
               }

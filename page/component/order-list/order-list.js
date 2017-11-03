@@ -121,7 +121,6 @@ Page({
       url: url,
       data: { status: status, page: currPage, rows: rows },
       success: function (data) {
-        console.log(data);
         if (data.success) {
           if (data.obj.rows.length >= rows) {
             currPage++;

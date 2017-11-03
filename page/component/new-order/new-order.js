@@ -136,15 +136,18 @@ Page({
             data: { id: e.target.dataset.orderId },
             success: function (data) {
               if (data.success) {
+                var orders = self.data.orders;
+                orders.splice(e.target.dataset.index, 1);
+                self.setData({
+                  orders: orders
+                });
+
                 wx.showModal({
-                  content: '成功接单，可前往已处理订单查看！',
-                  showCancel: false,
+                  content: '成功接单，是否前往查看发货！',
                   success: function (res) {
                     if (res.confirm) {
-                      var orders = self.data.orders;
-                      orders.splice(e.target.dataset.index, 1);
-                      self.setData({
-                        orders: orders
+                      wx.switchTab({
+                        url: '/page/component/order-list/order-list'
                       });
                     }
                   }

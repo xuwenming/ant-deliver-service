@@ -78,8 +78,7 @@ Page({
   },
 
   cashAll: function () {
-    var amountByY =  this.data.deliver.amountByY;
-
+    var amountByY = this.data.deliver.amountByY.replace(/[,]/g, '');
     if (amountByY > 0)
       this.setData({
         'cashBtn.disabled': false,
