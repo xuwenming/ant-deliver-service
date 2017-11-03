@@ -31,8 +31,8 @@
 
 .upload .item .del{
   position: absolute;
-  right: -20rpx;
-  top: -20rpx;
+  right: -30rpx;
+  top: -30rpx;
   width: 40rpx;
   background-color: #d81e06;
   height: 40rpx;
