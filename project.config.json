@@ -13,22 +13,6 @@
 	"projectname": "ant-deliver-service",
 	"miniprogramRoot": "./",
 	"condition": {
-		"weapp": {
-			"current": 1,
-			"list": [
-				{
-					"id": -1,
-					"name": "aa",
-					"pathName": "page/component/balance-roll/balance-roll",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "bb",
-					"pathName": "page/component/order-complete/order-complete"
-				}
-			]
-		},
 		"search": {
 			"current": -1,
 			"list": []
