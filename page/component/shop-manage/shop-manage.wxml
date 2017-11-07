@@ -6,7 +6,7 @@
       <button size="mini" type="{{online.type}}" plain='true' class="online" bindtap='changeOnline'>{{online.name}}</button>
     </view>
     <view class='flex header-bottom'>
-        <view class='flex-row left'>
+        <view class='flex-row left' bindtap='todayOrders'>
           <view class='h3'>{{accountInfo.validOrders}}</view>
           <view class='p'>今日有效订单</view>
         </view> 
@@ -16,7 +16,7 @@
           </view>
           <view class='name'>{{accountInfo.shopName}}</view>
         </view>
-        <view class='flex-row left'>
+        <view class='flex-row left' bindtap='todayOrders'>
           <view class='h3'>￥{{accountInfo.turnover}}</view>
           <view class='p'>今日营业额</view>
         </view>

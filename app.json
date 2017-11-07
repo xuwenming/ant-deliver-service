@@ -18,7 +18,8 @@
     "page/component/purchase/purchase",
     "page/component/balance-cash/balance-cash",
     "page/component/balance-cash-list/balance-cash-list",
-    "page/component/order-complete/order-complete"
+    "page/component/order-complete/order-complete",
+    "page/component/today-order-list/today-order-list"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

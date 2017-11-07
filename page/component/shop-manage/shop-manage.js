@@ -109,6 +109,12 @@ Page({
     })
   },
 
+  todayOrders: function(){
+    wx.navigateTo({
+      url: '/page/component/today-order-list/today-order-list'
+    })
+  },
+
   toPurchase: function(){
     request.httpGet({
       url: config.getBaseDataByKeyUrl,
