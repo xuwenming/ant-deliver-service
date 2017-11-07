@@ -40,7 +40,6 @@ Page({
     request.httpGet({
       url: config.getTodayOrdersUrl,
       success: function (data) {
-        console.log(data);
         if (data.success) {
 
           for (var i in data.obj) {

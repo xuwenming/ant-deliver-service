@@ -86,7 +86,7 @@ Page({
               shopName: data.obj.mbShop.name,
               shopStatus: data.obj.shopDeliverApply.status,
               validOrders: data.obj.todayQuantity,
-              turnover: Util.fenToYuan(data.obj.todayAmount)
+              turnover: Util.fenToYuan(data.obj.todayAmount).replace(/[,]/g, '')
             },
             online:{
               type: online == 1 ? 'yellow' : 'default',
