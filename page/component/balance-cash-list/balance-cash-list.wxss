@@ -1,39 +1,52 @@
 
 @import '../../common/common.wxss';
 .content {
-  padding-top: 10rpx;
-}
-.box{
-  background-color: #fff;
-  /* margin-top: 10rpx; */
+  padding-top: 88rpx;
 }
 
-.box .header{
+.header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 88rpx;
   padding: 0rpx 24rpx;
+  background-color: #fff;
+  z-index: 999;
+  -webkit-box-sizing: border-box;
 }
 
-.box .header .lf{
+.header::before,
+.header::after{
+  -webkit-box-sizing: border-box;
+}
+
+.header .lf{
   line-height: 88rpx;
   color: #999;
   font-size: 28rpx;
 }
 
-.box .header .rg{
+.header .rg{
   max-width: 48rpx;
   min-width: 48rpx;
   height: 48rpx;
   margin-top: 20rpx;
 }
 
-.box .header .rg picker{
+.header .rg picker{
   width: 100%;
   height: 100%;
 }
 
-.box .header .rg picker image{
+.header .rg picker image{
   width: 48rpx;
   height: 48rpx;
+}
+
+.box{
+  background-color: #fff;
+  /* margin-top: 10rpx; */
 }
 
 .box .list{

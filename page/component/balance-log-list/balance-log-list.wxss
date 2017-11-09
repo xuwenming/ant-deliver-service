@@ -1,39 +1,66 @@
 /* page/component/balance-log-list/balance-log-list.wxss */
 @import '../../common/common.wxss';
 .content {
-  padding-top: 10rpx;
-}
-.box{
-  background-color: #fff;
-  /* margin-top: 10rpx; */
+   padding-top: 120rpx; 
 }
 
-.box .header{
-  height: 88rpx;
+.header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 120rpx;
   padding: 0rpx 24rpx;
+  background-color: #fff;
+  z-index: 999;
+  -webkit-box-sizing: border-box;
 }
 
-.box .header .lf{
-  line-height: 88rpx;
-  color: #999;
+.header::before,
+.header::after{
+  -webkit-box-sizing: border-box;
+}
+
+.header .lf{
   font-size: 28rpx;
 }
 
-.box .header .rg{
+.header .lf .date{
+  padding-top: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.header .lf .balance{
+  padding-top: 6rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.header .lf .balance .t1{
+  padding-right: 40rpx;
+}
+
+.header .rg{
   max-width: 48rpx;
   min-width: 48rpx;
   height: 48rpx;
-  margin-top: 20rpx;
+  margin-top: 36rpx;
 }
 
-.box .header .rg picker{
+.header .rg picker{
   width: 100%;
   height: 100%;
 }
 
-.box .header .rg picker image{
+.header .rg picker image{
   width: 48rpx;
   height: 48rpx;
+}
+
+.box{
+  background-color: #fff;
+  /* margin-top: 10rpx; */
 }
 
 .box .list{
@@ -73,6 +100,15 @@
 }
 
 .box .list .item .rg{
-  color: #fe9900;
   text-align: right;
+}
+
+.box .list .item .rg .amout{
+  color: #333;
+}
+
+.box .list .item .rg .balance{
+  color: #999;
+  font-size: 24rpx;
+  padding-top: 10rpx;
 }

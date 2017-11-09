@@ -1,17 +1,18 @@
 
 <view class="container">
   <view class='content'>
-    <view class='box'>
-      <!--header  -->
-      <view class='flex header'>
-        <view class='flex-row lf'>{{cond.showDate}}</view>
-        <view class='flex-row rg'>
-          <picker class='img' mode="date" value="{{cond.date}}" fields="month" start="{{cond.start}}" end="{{cond.end}}" bindchange="bindDateChange">
-            <image src="/image/picker_icon.png" />
-          </picker>
-        </view>
-      </view>
 
+     <!--header  -->
+    <view class='flex header'>
+      <view class='flex-row lf'>{{cond.showDate}}</view>
+      <view class='flex-row rg'>
+        <picker class='img' mode="date" value="{{cond.date}}" fields="month" start="{{cond.start}}" end="{{cond.end}}" bindchange="bindDateChange">
+          <image src="/image/picker_icon.png" />
+        </picker>
+      </view>
+    </view>
+
+    <view class='box'>
       <!-- list -->
       <view class='list line-after line-before'  wx:if="{{balanceLogs == null || balanceLogs.length > 0}}">
         <view class='item line-bl' wx:for="{{balanceLogs}}" wx:key="id" wx:for-item="balanceLog">
