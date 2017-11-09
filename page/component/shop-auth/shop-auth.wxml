@@ -33,7 +33,7 @@
   </view>
 
   <view class="footer">
-    <view class='label'>请致电400-165-1654</view>
+    <view class='label' bindtap='callPhone'>请致电400-002-1365</view>
     <navigator url="/page/component/protocol/protocol" hover-class="navigator-hover">《仓蚁管家商家派单协议》</navigator>
   </view>
 </view>

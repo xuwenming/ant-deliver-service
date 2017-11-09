@@ -116,5 +116,10 @@ Page({
         }
       }
     });
+  },
+  callPhone:function(){
+    wx.makePhoneCall({
+      phoneNumber: '400-002-1365' //仅为示例，并非真实的电话号码
+    })
   }
 })

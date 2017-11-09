@@ -1,4 +1,118 @@
 <!--page/component/protocol/protocol.wxml-->
-<text>
-正在建设中...
-</text>
+<view style="font-family: STHeiti; font-size: 18px; white-space: normal; text-align: center;font-weight: bold">
+    《仓蚁管家商家派单协议》
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-align: left;">
+    1.特别提示
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    尊敬的用户，欢迎阅读仓蚁管家商家派单协议，本服务协议双方为上海奔翔实业有限公司旗下“仓蚁管家”（下称“仓蚁管家”）与仓蚁管家小程序用户，本服务协议具有合同效力。本服务协议内容包括协议正文及所有仓蚁管家已经发布的或将来可能发布的各类规则。所有规则为协议不可分割的一部分，与协议正文具有同等法律效力。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    在本服务协议中没有以“规则”字样表示的链接文字所指示的文件不属于本服务协议的组成部分，而是其他内同的协议或有关参考资料，与本协议没有法律的直接关系。用户在使用仓蚁管家小程序提供的各项服务的同时，承诺接受并遵守各项相关规则的规定。仓蚁管家有权根据需要不时地制定、修改本协议或各类规则，如本协议有任何变更，仓蚁管家将会在相关的页面提示修改内容。修改后的服务协议一旦在页面上公布即有效代替原来的服务协议。用户在使用仓蚁管家小层序提供的各项服务之前，应仔细阅读本服务协议，如用户不同意本充值用户协议及/或随时对其的修改，请停止使用仓蚁管家小程序提供的服务。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    无论用户事实上是否在注册之前认真阅读了本服务协议，只要用户点击协议本下方的“同意”按钮并按照仓蚁管家注册程序成功成为用户，用户的行为依然表示其同意并签署了本服务协议。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    仓蚁管家的用户：<span style="text-indent: 2em;">用户为具备完全民事行为能力的自热人，或者具备有合同法经营资格的实体组织。无民事行为能力人、限制民事行为能力人以及无经营或特定经营资格的组织不当注册为仓蚁管家用户或超过其民事权利或行为能力范围从事交易的，与仓蚁管家之间的服务协议自始无效，仓蚁管家一经发现，有权立即注销该用户，并追究其使用仓蚁管家“服务”的一切法律责任。</span>
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    仓蚁管家商户的定义：<span style="text-indent: 2em;">在仓蚁管家商品交易平台开通有经营权的店铺，管理商品和接收普通用户（购买商品的用户）的订单，并为普通用户提供送货到家服务的商家。</span>
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    \n
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    2.服务内容
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    1、仓蚁管家为商家提供微信小程序店铺的建设、维护、运行和管理。另外，商户通过注册，经过仓蚁管家审核，便可发布和管理自己的商品信息。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    2、仓蚁管家负责向商家提供订单的推送服务，与销售商品有关的一切事物（发货、质量保证、退换货等）均应由商家负责。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    3、仓蚁管家免费维护和管理商家使用的小程序。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    4、仓蚁管家有权审核商家上架的商品信息，对商家提供的商品，有权修改价格和运费，也有权拒绝发布或删除该商品。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    6、仓蚁管家可协助商家向买家提供商品配送服务，保证配送时间和服务质量。因配送时间和服务出现问题，商家与买家产生纠纷，仓蚁管家协助解决；如因商家提供的商品质量造成损失，商机负责。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    7、所有产生的网上贷款，买家均统一交付于仓蚁管家平台，仓蚁管家根据实际交易，7天一个周期为商家进行支付。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    \n
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    3.使用规则
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    1、商家一旦注册成功，成为合法的用户，将得到一个密码和用户名。您可随时根据需要改变您的密码。商家将对用户名和密码安全负全部责任。另外，每个用户都要对以其用户名进行的所有活动和事件负全责。商家若发现任何非法使用账户或存在安全漏洞的情况，请立即通知仓蚁管家。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    2、商家一旦接收订单后，必须保证在2小时之内送到到客户手中，同时必须保证商品质
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    量问题。另外，如果仓蚁管家指定配送的订单，商家不可拒绝配送。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    3、仓蚁管家系统通知商家下单后，如因商家商品售罄原因，不能提供的，商家应立刻电话通知。下单的消费者和仓蚁管家，并做好合理的安抚和处理。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    4、若商家确实有事而无法营业，必须提前让自己的店铺处于停止营业状态。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    5、商家必须保证消费者的隐私，不能随意透露消费者的信息。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    6、仓蚁管家不对商家所发布信息的删除或存储失败负责。仓蚁管家有权判定商家的行为是否符合仓蚁管家服务条款的要求和精神的保留权利，如果商家违背了服务条款的规定，甲方有中断对其提供网络服务的权利。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    7、如因不可抗拒或其他无法控制的原因使仓蚁管家系统奔溃或无法正常使用导致网上交易无法完成或丢失有关的信息、记录等，仓蚁管家不承担责任。但是仓蚁管家会尽可能合理地协助处理善后事宜。并努力使客服免受经济损失。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    \n
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    4.合作约定
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    1、任何双方违反协议所规定的义务导致另一方受到包括但不限于投诉、举报、诉讼或处罚、陪送等损失，违约方在收到守约方要求纠正其违法行为的书面通知之日，应立即停止其违约行为，并在10日内赔偿约方因此受到的损失。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    2、本协议任何一方均应对其获得对方的业务、经营、财务状况和其他保密资料予以严格保密，不得以任何形式向任何第三方披露。如任何一方未能履行保密义务而给其造成任何损失的，应承担赔偿损失。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    \n
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    5.法律管辖
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    5.1 本协议的订立、执行和解释及争议的解决均应适用中国法律。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    5.2 如双方就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均应向仓蚁管家所在地的人民法院提起诉讼。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    \n
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal;">
+    6.其他规定
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    6.1 本协议构成双方对本协议之约定事项及其他有关事宜的完整协议，除本协议规定的之外，未赋予本协议各方其他权利。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    6.2 如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。
+</view>
+<view style="font-family: STHeiti; font-size: medium; white-space: normal; text-indent: 2em;">
+    6.3 本协议中的标题仅为方便而设，不具法律或契约效果。
+</view>
+<view>
+    \n
+</view>
