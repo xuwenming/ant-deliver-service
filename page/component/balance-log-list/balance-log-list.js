@@ -12,6 +12,8 @@ Page({
    */
   data: {
     balanceLogs:null,
+    income:null,  // 收入
+    expenditure:null, // 支出
     cond:{
       showDate : '本月',
       date: Util.format(new Date(), 'yyyy-MM'),
@@ -28,7 +30,26 @@ Page({
    */
   onLoad: function (options) {
     currPage = 1;
-    this.getBalanceLogs(true);
+    this.totalBalanceByMonth();
+  },
+
+  totalBalanceByMonth: function(){
+    var self = this;
+    wx.showNavigationBarLoading();
+    request.httpGet({
+      url: config.totalBalanceByMonth,
+      data: { date: self.data.cond.date},
+      showLoading: true,
+      success: function (data) {
+        if (data.success) {
+          self.setData({
+            income: Util.fenToYuan(data.obj.income),
+            expenditure: Util.fenToYuan(-data.obj.expenditure)
+          });
+          self.getBalanceLogs(true);
+        }
+      }
+    })
   },
 
   getBalanceLogs: function (isRefresh) {
@@ -37,7 +58,6 @@ Page({
     //   title: '努力加载中...',
     //   mask: true
     // })
-    wx.showNavigationBarLoading();
 
     request.httpGet({
       url: config.getBalanceLogsUrl,
@@ -65,6 +85,7 @@ Page({
               pre = "+";
             }
             data.obj.rows[i].amount = pre + Util.fenToYuan(amount);
+            data.obj.rows[i].balanceAmount = Util.fenToYuan(self.getBalanceAmount(balanceLog.remark));
           }
           var balanceLogs = self.data.balanceLogs;
           if (isRefresh) balanceLogs = data.obj.rows;
@@ -92,7 +113,7 @@ Page({
     });
 
     currPage = 1;
-    this.getBalanceLogs(true);
+    this.totalBalanceByMonth();
   },
 
   /**
@@ -118,6 +139,25 @@ Page({
       //   icon: 'loading',
       //   duration: 500
       // })
+    }
+  },
+
+  getBalanceAmount:function(remark){
+    //用来判断是否把连续的0去掉
+    if (typeof remark === "string") {
+      // var arr = Str.match(/(0\d{2,})|([1-9]\d+)/g);
+      //"/[1-9]\d{1,}/g",表示匹配1到9,一位数以上的数字(不包括一位数).
+      //"/\d{2,}/g",  表示匹配至少二个数字至多无穷位数字
+      var arr = remark.match(/期末余额:[0-9\-]{1,}分/);
+      if (arr && arr.length > 0) {
+        var num = arr[arr.length - 1];
+        num = num.replace("期末余额:", "").replace("分", "");
+        return num;
+      } else {
+        return '';
+      }
+    } else {
+      return '';
     }
   }
 

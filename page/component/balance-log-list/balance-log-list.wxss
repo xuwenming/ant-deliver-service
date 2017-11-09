@@ -48,6 +48,9 @@
 .box .list .item .lf .top{
   padding-bottom: 10rpx;
 }
+.box .list .item .lf .total{
+  padding-bottom: 0;
+}
 
 .box .list .item .lf .top .text1{
   font-size: 30rpx;
@@ -58,6 +61,10 @@
   font-size: 28rpx;
   color: #999;
   padding-left: 20rpx;
+}
+
+.box .list .item .lf .top .text1 .t1{
+  padding-right: 50rpx; 
 }
 
 .box .list .item .lf .bottom{

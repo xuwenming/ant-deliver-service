@@ -106,6 +106,9 @@ var config = {
     // 转入/转出短信验证码
     getBalanceRollVcodeUrl: `${server_host}/api/deliver/deliverBalance/getVCode`,
 
+    // 按月统计收入支出
+    totalBalanceByMonth: `${server_host}/api/deliver/deliverBalance/totalBalanceByMonth`,
+
     // 账户明细列表
     getBalanceLogsUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDataGrid`,
 

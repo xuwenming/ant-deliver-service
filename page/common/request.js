@@ -161,6 +161,7 @@ function login(success, fail) {
         data: {
           code: data.code
         },
+        showLoading:true,
         success: function (data) {
           console.log('登录成功', data);
           if (data && data.success) {
@@ -168,6 +169,7 @@ function login(success, fail) {
 
             httpPost({
               url: config.getShopApplyUrl,
+              showLoading: true,
               success: function (data) {
                 if (data.success && data.obj) {
                   if (data.obj.status == 'DAS02') {
