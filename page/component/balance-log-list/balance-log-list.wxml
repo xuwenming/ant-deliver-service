@@ -42,6 +42,9 @@
               <view class="amout">{{balanceLog.amount}}</view>
               <view class="balance">{{balanceLog.balanceAmount}}</view>
             </view>
+            <view class='arrow flex-row flex flex-align-center'>
+              <image src='/image/right.png'></image>
+            </view>
           </navigator>
         </view>
       </view>

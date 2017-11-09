@@ -14,6 +14,7 @@
   background-color: #fff;
   z-index: 999;
   -webkit-box-sizing: border-box;
+  box-shadow: 0 0 10px #eee;
 }
 
 .header::before,
@@ -104,11 +105,23 @@
 }
 
 .box .list .item .rg .amout{
-  color: #333;
+  color: #fe9900;
 }
 
 .box .list .item .rg .balance{
   color: #999;
   font-size: 24rpx;
   padding-top: 10rpx;
+}
+
+.box .list .item .arrow{
+  max-width: 18rpx;
+  min-width: 18rpx;
+  margin-left: 20rpx;
+}
+
+.box .list .item .arrow image{
+  display: block;
+  width: 18rpx;
+  height: 32rpx;
 }
