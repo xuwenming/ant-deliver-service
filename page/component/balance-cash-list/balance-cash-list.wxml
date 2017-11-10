@@ -18,13 +18,19 @@
         <view class='item line-bl' wx:for="{{balanceLogs}}" wx:key="id" wx:for-item="balanceLog">
           <navigator class='flex '  url="/page/component/balance-log-detail/balance-log-detail?id={{balanceLog.id}}&refType={{balanceLog.refType}}&amount={{balanceLog.amount}}&addtime={{balanceLog.addtime}}&handleStatus={{balanceLog.handleStatus}}">
             <view class='flex-row lf'>
-              <view class='flex top'>
-                <view class='flex-row text1'>{{balanceLog.refTypeName}}</view>
-                <!-- <view class='flex-row text2'>订单号：{{balanceLog.id}}</view> -->
-              </view>
+              <view class='flex top'>{{balanceLog.refTypeName}}</view>
               <view class='bottom'>{{balanceLog.addtime}}</view>
             </view>
-            <view class='flex-row flex flex-align-center flex-pack-end rg'>{{balanceLog.amount}}</view>
+            <view class='flex-row rg' wx:if="{{balanceLog.handleStatus == 'HS01'}}">
+              <view class="amout">{{balanceLog.amount}}</view>
+               <view class="status">处理中</view> 
+            </view>
+            <view class='flex-row rg' wx:else style='line-height:45px;'>
+              <view class="amout">{{balanceLog.amount}}</view>
+            </view>
+            <view class='arrow flex-row flex flex-align-center'>
+              <image src='/image/right.png'></image>
+            </view>
           </navigator>
         </view>
       </view>

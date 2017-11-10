@@ -83,3 +83,25 @@
   color: #fe9900;
   text-align: right;
 }
+
+.box .list .item .rg .amout{
+  color: #fe9900;
+}
+
+.box .list .item .rg .status{
+  color: #999;
+  font-size: 24rpx;
+  padding-top: 10rpx;
+}
+
+.box .list .item .arrow{
+  max-width: 18rpx;
+  min-width: 18rpx;
+  margin-left: 20rpx;
+}
+
+.box .list .item .arrow image{
+  display: block;
+  width: 18rpx;
+  height: 32rpx;
+}

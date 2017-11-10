@@ -6,9 +6,9 @@
       <view class='flex header'>
         <view class='flex-row lf'>
           <view class='date'>{{cond.showDate}}</view>
-          <view class='balance'  wx:if="{{(expenditure != null || income != null) && balanceLogs.length > 0}}">
-            <text class='t1' wx:if="{{expenditure != null}}">支出￥{{expenditure}}</text>
-            <text class='t2' wx:if="{{income != null}}">收入￥{{income}}</text>
+          <view class='balance'>
+            <text class='t1'>支出￥{{expenditure == null ? 0 : expenditure}}</text>
+            <text class='t2'>收入￥{{income == null ? 0 : income}}</text>
           </view>
         </view>
         <view class='flex-row rg'>
@@ -50,7 +50,7 @@
       </view>
 
       <view wx:else>
-      <include src="/page/common/noDataTemplate.wxml"/>   
+        <include src="/page/common/noDataTemplate.wxml"/>   
       </view>
     </view>
   </view>

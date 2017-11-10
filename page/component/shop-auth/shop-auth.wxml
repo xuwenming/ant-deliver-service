@@ -26,7 +26,7 @@
         <text>{{mbShop.contactPeople}}</text>
       </view>
 
-      <view class="icon">
+      <view class="icon" wx:if="{{mbShop.statusIcon != null}}">
         <image mode="scaleToFill" src="{{mbShop.statusIcon}}" />
       </view>
     </view>
