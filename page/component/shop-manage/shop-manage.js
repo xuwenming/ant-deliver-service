@@ -38,6 +38,7 @@ Page({
 
   changeOnline:function(e){
     var self = this, online = self.data.online.online == 1 ? 0 : 1;
+    if (self.data.online.frozen) return; // 冻结中
     request.httpPost({
       url: config.updateOnlineUrl,
       data: { online: online},
@@ -79,6 +80,7 @@ Page({
       success: function (data) {
         if (data.success) {
           var online = data.obj.shopDeliverApply.online;
+          var frozen = data.obj.shopDeliverApply.frozen;
           self.setData({
             accountInfo: {
               userName: data.obj.account.userName,
@@ -89,9 +91,10 @@ Page({
               turnover: Util.fenToYuan(data.obj.todayAmount).replace(/[,]/g, '')
             },
             online:{
-              type: online == 1 ? 'yellow' : 'default',
+              type: frozen == 1 ? 'default' : (online == 1 ? 'yellow' : 'default'),
               online: online,
-              name: online == 1 ? '营业中' : '停止营业'
+              frozen: frozen,
+              name: frozen == 1 ? '已冻结' : (online == 1 ? '营业中' : '停止营业')
             },
             pageLoad:true
           });

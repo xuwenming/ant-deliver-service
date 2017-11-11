@@ -61,8 +61,8 @@
             <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
           </view>
           <view>
-            <button data-order-id="{{order.id}}" data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='orderDeliver' wx:if="{{order.status=='DOS20'}}">发货</button> 
-            <button data-order-id="{{order.id}}" data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='orderComplete' wx:elif="{{order.status=='DOS25'}}">送达完成</button>
+            <button data-order-id="{{order.id}}" data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='orderDeliver' wx:if="{{currentTab == 0 && order.status=='DOS20'}}">发货</button> 
+            <button data-order-id="{{order.id}}" data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='orderComplete' wx:elif="{{currentTab == 1 && order.status=='DOS25'}}">送达完成</button>
           </view>
         </view>
     </view>

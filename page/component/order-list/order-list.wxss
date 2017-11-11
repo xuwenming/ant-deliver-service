@@ -208,7 +208,7 @@
 }
 
 .order-list .bottoms .carry{
-  padding:20rpx 0  0 24rpx;
+  padding:20rpx 0 20rpx 24rpx;
   font-size:28rpx;
 }
 
