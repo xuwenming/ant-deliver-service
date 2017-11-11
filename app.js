@@ -121,7 +121,7 @@ App({
         });
       },
       complete: function (res) {
-        if (!options.showLoading) {
+        if (!options.showLoading && index == options.filePaths.length) {
           wx.hideLoading();
           wx.hideNavigationBarLoading();
         }

@@ -46,6 +46,7 @@ Page({
     var self = this, tempFilePaths = this.data.tempFilePaths;
     wx.chooseImage({
       count:3,
+      sizeType: ['compressed'],
       success: function (res) {
         tempFilePaths = tempFilePaths.concat(res.tempFilePaths);
         self.setData({
@@ -84,6 +85,11 @@ Page({
     if (self.data.tempFilePaths.length == 0) {
       self.complete();
     } else {
+      wx.showLoading({
+        title: '上传中...',
+        mask: true
+      });
+
       app.uploadImage({
         url: config.uploadImageUrl,
         filePaths: this.data.tempFilePaths,
@@ -123,6 +129,9 @@ Page({
                   }
                 })
               }
+            },
+            fail:function(){
+              wx.hideLoading();
             }
           })
         }
