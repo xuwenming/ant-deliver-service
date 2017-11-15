@@ -27,7 +27,6 @@ Page({
           data.obj.addtime = Util.format(new Date(data.obj.addtime.replace(/-/g, "/")), 'MM-dd HH:mm');
           data.obj.distance = Util.distanceConvert(data.obj.distance);
           var completeImages = data.obj.completeImages;
-          console.log(completeImages != '\"null\"')
           if (!Util.isEmpty(completeImages) && completeImages != 'null') {
             data.obj.completeImages = completeImages.split(";");
           } else {
