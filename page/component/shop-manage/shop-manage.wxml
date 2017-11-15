@@ -45,7 +45,13 @@
       <view class='label'>我要采购</view>
     <!-- </navigator> -->
     </view>
+    
+    <!-- <navigator class='flex-row' url="/page/component/print-setup/print-setup">
+      <view class='icon'><image src='../../../image/box_5.png'></image></view>
+      <view class='label'>打印设置</view>
+    </navigator> -->
     <view class='flex-row'></view>
+    
     <view class='flex-row'></view>
   </view>
 </view>

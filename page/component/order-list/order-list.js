@@ -96,6 +96,13 @@ Page({
 
   },
 
+  viewDetail : function(e){
+    if (this.data.currentTab == 2)
+      wx.navigateTo({
+        url: '/page/component/order-detail/order-detail?orderId=' + e.currentTarget.dataset.orderId
+      })
+  },
+
   /**
    * TODO 暂时没做翻页
    * isRefresh:true=初始化或下拉刷新 false=上拉加载更多

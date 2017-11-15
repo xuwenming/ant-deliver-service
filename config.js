@@ -41,14 +41,16 @@ var config = {
     // 更新营业状态
     updateOnlineUrl: `${server_host}/api/deliver/account/updateOnline`,
 
-    // 订单列表查询
-    getTodayOrdersUrl: `${server_host}/api/deliver/deliverOrder/todayOrders`,
+    // 今日订单列表查询
+    getTodayOrdersUrl: `${server_host}/api/deliver/deliverOrder/getTodayOrders`,
 
     // 订单列表查询
     getOrdersUrl: `${server_host}/api/deliver/deliverOrder/dataGrid`,
     // 订单列表查询(取消)
     getRefusedOrdersUrl: `${server_host}/api/deliver/deliverOrder/viewRefusedDataGrid`,
-    // getOrdersUrl: `${server_host}/testData/orders.txt`,
+    
+    // 订单详情查询
+    getOrderDetailUrl: `${server_host}/api/deliver/deliverOrder/getDetail`,
 
     // 拒绝订单
     refuseOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderRefuse`,
@@ -65,7 +67,7 @@ var config = {
     uploadImageUrl: `${server_host}/api/deliver/deliverOrder/uploadImage`,
 
     // 获取有效新订单数量
-    getNewOrderCountUrl: `${server_host}/api/deliver/deliverOrder/countNewAllocationOrder`,
+    getNewOrderCountUrl: `${server_host}/api/deliver/deliverOrder/getNewAllocationOrderQuantity`,
 
     // 商品管理列表-全部
     getAllItemsUrl: `${server_host}/api/deliver/item/getAllItemList`,
@@ -107,28 +109,31 @@ var config = {
     getBalanceRollVcodeUrl: `${server_host}/api/deliver/deliverBalance/getVCode`,
 
     // 按月统计收入支出
-    totalBalanceByMonth: `${server_host}/api/deliver/deliverBalance/totalBalanceByMonth`,
+    totalBalanceByMonth: `${server_host}/api/deliver/deliverBalance/getTotalBalanceByMonth`,
 
     // 账户明细列表
-    getBalanceLogsUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDataGrid`,
+    getBalanceLogsUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBalanceLogDataGrid`,
 
     // 账户明细详情
-    getBalanceLogDetailUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBanlanceLogDetial`,
+    getBalanceLogDetailUrl: `${server_host}/api/deliver/deliverBalance/viewDeliverBalanceLogDetail`,
 
     // 转出到采购钱包
-    deliverToBalanceUrl: `${server_host}/api/deliver/deliverBalance/transformAmountDeliverToBalance`,
+    deliverToBalanceUrl: `${server_host}/api/deliver/deliverBalance/updateAmountDeliverToBalance`,
 
     // 转入到派单钱包
-    balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/transformAmountBalanceToDeliver`,
+    balanceToDeliverUrl: `${server_host}/api/deliver/deliverBalance/updateAmountBalanceToDeliver`,
 
     // 申请余额提现
-    balanceCashUrl: `${server_host}/api/deliver/deliverBalance/withdraw`,
+    balanceCashUrl: `${server_host}/api/deliver/deliverBalance/updateWithdraw`,
 
     // 提现记录列表
-    getBalanceCashLogsUrl: `${server_host}/api/deliver/deliverBalance/withdrawDataGrid`,
+    getBalanceCashLogsUrl: `${server_host}/api/deliver/deliverBalance/getWithdrawDataGrid`,
 
     // 获取数据字典
-    getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`
+    getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`,
+
+    // 
+    getEncrypt: `${server_host}/api/deliver/apiCommon/getEncrypt`
 };
 
 module.exports = config

@@ -12,8 +12,8 @@ Page({
   data: {
     orderId:null,
     tempFilePaths:[],
-    completeImages:null,
-    completeRemark:null,
+    completeImages:'',
+    completeRemark:'',
     uploadRequired:true
   },
 
@@ -114,7 +114,7 @@ Page({
         if (res.confirm) {
           request.httpPost({
             url: config.completeOrderUrl,
-            data: { id: self.data.orderId, completeImages: self.data.completeImages, completeRemark: self.data.completeRemark },
+            data: { id: self.data.orderId, completeImages: self.data.completeImages||'', completeRemark: self.data.completeRemark||'' },
             showLoading: true,
             success: function (data) {
               if (data.success) {
