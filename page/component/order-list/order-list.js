@@ -30,6 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (app.getPlatform() != 'ios') currPage = 1;
     this.getOrders(true);
   },
 
@@ -193,11 +194,12 @@ Page({
       });
       return;
     }
+    var mars_point = Util.baiduTomars(longitude, latitude);
     wx.getLocation({
       success: function (res) {
         wx.openLocation({
-          latitude: Number(latitude),
-          longitude: Number(longitude),
+          latitude: Number(mars_point.lat),
+          longitude: Number(mars_point.lng),
           address: e.currentTarget.dataset.address
         })
       },

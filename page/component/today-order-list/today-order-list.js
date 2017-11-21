@@ -95,11 +95,12 @@ Page({
       });
       return;
     }
+    var mars_point = Util.baiduTomars(longitude, latitude);
     wx.getLocation({
       success: function (res) {
         wx.openLocation({
-          latitude: Number(latitude),
-          longitude: Number(longitude),
+          latitude: Number(mars_point.lat),
+          longitude: Number(mars_point.lng),
           address: e.currentTarget.dataset.address
         })
       },
