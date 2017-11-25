@@ -21,7 +21,8 @@
     "page/component/order-complete/order-complete",
     "page/component/today-order-list/today-order-list",
     "page/component/print-setup/print-setup",
-    "page/component/order-detail/order-detail"
+    "page/component/order-detail/order-detail",
+    "page/component/order-confirm/order-confirm"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

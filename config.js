@@ -66,6 +66,9 @@ var config = {
 
     uploadImageUrl: `${server_host}/api/deliver/deliverOrder/uploadImage`,
 
+    // 获取骑车运单信息
+    getDriverOrderUrl: `${server_host}/api/deliver/deliverOrder/getDriverOrder`,
+
     // 获取有效新订单数量
     getNewOrderCountUrl: `${server_host}/api/deliver/deliverOrder/getNewAllocationOrderQuantity`,
 

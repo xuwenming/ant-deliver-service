@@ -207,6 +207,16 @@
   margin-left: 20rpx;
 }
 
+.order-list .bottoms button[type=default] {
+  color: #aaa;
+  width:inherit;
+  background-color: inherit;
+}
+
+.order-list .bottoms button[type=default]::after{
+  border: 1px solid #aaa;
+}
+
 .order-list .bottoms .carry{
   padding:20rpx 0 20rpx 24rpx;
   font-size:28rpx;

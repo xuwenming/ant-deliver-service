@@ -89,12 +89,17 @@ Page({
 
   // 送达完成
   orderComplete: function (e) {
-    // 发送request处理订单
-    var self = this;
     wx.navigateTo({
       url: '/page/component/order-complete/order-complete?orderId=' + e.target.dataset.orderId
     })
 
+  },
+
+  // 送达确认
+  orderConfirm: function (e) {
+    wx.navigateTo({
+      url: '/page/component/order-confirm/order-confirm?orderId=' + e.target.dataset.orderId
+    })
   },
 
   viewDetail : function(e){
@@ -112,7 +117,7 @@ Page({
     var self = this, currentTab = this.data.currentTab, status;
     var url = config.getOrdersUrl;
     if (currentTab == 0) status = 'DOS20';
-    else if (currentTab == 1) status = 'DOS25';
+    else if (currentTab == 1) status = 'DOS25,DOS50';
     else if (currentTab == 2) status = 'DOS30,DOS40';
     else {
       status = 'DOS15';
