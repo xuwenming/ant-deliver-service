@@ -1,0 +1,30 @@
+<!--page/component/order-confirm/order-confirm.wxml-->
+<view class="container">
+  <view class='textarea'>
+    <textarea maxlength="100" placeholder="请填写备注" name="completeRemark" bindinput="setCompleteRemark"/>
+  </view>
+
+  <view class='box'>
+    <view class='header line-after'>用户签收</view>
+    <view class='upload' wx:if="{{driverCompleteImages != null && driverCompleteImages.length > 0}}">
+      <view class='item' wx:for="{{driverCompleteImages}}" wx:key="image" wx:for-item="image">
+        <image src="{{image}}" mode="center aspectFit" data-index="{{index}}" bindtap='showImage'/>
+      </view>
+    </view>
+    <view class='info' wx:else>无</view>
+  </view>
+
+  <view class='box'>
+    <view class='header line-after'>骑手备注</view>
+    <view class='info'>{{driverCompleteRemark == null || driverCompleteRemark.length == 0 || driverCompleteRemark == 'null' ? '无' : driverCompleteRemark}}</view>
+  </view>
+
+  <view class='btns flex'>
+    <view class='flex-row .btn-item'>
+      <view bindtap='cancel'>取消</view>
+    </view>
+    <view class='flex-row .btn-item'>
+      <view bindtap='orderComplete'>确定送达</view>
+    </view>
+  </view>
+</view>

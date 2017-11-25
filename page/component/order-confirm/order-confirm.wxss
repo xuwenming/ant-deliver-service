@@ -1,0 +1,40 @@
+/* page/component/order-confirm/order-confirm.wxss */
+@import '../balance-log-detail/balance-log-detail.wxss';
+
+.textarea {
+  margin-bottom:20rpx; 
+}
+
+.textarea textarea{
+  width: 100%;
+  height: 260rpx;
+  padding: 24rpx;
+  background-color: #fff;
+}
+
+.btns{
+  padding-top: 40rpx;
+}
+
+.btns .btn-item{
+  max-width: 50%;
+  min-width: 50%;
+  padding: 0 24rpx;
+}
+
+.btns .btn-item view{
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align:center;
+  border: 1px solid #fe9900;
+  width: 100%;
+}
+
+.btns .btn-item:first-child view{
+  color: #fe9900;
+}
+
+.btns .btn-item:last-child view{
+  background-color: #fe9900;
+  color: #fff;
+}
