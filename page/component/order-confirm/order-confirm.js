@@ -27,6 +27,7 @@ Page({
 
     request.httpPost({
       url: config.getDriverOrderUrl,
+      data: { id: options.orderId },
       success: function (data) {
         if (data.success && data.obj) {
           var completeImages = data.obj.completeImages, driverCompleteImages = null;
