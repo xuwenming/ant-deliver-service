@@ -110,7 +110,7 @@ Page({
                   duration: 500,
                   complete: function () {
                     var orders = self.data.orders;
-                    orders.splice(e.target.dataset.index, 1);
+                    orders[e.target.dataset.index].status = 'DOS22';
                     self.setData({
                       orders: orders
                     });
