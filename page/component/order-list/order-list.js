@@ -94,7 +94,7 @@ Page({
 
     wx.showModal({
       title: '提示',
-      content: '是否确定订单号【' + e.target.dataset.orderId + '】货物已被骑手取走？',
+      content: '是否确定订单号【' + e.target.dataset.orderId + '】已派货？',
       success: function (res) {
         if (res.confirm) {
           request.httpPost({
@@ -104,7 +104,7 @@ Page({
             success: function (data) {
               if (data.success) {
                 wx.showToast({
-                  title: "确认成功",
+                  title: "派货成功",
                   icon: 'success',
                   mask: true,
                   duration: 500,
