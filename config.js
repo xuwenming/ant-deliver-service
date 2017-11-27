@@ -61,6 +61,9 @@ var config = {
     // 订单发货
     deliverOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderSendOut`,
 
+    // 确认骑手取货
+    editConfirmItemTokenByDriverUrl: `${server_host}/api/deliver/deliverOrder/editConfirmItemTokenByDriver`,
+
     // 订单送达完成
     completeOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderComplete`,
 

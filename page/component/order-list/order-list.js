@@ -87,6 +87,44 @@ Page({
 
   },
 
+  // 确认取货
+  pickupConfirm: function (e) {
+    // 发送request处理订单
+    var self = this;
+
+    wx.showModal({
+      title: '提示',
+      content: '是否确定订单号【' + e.target.dataset.orderId + '】货物已被骑手取走？',
+      success: function (res) {
+        if (res.confirm) {
+          request.httpPost({
+            url: config.editConfirmItemTokenByDriverUrl,
+            data: { id: e.target.dataset.orderId },
+            showLoading: true,
+            success: function (data) {
+              if (data.success) {
+                wx.showToast({
+                  title: "确认成功",
+                  icon: 'success',
+                  mask: true,
+                  duration: 500,
+                  complete: function () {
+                    var orders = self.data.orders;
+                    orders.splice(e.target.dataset.index, 1);
+                    self.setData({
+                      orders: orders
+                    });
+                  }
+                })
+              }
+            }
+          })
+        }
+      }
+    });
+
+  },
+
   // 送达完成
   orderComplete: function (e) {
     wx.navigateTo({
@@ -116,7 +154,7 @@ Page({
   getOrders: function (isRefresh) {
     var self = this, currentTab = this.data.currentTab, status;
     var url = config.getOrdersUrl;
-    if (currentTab == 0) status = 'DOS20';
+    if (currentTab == 0) status = 'DOS20,DOS21,DOS22';
     else if (currentTab == 1) status = 'DOS25,DOS50';
     else if (currentTab == 2) status = 'DOS30,DOS40';
     else {
