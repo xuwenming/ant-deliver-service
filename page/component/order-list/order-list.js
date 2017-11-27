@@ -254,5 +254,13 @@ Page({
         })
       }
     })
+  },
+
+  callPhone: function (e) {
+    var phone = e.currentTarget.dataset.phone;
+    if (phone)
+      wx.makePhoneCall({
+        phoneNumber: phone
+      })
   }
 })

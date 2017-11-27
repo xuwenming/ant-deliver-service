@@ -20,7 +20,7 @@
               <view class='flex-row rg'>
                 <view class='flex header'>
                   <view class='flex-row'><text> {{balanceDetail.contactPeople}}</text></view>
-                  <view class='flex-row'><text> {{balanceDetail.contactPhone}}</text></view>
+                  <view class='flex-row'><text data-phone="{{balanceDetail.contactPhone}}" catchtap='callPhone'> {{balanceDetail.contactPhone}}</text></view>
                   <view class='flex-row'><text> {{balanceDetail.distance}}</text></view>
                 </view>
                 <view class='address'><text>{{balanceDetail.deliveryAddress}}</text></view>
