@@ -110,7 +110,7 @@ Page({
                   duration: 500,
                   complete: function () {
                     var orders = self.data.orders;
-                    orders[e.target.dataset.index].status = 'DOS22';
+                    if (orders != null) orders[e.target.dataset.index].status = 'DOS22';
                     self.setData({
                       orders: orders
                     });
