@@ -4,7 +4,7 @@ var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
 
-var currPage = 1, rows = 10;
+var currPage = 1, rows = 10, orderIntervar;
 
 Page({
 
@@ -30,8 +30,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var self = this;
+    orderIntervar = setInterval(function () {
+      if (self.data.currentTab == 0 || self.data.currentTab == 1) {
+        self.getOrders(true);
+      }
+    }, 10000);
+    wx.showNavigationBarLoading();
     if (app.getPlatform() != 'ios') currPage = 1;
     this.getOrders(true);
+  },
+
+  onHide: function () {
+    if (orderIntervar) clearInterval(orderIntervar);
+  },
+  onUnload: function () {
+    if (orderIntervar) clearInterval(orderIntervar);
   },
 
   switchTab:function(e){
@@ -45,6 +59,7 @@ Page({
         orders: null
       })
       currPage = 1;
+      wx.showNavigationBarLoading();
       self.getOrders(true);
     }
   },
@@ -166,7 +181,6 @@ Page({
     //   title: '努力加载中...',
     //   mask: true
     // })
-    wx.showNavigationBarLoading();
 
     request.httpGet({
       url: url,
@@ -205,6 +219,7 @@ Page({
    */
   onPullDownRefresh: function () {
     currPage = 1;
+    wx.showNavigationBarLoading();
     this.getOrders(true);
     setTimeout(function () {
       wx.stopPullDownRefresh()
@@ -216,6 +231,7 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.hasMore) {
+      wx.showNavigationBarLoading();
       this.getOrders();
     } else {
       // wx.showToast({
