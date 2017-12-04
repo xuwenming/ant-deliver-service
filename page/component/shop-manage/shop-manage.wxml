@@ -16,7 +16,7 @@
           </view>
           <view class='name'>{{accountInfo.shopName}}</view>
         </view>
-        <view class='flex-row left' bindtap='todayOrders'>
+        <view class='flex-row left' bindtap='todayOrdersIncome'>
           <view class='h3'>￥{{accountInfo.turnover}}</view>
           <view class='p'>今日营业额</view>
         </view>
@@ -39,18 +39,23 @@
     </navigator>
   </view>
   <view class='box flex'>
+   <view class='flex-row' bindtap='scan'>
+      <view class='icon'><image src='../../../image/扫码.png'></image></view>
+      <view class='label'>扫码提货</view>
+    </view>
     <view class='flex-row' bindtap='toPurchase'>
     <!-- <navigator class='flex-row' url="/page/component/purchase/purchase"> -->
       <view class='icon'><image src='../../../image/box_4.png'></image></view>
       <view class='label'>我要采购</view>
     <!-- </navigator> -->
     </view>
+   
+
     
     <!-- <navigator class='flex-row' url="/page/component/print-setup/print-setup">
       <view class='icon'><image src='../../../image/box_5.png'></image></view>
       <view class='label'>打印设置</view>
     </navigator> -->
-    <view class='flex-row'></view>
     
     <view class='flex-row'></view>
   </view>

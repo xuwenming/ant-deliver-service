@@ -116,8 +116,12 @@ Page({
     wx.navigateTo({
       url: '/page/component/today-order-list/today-order-list'
     })
+  }, 
+  todayOrdersIncome: function() {
+    wx.navigateTo({
+      url: '/page/component/today-order-income/today-order-income'
+    })
   },
-
   toPurchase: function(){
     request.httpGet({
       url: config.getBaseDataByKeyUrl,
@@ -131,5 +135,21 @@ Page({
         }
       }
     })
-  }
+  },
+  // scan: function() {
+  //   wx.scanCode({
+  //     success: function(res) {
+  //       request.httpPost({
+  //         url:config.,
+  //         data: res.result,
+  //         success: function(data) {
+            
+  //         }
+  //       }),
+  //       wx.navigateTo({
+  //         url: '/page/component/order-detail/order-detail?code='+res.result,
+  //       })
+  //     }
+  //   })
+  // }
 })

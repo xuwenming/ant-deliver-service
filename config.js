@@ -5,8 +5,8 @@
  */
 
 // var server_host = "http://localhost:8082"; // dev
-var server_host = "http://101.132.177.151:8080"; // qa
-// var server_host = "https://www.qrun360.com"; // pro
+//var server_host = "http://101.132.177.151:8080"; // qa
+ var server_host = "https://www.qrun360.com"; // pro
 
 var config = {
 
@@ -44,11 +44,14 @@ var config = {
     // 今日订单列表查询
     getTodayOrdersUrl: `${server_host}/api/deliver/deliverOrder/getTodayOrders`,
 
+    // 今日订单营业额查询
+    getTodayOrdersIncome: `${server_host}/api/deliver/deliverOrder/getTodayProfitOrders`,
+
     // 订单列表查询
     getOrdersUrl: `${server_host}/api/deliver/deliverOrder/dataGrid`,
     // 订单列表查询(取消)
     getRefusedOrdersUrl: `${server_host}/api/deliver/deliverOrder/viewRefusedDataGrid`,
-    
+
     // 订单详情查询
     getOrderDetailUrl: `${server_host}/api/deliver/deliverOrder/getDetail`,
 
@@ -138,7 +141,7 @@ var config = {
     // 获取数据字典
     getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`,
 
-    // 
+    //
     getEncrypt: `${server_host}/api/deliver/apiCommon/getEncrypt`
 };
 
