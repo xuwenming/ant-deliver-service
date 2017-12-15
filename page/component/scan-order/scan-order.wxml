@@ -5,7 +5,7 @@
     <view class="order-list">
       <!-- item -->
       <view class='order-item'>
-       <view class='top line-after flex'>
+      <view class='top line-after flex'>
               <view class='flex-row flex flex-align-center'>              
                 <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId}}</view>
               </view>
@@ -29,7 +29,7 @@
               <view class='flex header'>
                 <view class='flex-row'><text> {{order.contactPeople}}</text></view>
                 <view class='flex-row'><text> {{order.contactPhone}}</text></view>
-                <view class='flex-row'><text> {{order.distance}}</text></view>
+                <view class='flex-row'><text>自提</text></view>
               </view>
               <view class='address'><text>{{order.deliveryAddress}}</text></view>
             </view>
@@ -52,28 +52,11 @@
               <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS40'}}"><text>已结算</text></view>
               <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
             </view>
-            <view>
-              <button bindtap='sign' wx:if="{{order.status=='DOS20' && order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS03'}}">确认签收</button>
-            </view>
+            <button data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='editFetchOrder' wx:if="{{order.status!='DOS30' && order.deliveryWay=='DAW02'}}">确认提货</button>
+            <button type='default'wx:elif="{{(order.status=='DOS30'||order.status=='DOS40') && order.deliveryWay=='DAW02'}}">已自提</button>  
           </view>
+         
       </view>    
     </view>
-
-    <block wx:if="{{order.status == 'DOS30' || order.status == 'DOS40'}}">
-      <view class='box'>
-        <view class='header line-after'>用户签收</view>
-        <view class='upload' wx:if="{{order.completeImages != null}}">
-          <view class='item' wx:for="{{order.completeImages}}" wx:key="image" wx:for-item="image">
-            <image src="{{image}}" mode="center aspectFit" data-index="{{index}}" bindtap='showImage'/>
-          </view>
-        </view>
-        <view class='info' wx:else>无</view>
-      </view>
-
-      <view class='box'>
-        <view class='header line-after'>备注</view>
-        <view class='info'>{{order.completeRemark == null || order.completeRemark.length == 0 || order.completeRemark == 'null' ? '无' : order.completeRemark}}</view>
-      </view>
-    </block>
   </view>
 </view>

@@ -145,7 +145,11 @@ var config = {
     getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`,
 
     //
-    getEncrypt: `${server_host}/api/deliver/apiCommon/getEncrypt`
+    getEncrypt: `${server_host}/api/deliver/apiCommon/getEncrypt`,
+    //扫码提货
+    getOrderByCode: `${server_host}/api/deliver/deliverOrder/getOrderByCode`,
+    //确认提货
+    editFetchOrder: `${server_host}/api/deliver/deliverOrder/editFetchOrder`
 };
 
 module.exports = config

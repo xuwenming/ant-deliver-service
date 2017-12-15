@@ -23,6 +23,7 @@
     "page/component/today-order-income/today-order-income",
     "page/component/print-setup/print-setup",
     "page/component/order-detail/order-detail",
+    "page/component/scan-order/scan-order",
     "page/component/order-confirm/order-confirm"
   ],
   "window": {

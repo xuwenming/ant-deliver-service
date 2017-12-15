@@ -122,6 +122,11 @@ Page({
       url: '/page/component/today-order-income/today-order-income'
     })
   },
+  toRefuseOrder: function() {
+    wx.navigateTo({
+      url: '/page/component//'
+    })
+  },
   toPurchase: function(){
     request.httpGet({
       url: config.getBaseDataByKeyUrl,
@@ -136,23 +141,7 @@ Page({
       }
     })
   },
-  // scan: function() {
-  //   wx.scanCode({
-  //     success: function(res) {
-  //       request.httpPost({
-  //         url:config.,
-  //         data: res.result,
-  //         success: function(data) {
-            
-  //         }
-  //       }),
-  //       wx.navigateTo({
-  //         url: '/page/component/order-detail/order-detail?code='+res.result,
-  //       })
-  //     }
-  //   })
-  // },
-  
+
   // 扫码签收
   scanSign: function() {
     wx.scanCode({
@@ -175,6 +164,38 @@ Page({
             showCancel: false
           });
       }
+    })
+  },
+
+  scan: function() {
+    var orderId = null;
+    wx.scanCode({
+      success: function(res) {
+        console.log(res)
+        request.httpGet({
+          url: config.getOrderByCode,
+          data:{code: res.result.substring(9)},
+          success: function(data) {
+            if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'QR_CODE') {
+            wx.navigateTo({
+              url: '/page/component/scan-order/scan-order?orderId=' + data.obj,
+            })
+            }else {
+              wx.showModal({
+                content: '扫码失败！',
+                showCancel: false
+              });
+            }
+          },
+            fail: function (res) {
+            if (res.errMsg != 'scanCode:fail cancel')
+              wx.showModal({
+                content: '扫码失败！',
+                showCancel: false
+              });
+          }
+        })
+      },
     })
   }
 })

@@ -46,7 +46,14 @@
     <view class='flex-row' bindtap='scan'>
       <view class='icon'><image src='../../../image/扫码.png'></image></view>
       <view class='label'>扫码提货</view>
-      </view>
+      
+    </view>
+
+    <!-- <view class='flex-row' bindtap='toRefuseOrder'>
+    <view class='icon'><image src='../../../image/gongdan.png'></image></view>
+      <view class='label'>工单处理</view>
+    </view> -->
+
     <view class='flex-row' bindtap='toPurchase'>
     <!-- <navigator class='flex-row' url="/page/component/purchase/purchase"> -->
       <view class='icon'><image src='../../../image/box_4.png'></image></view>
