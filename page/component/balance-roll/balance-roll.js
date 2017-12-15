@@ -34,14 +34,28 @@ Page({
       disabled: true,
       loading: false
     },
+    transferAuth:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var self = this;
     this.setData({
       currentTab: options.type || 'in'
+    });
+
+    request.httpPost({
+      url: config.getShopApplyUrl,
+      success: function (data) {
+        console.log(data)
+        if (data.success && data.obj) {
+          self.setData({
+            transferAuth: data.obj.transferAuth
+          });
+        }
+      }
     })
   },
 
@@ -241,6 +255,13 @@ Page({
   },
 
   showModal: function () {
+    if (this.data.currentTab == 'in' && !this.data.transferAuth) {
+      wx.showModal({
+        content: '未开通转入权限，请联系客服！',
+        showCancel: false
+      });
+      return;
+    }
     // 显示遮罩层
     var animation = wx.createAnimation({
       transformOrigin: "50% 50%",
