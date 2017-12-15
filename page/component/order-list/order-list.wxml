@@ -47,7 +47,7 @@
             <view class='flex header'>
               <view class='flex-row'><text> {{order.contactPeople}}</text></view>
               <view class='flex-row'><text data-phone="{{order.contactPhone}}" catchtap='callPhone'> {{order.contactPhone}}</text></view>
-              <view class='flex-row'wx:if="{{currentTab == 2 && order.deliveryWay == 'DAW02'}}"><text>自提</text></view>
+              <view class='flex-row'wx:if="{{order.deliveryWay == 'DAW02'}}"><text>自提</text></view>
               <view class='flex-row'wx:elif="{{order.deliveryWay != 'DAW02'}}"><text> {{order.distance}}</text></view>
             </view>
             <view class='address'><text>{{order.deliveryAddress}}</text></view>
@@ -68,6 +68,7 @@
         </view> 
         <view class='bottoms'>
           <view class='carry flex'>
+           <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS30' && order.deliveryWay == 'DAW02'}}"><text>已自提</text></view>
             <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS40'}}"><text>已结算</text></view>
             <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
           </view>
@@ -76,6 +77,7 @@
             <button type="default"  wx:if="{{currentTab == 0 && order.status=='DOS20' && order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS03'}}">待签收</button>
             <button data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='orderDeliver' wx:if="{{currentTab == 0 && order.status=='DOS20' && (order.deliveryWay == 'DAW01' || (order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS04'))}}">发货</button> 
             <button type="default" wx:if="{{currentTab == 0 && order.status=='DOS20' && order.deliveryWay == 'DAW03'}}">等待骑手接单</button> 
+            <button type="default" wx:if="{{currentTab == 0 && order.deliveryWay == 'DAW02'}}">等待用户自提</button> 
             <button data-order-id="{{order.id}}" data-index="{{order_idx}}" bindtap='pickupConfirm' wx:if="{{currentTab == 0 && order.status=='DOS21'}}">确认派货</button> 
             <button type="default" wx:if="{{currentTab == 0 && order.status=='DOS22'}}">等待骑手发货</button> 
             <button data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='orderComplete' wx:elif="{{currentTab == 1 && order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">送达完成</button>
