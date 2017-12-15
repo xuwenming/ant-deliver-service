@@ -39,10 +39,14 @@
     </navigator>
   </view>
   <view class='box flex'>
-   <view class='flex-row' bindtap='scan'>
+    <view class='flex-row' bindtap='scanSign'>
+      <view class='icon'><image src='../../../image/scan.png'></image></view>
+      <view class='label'>扫码签收</view>
+    </view>
+    <view class='flex-row' bindtap='scan'>
       <view class='icon'><image src='../../../image/扫码.png'></image></view>
       <view class='label'>扫码提货</view>
-    </view>
+      </view>
     <view class='flex-row' bindtap='toPurchase'>
     <!-- <navigator class='flex-row' url="/page/component/purchase/purchase"> -->
       <view class='icon'><image src='../../../image/box_4.png'></image></view>
@@ -57,6 +61,6 @@
       <view class='label'>打印设置</view>
     </navigator> -->
     
-    <view class='flex-row'></view>
+    <!-- <view class='flex-row'></view> -->
   </view>
 </view>

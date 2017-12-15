@@ -8,8 +8,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.6.6",
-	"appid": "wx0b54b1b16b700f4b",
+	"libVersion": "1.7.2",
+	"appid": "wx6196df0ee20f5fa3",
 	"projectname": "ant-deliver-service",
 	"miniprogramRoot": "./",
 	"condition": {

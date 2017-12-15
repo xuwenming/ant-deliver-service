@@ -44,6 +44,9 @@
               <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS40'}}"><text>已结算</text></view>
               <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
             </view>
+            <view>
+              <button bindtap='sign' wx:if="{{order.status=='DOS20' && order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS03'}}">确认签收</button>
+            </view>
           </view>
       </view>    
     </view>

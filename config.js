@@ -4,9 +4,9 @@
  * qa  appid=wx6196df0ee20f5fa3
  */
 
-// var server_host = "http://localhost:8082"; // dev
-//var server_host = "http://101.132.177.151:8080"; // qa
- var server_host = "https://www.qrun360.com"; // pro
+//var server_host = "http://localhost:8082"; // dev
+var server_host = "http://101.132.177.151:8080"; // qa
+//var server_host = "https://www.qrun360.com"; // pro
 
 var config = {
 
@@ -60,6 +60,9 @@ var config = {
 
     // 开始接单
     acceptOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderAccept`,
+
+    // 确认签收
+    editOrderSignUrl: `${server_host}/api/deliver/deliverOrder/editOrderSign`,
 
     // 订单发货
     deliverOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderSendOut`,

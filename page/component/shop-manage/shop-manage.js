@@ -151,5 +151,30 @@ Page({
   //       })
   //     }
   //   })
-  // }
+  // },
+  
+  // 扫码签收
+  scanSign: function() {
+    wx.scanCode({
+      success: function(res) {
+        if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'CODABAR') {
+          wx.navigateTo({
+            url: '/page/component/order-detail/order-detail?orderId=' + res.result,
+          })
+        } else {
+          wx.showModal({
+            content: '扫码失败！',
+            showCancel: false
+          });
+        }
+      },
+      fail:function(res){
+        if (res.errMsg != 'scanCode:fail cancel')
+          wx.showModal({
+            content: '扫码失败！',
+            showCancel: false
+          });
+      }
+    })
+  }
 })
