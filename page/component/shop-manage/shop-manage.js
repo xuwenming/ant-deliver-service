@@ -178,7 +178,7 @@ Page({
           success: function(data) {
             if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'QR_CODE') {
             wx.navigateTo({
-              url: '/page/component/scan-order/scan-order?orderId=' + data.obj,
+              url: '/page/component/order-detail/order-detail?orderId=' + data.obj,
             })
             }else {
               wx.showModal({

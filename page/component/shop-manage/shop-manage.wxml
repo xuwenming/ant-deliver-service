@@ -41,7 +41,7 @@
   <view class='box flex'>
     <view class='flex-row' bindtap='scanSign'>
       <view class='icon'><image src='../../../image/scan.png'></image></view>
-      <view class='label'>扫码签收</view>
+      <view class='label'>扫码签收 提货</view>
     </view>
     <view class='flex-row' bindtap='scan'>
       <view class='icon'><image src='../../../image/扫码.png'></image></view>
