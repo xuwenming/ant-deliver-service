@@ -124,7 +124,7 @@ Page({
   },
   toRefuseOrder: function() {
     wx.navigateTo({
-      url: '/page/component//'
+      url: '/page/component/balance-cash-list/balance-cash-list'
     })
   },
   toPurchase: function(){

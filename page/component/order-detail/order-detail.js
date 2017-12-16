@@ -97,6 +97,37 @@ Page({
         }
       }
     })
+  },
+  editFetchOrder: function () {
+    var self = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否确定订单号【' + self.data.order.id + '】已提货？',
+      success: function (res) {
+        if (res.confirm) {
+          request.httpPost({
+            url: config.editFetchOrder,
+            data: { id: self.data.order.id },
+            showLoading: true,
+            success: function (data) {
+              wx.showToast({
+                title: "自提完成",
+                icon: 'success',
+                mask: true,
+                duration: 1000,
+                complete: function () {
+                  setTimeout(function () {
+                    wx.navigateBack({
+                      delta: 1,
+                    })
+                  }, 1000)
+                }
+              })
+            }
+          })
+        }
+      }
+    })
   }
   
 })
