@@ -23,12 +23,10 @@
     <view class='order-item' wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
     <view class='top line-after flex'>
               <view class='flex-row flex flex-align-center'>              
-                <view class='flex flex-pack-end label'  wx:if="{{order.originalOrderId !=null}}">原订单号：{{order.originalOrderId}}</view>
-                <view class='flex flex-pack-end label'  wx:elif="{{order.originalOrderId ==null}}">原订单号：无</view>
+                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId == null ? '无' : order.originalOrderId}}</view>
               </view>
               <view class='flex-row'>
-                <view class='flex flex-pack-end label' wx:if="{{order.originalShop!=null}}">店铺：{{order.originalShop}}</view>
-                 <view class='flex flex-pack-end label' wx:elif="{{order.originalShop==null}}">店铺：无</view>
+                <view class='flex flex-pack-end label'>店铺：{{order.originalShop == null ? '无' : order.originalShop}}</view>
               </view>
           </view>
         <view class='top line-after flex'>
@@ -47,8 +45,8 @@
             <view class='flex header'>
               <view class='flex-row'><text> {{order.contactPeople}}</text></view>
               <view class='flex-row'><text data-phone="{{order.contactPhone}}" catchtap='callPhone'> {{order.contactPhone}}</text></view>
-              <view class='flex-row'wx:if="{{order.deliveryWay == 'DAW02'}}"><text>自提</text></view>
-              <view class='flex-row'wx:elif="{{order.deliveryWay != 'DAW02'}}"><text> {{order.distance}}</text></view>
+              <view class='flex-row'wx:if="{{order.deliveryWay == 'DAW02' || order.deliveryWay == 'DAW05'}}"><text>自提</text></view>
+              <view class='flex-row'wx:else><text> {{order.distance}}</text></view>
             </view>
             <view class='address'><text>{{order.deliveryAddress}}</text></view>
           </view>
@@ -68,7 +66,7 @@
         </view> 
         <view class='bottoms'>
           <view class='carry flex'>
-           <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS30' && order.deliveryWay == 'DAW02'}}"><text>已自提</text></view>
+           <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS30' && (order.deliveryWay == 'DAW02' || order.deliveryWay == 'DAW05')}}"><text>已自提</text></view>
             <view class='order-down flex-row flex flex-pack-start' wx:if="{{order.status == 'DOS40'}}"><text>已结算</text></view>
             <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
           </view>

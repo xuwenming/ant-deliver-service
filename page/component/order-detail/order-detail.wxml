@@ -7,10 +7,10 @@
       <view class='order-item'>
        <view class='top line-after flex'>
               <view class='flex-row flex flex-align-center'>              
-                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId}}</view>
+                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId == null ? '无' : order.originalOrderId}}</view>
               </view>
               <view class='flex-row'>
-                <view class='flex flex-pack-end label'>店铺：{{order.originalShop}}</view>
+                <view class='flex flex-pack-end label'>店铺：{{order.originalShop == null ? '无' : order.originalShop}}</view>
               </view>
           </view>
           <view class='top line-after flex'>
@@ -29,8 +29,8 @@
               <view class='flex header'>
                 <view class='flex-row'><text> {{order.contactPeople}}</text></view>
                 <view class='flex-row'><text> {{order.contactPhone}}</text></view>
-                <view class='flex-row' wx:if="{{(order.deliveryWay == 'DAW02'||(order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}"><text> 自提</text></view>
-                 <view class='flex-row' wx:elif="{{order.deliveryWay =='DAW03'}}"><text> {{order.distance}}</text></view>
+                <view class='flex-row' wx:if="{{order.deliveryWay == 'DAW02'|| order.deliveryWay == 'DAW05'}}"><text> 自提</text></view>
+                 <view class='flex-row' wx:else><text> {{order.distance}}</text></view>
               </view>
               <view class='address'><text>{{order.deliveryAddress}}</text></view>
             </view>
@@ -55,17 +55,15 @@
             </view>
             <view>
             <button type="default"  wx:if="{{ order.status=='DOS20' && (order.deliveryWay == 'DAW04' || order.deliveryWay == 'DAW05') && (order.agentStatus == 'DTS01' || order.agentStatus == 'DTS02')}}">正在配货中</button>
-            <button type="default"  wx:if="{{order.status=='DOS20' && (order.deliveryWay == 'DAW04' || order.deliveryWay == 'DAW05') && order.agentStatus == 'DTS03'}}">待签收</button>
+            <button  bindtap='sign' wx:if="{{order.status=='DOS20' && (order.deliveryWay == 'DAW04' || order.deliveryWay == 'DAW05') && order.agentStatus == 'DTS03'}}">确认签收</button>
             <button bindtap='orderDeliver' wx:if="{{ order.status=='DOS20' && (order.deliveryWay == 'DAW01' || (order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS04'))}}">发货</button> 
             <button type="default" wx:if="{{ order.status=='DOS20' && order.deliveryWay == 'DAW03'}}">等待骑手接单</button> 
-          
             <button bindtap='pickupConfirm' wx:if="{{order.status=='DOS21'}}">确认派货</button> 
             <button type="default" wx:if="{{ order.status=='DOS22'}}">等待骑手发货</button> 
             <button bindtap='orderComplete' wx:elif="{{order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">送达完成</button>
             <button type="default" wx:if="{{order.status=='DOS25' && order.deliveryWay == 'DAW03'}}">等待骑手送达完成</button>
             <button bindtap='orderConfirm' wx:elif="{{ order.status=='DOS50'}}">确认送达</button>
-              <button bindtap='sign' wx:if="{{order.status=='DOS20' && order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS03'}}">确认签收</button>
-               <button bindtap='editFetchOrder' wx:if="{{order.status!='DOS30' && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">确认提货</button>
+            <button bindtap='editFetchOrder' wx:if="{{order.status!='DOS30' && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">确认提货</button>
             <button type='default'wx:elif="{{(order.status=='DOS30'||order.status=='DOS40') && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">已自提</button>  
             </view>
           </view>

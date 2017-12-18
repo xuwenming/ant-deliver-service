@@ -41,7 +41,7 @@
   <view class='box flex'>
     <view class='flex-row' bindtap='scanSign'>
       <view class='icon'><image src='../../../image/scan.png'></image></view>
-      <view class='label'>扫码签收 提货</view>
+      <view class='label'>扫码查询</view>
     </view>
     <view class='flex-row' bindtap='scan'>
       <view class='icon'><image src='../../../image/扫码.png'></image></view>
@@ -68,10 +68,25 @@
     
     <!-- <view class='flex-row'></view> -->
   </view>
-  <view class='box flex'>
+  <!-- <view class='box flex'>
     <view class='flex-row' bindtap='toRefuseOrder'>
     <view class='icon'><image src='../../../image/gongdan.png'></image></view>
       <view class='label'>工单处理</view>
     </view> 
-  </view>
+  </view> -->
+</view>
+
+<view class="commodity_screen" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <form>
+    <view class='form-group line-after flex'>
+      <view class='flex-row'>
+        <input type="number" maxlength="32" class='form-control' placeholder='{{codePlaceholder}}' bindinput="setCode"></input>
+      </view>
+    </view>
+    <view class="btn-reg">
+      <button type="yellow" plain="true" disabled="{{confirmBtn.disabled}}" bindtap='search'>确认</button>
+      <button bindtap='cancel' class="cancel">取消</button>
+    </view>
+  </form>
 </view>

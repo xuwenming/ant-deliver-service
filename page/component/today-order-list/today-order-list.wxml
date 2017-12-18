@@ -6,10 +6,10 @@
     <view class='order-item' wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
      <view class='top line-after flex'>
               <view class='flex-row flex flex-align-center'>              
-                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId}}</view>
+                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId == null ? '无' : order.originalOrderId}}</view>
               </view>
               <view class='flex-row'>
-                <view class='flex flex-pack-end label'>店铺：{{order.originalShop}}</view>
+                <view class='flex flex-pack-end label'>店铺：{{order.originalShop == null ? '无' : order.originalShop}}</view>
               </view>
           </view>
         <view class='top line-after flex'>

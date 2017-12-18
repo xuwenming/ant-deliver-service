@@ -22,7 +22,16 @@ Page({
       online:0,
       name:''
     },
-    pageLoad:false
+    pageLoad:false,
+
+    animationData: "",
+    showModalStatus: false,
+    code:'',
+    scanType:1,
+    codePlaceholder:'请输入订单号',
+    confirmBtn: {
+      disabled: true
+    }
   },
 
   /**
@@ -144,6 +153,7 @@ Page({
 
   // 扫码签收
   scanSign: function() {
+    var self = this;
     wx.scanCode({
       success: function(res) {
         if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'CODABAR') {
@@ -151,51 +161,153 @@ Page({
             url: '/page/component/order-detail/order-detail?orderId=' + res.result,
           })
         } else {
-          wx.showModal({
-            content: '扫码失败！',
-            showCancel: false
-          });
+          self.scanFail(1);
         }
       },
       fail:function(res){
         if (res.errMsg != 'scanCode:fail cancel')
-          wx.showModal({
-            content: '扫码失败！',
-            showCancel: false
-          });
+          self.scanFail(1);
       }
     })
   },
 
   scan: function() {
-    var orderId = null;
+    var self = this;
     wx.scanCode({
       success: function(res) {
-        console.log(res)
-        request.httpGet({
-          url: config.getOrderByCode,
-          data:{code: res.result.substring(9)},
-          success: function(data) {
-            if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'QR_CODE') {
+        if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'QR_CODE') {
+          request.httpGet({
+            url: config.getOrderByCode,
+            data:{code: res.result.substring(9)},
+            success: function(data) {
+              if(data.success && data.obj)
+                wx.navigateTo({
+                  url: '/page/component/order-detail/order-detail?orderId=' + data.obj,
+                })
+              else
+                wx.showModal({
+                  content: '自提码错误！',
+                  showCancel: false
+                });
+            }
+          })
+        } else {
+          self.scanFail(2);
+        }
+      },
+      fail: function (res) {
+        if (res.errMsg != 'scanCode:fail cancel')
+          self.scanFail(2);
+      }
+    })
+  },
+
+  scanFail:function(scanType){
+    var self = this;
+    wx.showModal({
+      content: '扫码失败！',
+      showCancel: false,
+      success: function () {
+        self.showModal(scanType);
+      }
+    });
+  },
+
+  setCode: function (e) {
+    var code = e.detail.value;
+
+    if (!Util.isEmpty(code)) {
+      this.setData({
+        'confirmBtn.disabled': false,
+        code: code
+      });
+    } else {
+      this.setData({
+        'confirmBtn.disabled': true,
+        code: code
+      });
+    }
+
+  },
+
+  search: function(){
+    var self = this, code = this.data.code;
+    if(this.data.scanType == 1) {
+      self.cancel();
+      wx.navigateTo({
+        url: '/page/component/order-detail/order-detail?orderId=' + code,
+      })
+    } else {
+      request.httpGet({
+        url: config.getOrderByCode,
+        data: { code: code },
+        success: function (data) {
+          if (data.success && data.obj) {
+            self.cancel();
             wx.navigateTo({
               url: '/page/component/order-detail/order-detail?orderId=' + data.obj,
             })
-            }else {
-              wx.showModal({
-                content: '扫码失败！',
-                showCancel: false
-              });
-            }
-          },
-            fail: function (res) {
-            if (res.errMsg != 'scanCode:fail cancel')
-              wx.showModal({
-                content: '扫码失败！',
-                showCancel: false
-              });
+          } else {
+            wx.showModal({
+              content: '自提码错误！',
+              showCancel: false
+            });
           }
-        })
-      },
+        }
+      })
+    }
+  },
+
+  showModal: function (scanType) {
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      transformOrigin: "50% 50%",
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
     })
-  }
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true,
+      'confirmBtn.disabled': true,
+      code: '',
+      scanType: scanType,
+      codePlaceholder: scanType == 1 ? '请输入订单号' : '请输入自提码'
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  hideModal: function () {
+    if (!Util.isEmpty(this.data.code)) {
+      return;
+    }
+    this.cancel();
+  },
+  cancel: function () {
+    console.log(this.data.vcode);
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 200)
+  },
 })
