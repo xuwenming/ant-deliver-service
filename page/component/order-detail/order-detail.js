@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    orderId:null,
     order:null
   },
 
@@ -16,18 +17,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      orderId: options.orderId
+    });
+  },
+
+  onShow:function(){
     var self = this;
     wx.showNavigationBarLoading();
     request.httpGet({
       url: config.getOrderDetailUrl,
-      data: { id: options.orderId },
+      data: { id: self.data.orderId },
       success: function (data) {
         if (data.success) {
           if (!data.obj) {
             wx.showModal({
               content: '未匹配到对应订单！',
               showCancel: false,
-              success:function(){
+              success: function () {
                 wx.navigateBack({
                   delta: 1,
                 })
