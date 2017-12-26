@@ -156,6 +156,7 @@ Page({
   },
 
   viewDetail : function(e){
+    if(this.data.currentTab != 3)
       wx.navigateTo({
         url: '/page/component/order-detail/order-detail?orderId=' + e.currentTarget.dataset.orderId
       })

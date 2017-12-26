@@ -37,6 +37,12 @@
       <view class='icon'><image src='../../../image/box_3.png'></image></view>
       <view class='label'>门店管理</view>
     </navigator>
+    <view class='flex-row' bindtap='toPurchase'> 
+     <!-- <navigator class='flex-row' url="/page/component/purchase/purchase">  -->
+      <view class='icon'><image src='../../../image/box_4.png'></image></view>
+      <view class='label'>我要采购</view>
+     <!-- </navigator>  -->
+     </view>
   </view>
   <view class='box flex'>
     <view class='flex-row' bindtap='scanSign'>
@@ -44,36 +50,31 @@
       <view class='label'>扫码查询</view>
     </view>
     <view class='flex-row' bindtap='scan'>
-      <view class='icon'><image src='../../../image/扫码.png'></image></view>
+      <view class='icon'><image src='../../../image/scan1.png'></image></view>
       <view class='label'>扫码提货</view>
-      
     </view>
-
-   
-
-    <view class='flex-row' bindtap='toPurchase'>
-    <!-- <navigator class='flex-row' url="/page/component/purchase/purchase"> -->
-      <view class='icon'><image src='../../../image/box_4.png'></image></view>
-      <view class='label'>我要采购</view>
-    <!-- </navigator> -->
+    <view class='flex-row' bindtap='fSearch'>
+      <view class='icon'><image src='../../../image/f-search.png'></image></view>
+      <view class='label'>快速查询</view>
     </view>
-    
+    <view class='flex-row' bindtap='fTake'>
+      <view class='icon'><image src='../../../image/f-search1.png'></image></view>
+      <view class='label'>快速提货</view>
+    </view>
+  </view>
 
-
-    
+  <view class='box flex'>
     <!-- <navigator class='flex-row' url="/page/component/print-setup/print-setup">
       <view class='icon'><image src='../../../image/box_5.png'></image></view>
       <view class='label'>打印设置</view>
     </navigator> -->
+     <!-- <view class='flex-row'></view>  -->
     
-    <!-- <view class='flex-row'></view> -->
-  </view>
-  <!-- <view class='box flex'>
-    <view class='flex-row' bindtap='toRefuseOrder'>
+    <!-- <view class='flex-row' bindtap='toRefuseOrder'>
     <view class='icon'><image src='../../../image/gongdan.png'></image></view>
       <view class='label'>工单处理</view>
-    </view> 
-  </view> -->
+    </view> -->
+  </view>
 </view>
 
 <view class="commodity_screen" wx:if="{{showModalStatus}}"></view>

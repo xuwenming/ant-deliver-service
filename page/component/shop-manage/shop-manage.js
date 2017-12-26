@@ -230,6 +230,13 @@ Page({
 
   },
 
+  fSearch:function() {
+    this.showModal(1);
+  },
+  fTake:function(){
+    this.showModal(2);
+  },
+
   search: function(){
     var self = this, code = this.data.code;
     if(this.data.scanType == 1) {
