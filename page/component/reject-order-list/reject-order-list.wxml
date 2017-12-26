@@ -1,0 +1,75 @@
+<!--page/component/order-list/order-list.wxml-->
+<view class='container'>
+<view class="tab flex">
+    <view class='flex-row'>
+        <view class="title {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="switchTab">待处理</view>
+    </view>
+    <view class='flex-row'>
+        <view class="title {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="switchTab">已处理</view>
+    </view>
+  </view>
+  <!-- list -->
+  <view class="order-list" wx:if="{{orders == null || orders.length > 0}}">
+    <!-- item -->
+    <view class='order-item' wx:for="{{orders}}" wx:for-index="order_idx" wx:key="id" wx:for-item="order">
+    <view class='top line-after flex'>
+              <view class='flex-row flex flex-align-center'>              
+                <view class='flex flex-pack-end label'>原订单号：{{order.originalOrderId == null ? '无' : order.originalOrderId}}</view>
+              </view>
+              <view class='flex-row'>
+                <view class='flex flex-pack-end label'>店铺：{{order.originalShop == null ? '无' : order.originalShop}}</view>
+              </view>
+          </view>
+        <view class='top line-after flex'>
+            <view class='flex-row flex flex-align-center'>              
+              <view class='flex flex-pack-end label'>订单号：{{order.id}}</view>
+            </view>
+            <view class='flex-row'>
+              <view class='flex flex-pack-end label'>下单时间：{{order.addtime}}</view>
+            </view>
+        </view>
+        <view class='flex info line-after-bl' bindtap="openMap" data-latitude="{{order.latitude}}" data-longitude="{{order.longitude}}" data-address="{{order.deliveryAddress}}">
+          <view class='flex-row icon'>
+            <image src='/image/address.png'></image>
+          </view>
+          <view class='flex-row rg'>
+            <view class='flex header'>
+              <view class='flex-row'><text> {{order.contactPeople}}</text></view>
+              <view class='flex-row'><text data-phone="{{order.contactPhone}}" catchtap='callPhone'> {{order.contactPhone}}</text></view>
+              <view class='flex-row'wx:if="{{order.deliveryWay == 'DAW02' || order.deliveryWay == 'DAW05'}}"><text>自提</text></view>
+              <view class='flex-row'wx:else><text> {{order.distance}}</text></view>
+            </view>
+            <view class='address'><text>{{order.deliveryAddress}}</text></view>
+          </view>
+        </view>
+        <!-- goods list -->
+        <view class='flex order-goods line-after-bl' wx:for="{{order.deliverOrderShopItemList}}" wx:key="item.id" wx:for-item="item" data-order-id="{{order.id}}" bindtap='viewDetail'>
+          <view class='flex-row left'>
+            <image mode="center aspectFit" src="{{item.pictureUrl}}"></image>
+          </view>
+          <view class='flex-row right'>
+            <view class='name'>{{item.itemName}}</view>
+            <view class='bottom flex'>
+              <view class='flex-row'><text>{{item.quantityUnitName}}</text></view>
+              <view class='flex-row rg'>数量x<text>{{item.quantity}}</text></view>
+            </view>
+          </view>
+        </view> 
+        <view class='bottoms'>
+          <view class='carry flex'>
+          <view class='order-down flex-row flex flex-pack-start' ><text>已拒收</text></view>
+            <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
+          </view>
+          <view>
+            
+            <button data-order-id="{{order.id}}" data-index="{{order_idx}}"bindtap='confirmStockIn'>确认入库</button>
+          </view>
+        </view>
+    </view>
+  </view>
+
+  <view wx:else>
+     <include src="/page/common/noDataTemplate.wxml"/>   
+  </view>
+  
+</view>

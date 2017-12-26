@@ -8,6 +8,7 @@
     "page/component/user/user",
     "page/component/protocol/protocol",
     "page/component/refuse-order/refuse-order",
+    "page/component/reject-order-list/reject-order-list",
     "page/component/item-manage/item-manage",
     "page/component/balance/balance",
     "page/component/balance-roll/balance-roll",

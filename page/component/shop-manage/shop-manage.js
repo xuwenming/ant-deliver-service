@@ -133,7 +133,7 @@ Page({
   },
   toRefuseOrder: function() {
     wx.navigateTo({
-      url: '/page/component/balance-cash-list/balance-cash-list'
+      url: '/page/component/reject-order-list/reject-order-list'
     })
   },
   toPurchase: function(){
