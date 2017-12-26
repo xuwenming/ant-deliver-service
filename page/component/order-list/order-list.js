@@ -33,6 +33,7 @@ Page({
     var self = this;
     orderIntervar = setInterval(function () {
       if (self.data.currentTab == 0 || self.data.currentTab == 1) {
+        if (app.getPlatform() != 'ios') currPage = 1;
         self.getOrders(true);
       }
     }, 10000);

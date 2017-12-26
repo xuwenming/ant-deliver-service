@@ -63,7 +63,7 @@
             <button bindtap='orderComplete' wx:elif="{{order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">送达完成</button>
             <button type="default" wx:if="{{order.status=='DOS25' && order.deliveryWay == 'DAW03'}}">等待骑手送达完成</button>
             <button bindtap='orderConfirm' wx:elif="{{ order.status=='DOS50'}}">确认送达</button>
-            <button bindtap='editFetchOrder' wx:if="{{order.status!='DOS30' && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">确认提货</button>
+            <button bindtap='editFetchOrder' wx:if="{{order.status=='DOS20' && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">确认提货</button>
             <button type='default'wx:elif="{{(order.status=='DOS30'||order.status=='DOS40') && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">已自提</button>  
             </view>
           </view>
