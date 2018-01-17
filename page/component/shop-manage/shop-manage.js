@@ -202,13 +202,31 @@ Page({
     })
   },
 
+  // 扫码打印
+  scanPrint: function () {
+    var self = this;
+    wx.scanCode({
+      success: function (res) {
+        if (res.errMsg == 'scanCode:ok' && res.scanType.toUpperCase() == 'CODABAR') {
+          self.print(res.result);
+        } else {
+          self.scanFail();
+        }
+      },
+      fail: function (res) {
+        if (res.errMsg != 'scanCode:fail cancel')
+          self.scanFail();
+      }
+    })
+  },
+
   scanFail:function(scanType){
     var self = this;
     wx.showModal({
       content: '扫码失败！',
       showCancel: false,
       success: function () {
-        self.showModal(scanType);
+        if (scanType) self.showModal(scanType);
       }
     });
   },
@@ -236,6 +254,9 @@ Page({
   fTake:function(){
     this.showModal(2);
   },
+  fPrint: function () {
+    this.showModal(3);
+  },
 
   search: function(){
     var self = this, code = this.data.code;
@@ -244,7 +265,7 @@ Page({
       wx.navigateTo({
         url: '/page/component/order-detail/order-detail?orderId=' + code,
       })
-    } else {
+    } else if (this.data.scanType == 2){
       request.httpGet({
         url: config.getOrderByCode,
         data: { code: code },
@@ -262,6 +283,9 @@ Page({
           }
         }
       })
+    } else if (this.data.scanType == 3) {
+      self.cancel();
+      self.print(code);
     }
   },
 
@@ -281,7 +305,7 @@ Page({
       'confirmBtn.disabled': true,
       code: '',
       scanType: scanType,
-      codePlaceholder: scanType == 1 ? '请输入订单号' : '请输入自提码'
+      codePlaceholder: (scanType == 1 || scanType == 3) ? '请输入订单号' : '请输入自提码'
     })
     setTimeout(function () {
       animation.translateY(0).step()
@@ -317,4 +341,26 @@ Page({
       })
     }.bind(this), 200)
   },
+
+  print : function(orderId){
+    request.httpPost({
+      url: config.printUrl,
+      data: { orderId: orderId },
+      success: function (data) {
+        if (data.success) {
+          wx.showToast({
+            title: "等待打印",
+            icon: 'success',
+            mask: true,
+            duration: 2000
+          })
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+        }
+      }
+    })
+  }
 })

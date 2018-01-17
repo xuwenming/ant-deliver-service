@@ -4,7 +4,7 @@ var config = require('../../../config');
 var request = require('../../common/request');
 var Util = require('../../../util/util').Util;
 
-var currPage = 1, rows = 10, orderIntervar;
+var currPage = 1, rows = 20, orderIntervar;
 
 Page({
 
@@ -139,6 +139,29 @@ Page({
       }
     });
 
+  },
+
+  // 打印小票
+  printOrder:function(e) {
+    request.httpPost({
+      url: config.printUrl,
+      data: { orderId: e.target.dataset.orderId },
+      success: function (data) {
+        if (data.success) {
+          wx.showToast({
+            title: "等待打印",
+            icon: 'success',
+            mask: true,
+            duration: 2000
+          })
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+        }
+      }
+    })
   },
 
   // 送达完成

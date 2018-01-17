@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.7.2",
+	"libVersion": "1.9.1",
 	"appid": "wx6196df0ee20f5fa3",
 	"projectname": "ant-deliver-service",
 	"miniprogramRoot": "./",
@@ -19,6 +19,9 @@
 		},
 		"conversation": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
 			"list": []
 		},
 		"miniprogram": {

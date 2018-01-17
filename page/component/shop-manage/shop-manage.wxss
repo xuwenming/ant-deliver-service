@@ -169,3 +169,7 @@
 .btn-reg button:last-child{
   margin-top: 20rpx;
 }
+
+button[plain]::after {
+  border-width:1px;
+}

@@ -2,22 +2,53 @@
 
 @import '../../common/common.wxss';
 
-.content {  
-  margin: 0 10px;  
-}  
-  
-.status, .sousuo, .msg, .msg1 {  
-  display: block;  
-  line-height: 35px;  
-  margin: 0 10px;  
-}  
-  
-.button {  
-  margin: 10px;  
-}  
-  
-.sendto {  
-  line-height: 30px;  
-  display: block;  
-  margin: 10px;  
+.content {
+  padding-top: 20rpx; 
+}
+
+.box{
+  background-color: #fff;
+}
+
+.box .header{
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 24rpx;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+
+.box .red {
+  color: red;
+}
+
+.box .normal {
+  color:#05C0AB;
+}
+
+.log{
+  padding: 0 40rpx;
+  margin: 0 0 4rpx 0;
+  height: 100rpx;
+  background-color: #fff;
+}
+
+.cashlog {
+  margin:0rpx;
+}
+
+.log .lf{
+  line-height: 100rpx; 
+}
+
+.log .rg{
+  max-width: 18rpx;
+  min-width: 18rpx;
+  height: 32rpx;
+  margin-top: 34rpx;
+}
+
+.log .switch{
+  margin-top: 18rpx;
 }

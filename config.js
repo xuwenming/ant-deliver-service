@@ -4,7 +4,7 @@
  * qa  appid=wx6196df0ee20f5fa3
  */
 
-// var server_host = "http://localhost:8081"; // dev
+// var server_host = "http://192.168.1.144:8082"; // dev
 var server_host = "http://101.132.177.151:8080"; // qa
 // var server_host = "https://www.qrun360.com"; // pro
 
@@ -144,12 +144,26 @@ var config = {
     // 获取数据字典
     getBaseDataByKeyUrl: `${server_host}/api/deliver/basedata/get`,
 
-    //
-    getEncrypt: `${server_host}/api/deliver/apiCommon/getEncrypt`,
     //扫码提货
     getOrderByCode: `${server_host}/api/deliver/deliverOrder/getOrderByCode`,
+
     //确认提货
-    editFetchOrder: `${server_host}/api/deliver/deliverOrder/editFetchOrder`
+    editFetchOrder: `${server_host}/api/deliver/deliverOrder/editFetchOrder`,
+
+    // 手动添加终端授权
+    addPrinterUrl: `${server_host}/api/deliver/print/addPrinter`,
+
+    // 扫码极速授权
+    speedAuUrl: `${server_host}/api/deliver/print/speedAu`,
+
+    // 根据订单号打印小票
+    printUrl: `${server_host}/api/deliver/print/print`,
+    // 取消所有未打印订单
+    cancelallUrl: `${server_host}/api/deliver/print/cancelall`,
+    // 打印机关机重启
+    shutdownrestartUrl: `${server_host}/api/deliver/print/shutdownrestart`,
+    // 更新是否自动打印
+    updateAutoPrintUrl: `${server_host}/api/deliver/print/updateAutoPrint`
 };
 
 module.exports = config

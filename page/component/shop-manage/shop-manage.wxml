@@ -64,16 +64,24 @@
   </view>
 
   <view class='box flex'>
-    <!-- <navigator class='flex-row' url="/page/component/print-setup/print-setup">
+    <navigator class='flex-row' url="/page/component/print-setup/print-setup">
       <view class='icon'><image src='../../../image/box_5.png'></image></view>
       <view class='label'>打印设置</view>
-    </navigator> -->
-     <!-- <view class='flex-row'></view>  -->
-    
-    <!-- <view class='flex-row' bindtap='toRefuseOrder'>
-    <view class='icon'><image src='../../../image/gongdan.png'></image></view>
-      <view class='label'>工单处理</view>
+    </navigator>
+    <!-- <view class='flex-row' bindtap='scanPrint'>
+      <view class='icon'><image src='../../../image/scan-print.png'></image></view>
+      <view class='label'>扫码打印</view>
     </view> -->
+     <!-- <view class='flex-row' bindtap='fPrint'>
+      <view class='icon'><image src='../../../image/f-print.png'></image></view>
+      <view class='label'>快速打印</view>
+    </view>  -->
+    <view class='flex-row'>
+      <view class='icon'><image src='../../../image/gongdan.png'></image></view>
+      <view class='label'>售后工单</view>
+    </view>
+     <view class='flex-row'></view>
+     <view class='flex-row'></view> 
   </view>
 </view>
 

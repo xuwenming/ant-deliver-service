@@ -1,0 +1,19 @@
+<!--page/component/printer-bind/printer-bind.wxml-->
+<view class="container">
+  <view class="content">
+    <form bindsubmit="bindMachine">
+      <view class="form">
+        <view class="form-group list-line userName">
+          <input name="machineCode" value="{{machineCode}}" type="number" maxlength="20" class='form-control' placeholder='请输入终端号' bindinput="setMachineCode"></input>
+        </view>
+
+        <view class="form-group list-line line-before">
+          <input name="msign" type="text" maxlength="20" class='form-control' placeholder='请输入密钥' bindinput="setMsign"></input>
+        </view>
+      </view>
+      <view class="btn-reg">
+        <button formType="submit" type="yellow" disabled="{{bindBtn.disabled}}" loading="{{bindBtn.loading}}">绑定</button>
+      </view>
+    </form>
+  </view>
+</view>

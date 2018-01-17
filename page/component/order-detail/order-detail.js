@@ -214,6 +214,30 @@ Page({
 
   },
 
+  // 打印小票
+  printOrder: function (e) {
+    var self = this;
+    request.httpPost({
+      url: config.printUrl,
+      data: { orderId: self.data.order.id },
+      success: function (data) {
+        if (data.success) {
+          wx.showToast({
+            title: "等待打印",
+            icon: 'success',
+            mask: true,
+            duration: 2000
+          })
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false
+          });
+        }
+      }
+    })
+  },
+
   // 送达完成
   orderComplete: function (e) {
     wx.navigateTo({

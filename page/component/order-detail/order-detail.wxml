@@ -54,6 +54,8 @@
               <view class='flex-row'>订单金额 <text>{{order.amount}}元</text></view>
             </view>
             <view>
+
+            <button  wx:if="{{order.status=='DOS21' || (order.status=='DOS20' && (order.deliveryWay == 'DAW01' || order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS04')))}}">打印小票</button>
             <button type="default"  wx:if="{{ order.status=='DOS20' && (order.deliveryWay == 'DAW04' || order.deliveryWay == 'DAW05') && (order.agentStatus == 'DTS01' || order.agentStatus == 'DTS02')}}">正在配货中</button>
             <button  bindtap='sign' wx:if="{{order.status=='DOS20' && (order.deliveryWay == 'DAW04' || order.deliveryWay == 'DAW05') && order.agentStatus == 'DTS03'}}">确认签收</button>
             <button bindtap='orderDeliver' wx:if="{{ order.status=='DOS20' && (order.deliveryWay == 'DAW01' || (order.deliveryWay == 'DAW04' && order.agentStatus == 'DTS04'))}}">发货</button> 
