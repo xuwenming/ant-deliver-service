@@ -76,10 +76,10 @@
       <view class='icon'><image src='../../../image/f-print.png'></image></view>
       <view class='label'>快速打印</view>
     </view>  -->
-    <view class='flex-row'>
+    <navigator class='flex-row' url="/page/component/work-order/work-order">
       <view class='icon'><image src='../../../image/gongdan.png'></image></view>
       <view class='label'>售后工单</view>
-    </view>
+    </navigator>
      <view class='flex-row'></view>
      <view class='flex-row'></view> 
   </view>

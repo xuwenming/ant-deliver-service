@@ -1,0 +1,85 @@
+<!--page/component/work-order-detail/work-order-detail.wxml-->
+<view class='container' wx:if="{{workOrder != null}}">
+  <view class='content'>
+    <!-- list -->
+    <view class="order-list">
+      <!-- item -->
+      <view class='order-item'>
+       <view class='top line-after flex'>
+              <view class='flex-row flex flex-align-center'>              
+                <view class='flex flex-pack-end label'>原订单号：{{workOrder.deliverOrderShop
+.originalOrderId == null ? '无' : workOrder.deliverOrderShop.originalOrderId}}</view>
+              </view>
+              <view class='flex-row'>
+                <view class='flex flex-pack-end label'>店铺：{{workOrder.deliverOrderShop.originalShop == null ? '无' : workOrder.deliverOrderShop.originalShop}}</view>
+              </view>
+          </view>
+          <view class='top line-after flex'>
+              <view class='flex-row flex flex-align-center'>              
+                <view class='flex flex-pack-end label'>订单号：{{workOrder.deliverOrderShop.deliverOrderId}}</view>
+              </view>
+              <view class='flex-row'>
+                <view class='flex flex-pack-end label'>下单时间：{{workOrder.deliverOrderShop.addtime}}</view>
+              </view>
+          </view>
+          <view class='flex info line-after-bl'>
+            <view class='flex-row icon'>
+              <image src='/image/address.png'></image>
+            </view>
+            <view class='flex-row rg'>
+              <view class='flex header'>
+                <view class='flex-row'><text> {{workOrder.contactPeople}}</text></view>
+                <view class='flex-row'><text> {{workOrder.contactPhone}}</text></view>
+                <view class='flex-row' wx:if="{{workOrder.deliverOrderShop.deliveryWay == 'DAW02'|| workOrder.deliverOrderShop.deliveryWay == 'DAW05'}}"><text> 自提</text></view>
+                 <view class='flex-row' wx:else><text> {{workOrder.deliverOrderShop.distance}}</text></view>
+              </view>
+              <view class='address'><text>{{workOrder.deliveryAddress}}</text></view>
+            </view>
+          </view>
+          <!-- goods list -->
+          <view class='flex order-goods line-after-bl' wx:for="{{workOrder.deliverOrderShop.deliverOrderShopItemList}}" wx:key="item.id" wx:for-item="item">
+            <view class='flex-row left'>
+              <image mode="center aspectFit" src="{{item.pictureUrl}}"></image>
+            </view>
+            <view class='flex-row right'>
+              <view class='name'>{{item.itemName}}</view>
+              <view class='bottom flex'>
+                <view class='flex-row'><text>{{item.quantityUnitName}}</text></view>
+                <view class='flex-row rg'>数量x<text>{{item.quantity}}</text></view>
+              </view>
+            </view>
+          </view> 
+          <view class='bottoms'>
+            <view class='carry flex'>
+              <view class='flex-row'>订单金额 <text>{{workOrder.deliverOrderShop.amount}}元</text></view>
+            </view>
+            <view>
+              <button data-order-id="{{workOrder.deliverOrderShop.deliverOrderId}}" data-order-shop-id="{{workOrder.deliverOrderShop.id}}" bindtap='orderConfirm' wx:if="{{workOrder.status == 'SMSS10'}}">确认拒收</button>
+            </view>
+          </view>
+      </view>    
+    </view>
+
+    <view class='box'>
+      <view class='header line-after'>工单信息</view>
+      <view class='info'>工单号：{{workOrder.id}}</view>
+      <view class='info'>类型：{{workOrder.typeName}}</view>
+      <view class='info'>状态：{{workOrder.statusName}}</view>
+      <view class='info'>时间：{{workOrder.addtime}}</view>
+    </view>
+
+    <view class='box' wx:if="{{workOrder.deliverOrderShop.completeImages != null}}">
+      <view class='header line-after'>用户签字</view>
+      <view class='upload'>
+        <view class='item' wx:for="{{workOrder.deliverOrderShop.completeImages}}" wx:key="image" wx:for-item="image">
+          <image src="{{image}}" mode="center aspectFit" data-index="{{index}}" bindtap='showImage'/>
+        </view>
+      </view>
+    </view>
+
+    <view class='box' wx:if="{{workOrder.deliverOrderShop.completeRemark != null}}">
+      <view class='header line-after'>备注</view>
+      <view class='info'>{{workOrder.deliverOrderShop.completeRemark}}</view>
+    </view>
+  </view>
+</view>

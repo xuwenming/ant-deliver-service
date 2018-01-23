@@ -11,6 +11,7 @@ Page({
    */
   data: {
     orderId:null,
+    orderShopId:null,
     tempFilePaths:[],
     completeImages:'',
     completeRemark:'',
@@ -23,8 +24,15 @@ Page({
   onLoad: function (options) {
     var self = this;
     self.setData({
-      orderId: options.orderId
+      orderId: options.orderId,
+      orderShopId: options.orderShopId || null
     });
+
+    if (self.data.orderShopId != null) {
+      wx.setNavigationBarTitle({
+        title: '拒收确认',
+      })
+    }
 
     request.httpPost({
       url: config.getShopApplyUrl,
@@ -107,19 +115,27 @@ Page({
 
   complete: function (){
     var self = this;
+    var msg = '是否确定订单号【' + self.data.orderId + '】已送达完成？', url = config.completeOrderUrl, title = '送达完成';
+    var data = { id: self.data.orderId, completeImages: self.data.completeImages || '', completeRemark: self.data.completeRemark || '' };
+    if (self.data.orderShopId != null) {
+      msg = '是否确定订单号【' + self.data.orderId + '】客户退货拒收？';
+      url = config.editRejectFromCustomerUrl;
+      title = '拒收完成';
+      data.orderShopId = self.data.orderShopId;
+    }
     wx.showModal({
       title: '提示',
-      content: '是否确定订单号【' + self.data.orderId + '】已送达完成？',
+      content: msg,
       success: function (res) {
         if (res.confirm) {
           request.httpPost({
-            url: config.completeOrderUrl,
-            data: { id: self.data.orderId, completeImages: self.data.completeImages||'', completeRemark: self.data.completeRemark||'' },
+            url: url,
+            data: data,
             showLoading: true,
             success: function (data) {
               if (data.success) {
                 wx.showToast({
-                  title: "送达完成",
+                  title: title,
                   icon: 'success',
                   mask: true,
                   complete: function () {

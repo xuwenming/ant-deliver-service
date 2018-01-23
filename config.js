@@ -4,7 +4,7 @@
  * qa  appid=wx6196df0ee20f5fa3
  */
 
-// var server_host = "http://192.168.1.144:8082"; // dev
+// var server_host = "http://192.168.1.140:8082"; // dev
 var server_host = "http://101.132.177.151:8080"; // qa
 // var server_host = "https://www.qrun360.com"; // pro
 
@@ -72,6 +72,12 @@ var config = {
 
     // 订单送达完成
     completeOrderUrl: `${server_host}/api/deliver/deliverOrder/editOrderComplete`,
+
+    // 订单退货拒收
+    editRejectFromCustomerUrl: `${server_host}/api/deliver/deliverOrder/editRejectFromCustomer`,
+
+    // 订单确认骑手配送拒收完成
+    editOrderAndStockInMarketServiceUrl: `${server_host}/api/deliver/deliverOrder/editOrderAndStockInMarketService`,
 
     uploadImageUrl: `${server_host}/api/deliver/deliverOrder/uploadImage`,
 
@@ -163,7 +169,13 @@ var config = {
     // 打印机关机重启
     shutdownrestartUrl: `${server_host}/api/deliver/print/shutdownrestart`,
     // 更新是否自动打印
-    updateAutoPrintUrl: `${server_host}/api/deliver/print/updateAutoPrint`
+    updateAutoPrintUrl: `${server_host}/api/deliver/print/updateAutoPrint`,
+
+    // 获取工单列表
+    getWorkOrdersUrl: `${server_host}/api/deliver/deliverOrder/dataGridMarketServiceOrder`,
+
+    // 获取工单详情
+    getWorkOrderDetailUrl: `${server_host}/api/deliver/deliverOrder/getMarketServiceOrderDetail`
 };
 
 module.exports = config

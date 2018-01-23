@@ -5,7 +5,8 @@
   </view>
 
   <view class='box'>
-    <view class='header line-after'>用户签收</view>
+    <view class='header line-after' wx:if="{{orderShopId != null}}">用户拒收</view>
+    <view class='header line-after' wx:else>用户签收</view>
     <view class='upload' wx:if="{{driverCompleteImages != null && driverCompleteImages.length > 0}}">
       <view class='item' wx:for="{{driverCompleteImages}}" wx:key="image" wx:for-item="image">
         <image src="{{image}}" mode="center aspectFit" data-index="{{index}}" bindtap='showImage'/>
@@ -24,7 +25,8 @@
       <view bindtap='cancel'>取消</view>
     </view>
     <view class='flex-row .btn-item'>
-      <view bindtap='orderComplete'>确定送达</view>
+      <view bindtap='orderComplete' wx:if="{{orderShopId != null}}">确定拒收</view>
+      <view bindtap='orderComplete' wx:else>确定送达</view>
     </view>
   </view>
 </view>

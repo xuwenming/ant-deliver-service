@@ -25,7 +25,9 @@
     "page/component/print-setup/print-setup",
     "page/component/order-detail/order-detail",
     "page/component/order-confirm/order-confirm",
-    "page/component/printer-bind/printer-bind"
+    "page/component/printer-bind/printer-bind",
+    "page/component/work-order/work-order",
+    "page/component/work-order-detail/work-order-detail"
   ],
   "window": {
     "navigationBarTextStyle": "#ffffff",

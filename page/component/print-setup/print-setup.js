@@ -17,7 +17,7 @@ Page({
       success: function (data) {
         if (data.success && data.obj) {
           self.setData({
-            machineCode: data.obj.machineCode,
+            machineCode: data.obj.machineCode || null,
             autoPrint: data.obj.autoPrint
           });
         }

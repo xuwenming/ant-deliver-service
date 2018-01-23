@@ -321,7 +321,6 @@ Page({
     this.cancel();
   },
   cancel: function () {
-    console.log(this.data.vcode);
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,

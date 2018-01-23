@@ -1,0 +1,3 @@
+/* page/component/work-order-detail/work-order-detail.wxss */
+
+@import '../balance-log-detail/balance-log-detail.wxss';

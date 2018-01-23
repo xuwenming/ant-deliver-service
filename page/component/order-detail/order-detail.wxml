@@ -62,17 +62,19 @@
             <button type="default" wx:if="{{ order.status=='DOS20' && order.deliveryWay == 'DAW03'}}">等待骑手接单</button> 
             <button bindtap='pickupConfirm' wx:if="{{order.status=='DOS21'}}">确认派货</button> 
             <button type="default" wx:if="{{ order.status=='DOS22'}}">等待骑手发货</button> 
-            <button bindtap='orderComplete' wx:elif="{{order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">送达完成</button>
+            <button data-type="1" bindtap='orderComplete' wx:if="{{order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">客户拒收</button>
+            <button bindtap='orderComplete' wx:if="{{order.status=='DOS25' && order.deliveryWay != 'DAW03'}}">送达完成</button>
             <button type="default" wx:if="{{order.status=='DOS25' && order.deliveryWay == 'DAW03'}}">等待骑手送达完成</button>
-            <button bindtap='orderConfirm' wx:elif="{{ order.status=='DOS50'}}">确认送达</button>
+            <button bindtap='orderConfirm' wx:if="{{ order.status=='DOS50' && order.serviceOrderHandleStatus != 'DSOS010'}}">确认送达</button>
+            <button data-type="1" bindtap='orderConfirm' wx:if="{{order.status=='DOS50' && order.serviceOrderHandleStatus == 'DSOS010'}}">确认拒收</button>
             <button bindtap='editFetchOrder' wx:if="{{order.status=='DOS20' && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">确认提货</button>
-            <button type='default'wx:elif="{{(order.status=='DOS30'||order.status=='DOS40') && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">已自提</button>  
+            <button type='default'wx:if="{{(order.status=='DOS30'||order.status=='DOS40') && (order.deliveryWay=='DAW02'|| (order.deliveryWay == 'DAW05' && order.agentStatus == 'DTS04'))}}">已自提</button>  
             </view>
           </view>
       </view>    
     </view>
 
-    <block wx:if="{{order.status == 'DOS30' || order.status == 'DOS40'}}">
+    <block wx:if="{{order.status == 'DOS30'|| order.status == 'DOS35' || order.status == 'DOS40'}}">
       <view class='box'>
         <view class='header line-after'>用户签收</view>
         <view class='upload' wx:if="{{order.completeImages != null}}">

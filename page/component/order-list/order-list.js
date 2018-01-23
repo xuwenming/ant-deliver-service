@@ -33,7 +33,7 @@ Page({
     var self = this;
     orderIntervar = setInterval(function () {
       if (self.data.currentTab == 0 || self.data.currentTab == 1) {
-        if (app.getPlatform() != 'ios') currPage = 1;
+        currPage = 1;
         self.getOrders(true);
       }
     }, 10000);
@@ -166,16 +166,24 @@ Page({
 
   // 送达完成
   orderComplete: function (e) {
+    var url = '/page/component/order-complete/order-complete?orderId=' + e.target.dataset.orderId;
+    if (e.target.dataset.orderShopId) {
+      url += '&orderShopId=' + e.target.dataset.orderShopId;
+    }
     wx.navigateTo({
-      url: '/page/component/order-complete/order-complete?orderId=' + e.target.dataset.orderId
+      url: url
     })
 
   },
 
   // 送达确认
   orderConfirm: function (e) {
+    var url = '/page/component/order-confirm/order-confirm?orderId=' + e.target.dataset.orderId;
+    if (e.target.dataset.orderShopId) {
+      url += '&orderShopId=' + e.target.dataset.orderShopId;
+    }
     wx.navigateTo({
-      url: '/page/component/order-confirm/order-confirm?orderId=' + e.target.dataset.orderId
+      url: url
     })
   },
 
@@ -195,7 +203,7 @@ Page({
     var url = config.getOrdersUrl;
     if (currentTab == 0) status = 'DOS20,DOS21,DOS22';
     else if (currentTab == 1) status = 'DOS25,DOS50';
-    else if (currentTab == 2) status = 'DOS30,DOS40';
+    else if (currentTab == 2) status = 'DOS30,DOS35,DOS40';
     else {
       status = 'DOS15';
       url = config.getRefusedOrdersUrl;

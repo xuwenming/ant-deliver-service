@@ -54,6 +54,16 @@ Page({
           self.setData({
             order: data.obj
           });
+        } else {
+          wx.showModal({
+            content: data.msg,
+            showCancel: false,
+            success: function () {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
+          });
         }
       }
     })
@@ -240,16 +250,24 @@ Page({
 
   // 送达完成
   orderComplete: function (e) {
+    var url = '/page/component/order-complete/order-complete?orderId=' + this.data.order.id;
+    if (e.target.dataset.type == 1) {
+      url += '&orderShopId=' + this.data.order.deliverOrderShop.id;
+    }
     wx.navigateTo({
-      url: '/page/component/order-complete/order-complete?orderId=' + this.data.order.id
+      url: url
     })
 
   },
 
   // 送达确认
   orderConfirm: function (e) {
+    var url = '/page/component/order-confirm/order-confirm?orderId=' + this.data.order.id;
+    if (e.target.dataset.type == 1) {
+      url += '&orderShopId=' + this.data.order.deliverOrderShop.id;
+    }
     wx.navigateTo({
-      url: '/page/component/order-confirm/order-confirm?orderId=' + this.data.order.id
+      url: url
     })
   }
   
