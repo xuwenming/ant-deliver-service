@@ -33,7 +33,7 @@
                 <view class='flex-row' wx:if="{{workOrder.deliverOrderShop.deliveryWay == 'DAW02'|| workOrder.deliverOrderShop.deliveryWay == 'DAW05'}}"><text> 自提</text></view>
                  <view class='flex-row' wx:else><text> {{workOrder.deliverOrderShop.distance}}</text></view>
               </view>
-              <view class='address'><text>{{workOrder.deliveryAddress}}</text></view>
+              <view class='address'><text>{{workOrder.contactAddress}}</text></view>
             </view>
           </view>
           <!-- goods list -->
